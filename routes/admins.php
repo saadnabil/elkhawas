@@ -9,7 +9,6 @@ Route::group(['prefix' => 'admin'], function(){
     });
     Route::get('login', [AdminsAuthController::class , 'showloginform'])->name('admin.showloginform');
     Route::post('login', [AdminsAuthController::class , 'login'])->name('admin.login');
-
     Route::post('logout', [AdminsAuthController::class , 'logout'])->name('admin.logout');
 });
 
