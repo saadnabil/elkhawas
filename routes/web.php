@@ -14,7 +14,7 @@ Route::get('/layout', function () {
     return view('layout.content');
 });
 
-///// test commit
+
 Route::get('/admin/home', function () {
     return view('admin.layout.content');
 });

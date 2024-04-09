@@ -88,9 +88,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img width="100%" height="100%" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    {{-- <img width="100%" height="100%" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         style="height: 100%;width:100%;"
-                        src="{{ asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg') }}" />
+                        src="{{ $item->image != null ? url('storage/'.$item->image) : url('item.png') }}" /> --}}
 
                 </div>
                 <div class="modal-footer">

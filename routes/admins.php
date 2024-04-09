@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware'=> ['admincheckauth']], function(){
+        
        Route::get('dashboard', [DashobardController::class, 'index'])->name('admin.dashboard.index');
        Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
