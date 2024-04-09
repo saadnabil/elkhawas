@@ -28,5 +28,8 @@ return [
     'Back' => 'Back',
     'Save' => 'Save',
     'Import Product' => 'Import Product',
-    'Imported Successfully' => 'Imported Successfully'
+    'Imported Successfully' => 'Imported Successfully',
+    'en' => 'English',
+    'ar' => 'Arabic',
+    'de' => 'Germany'
 ];

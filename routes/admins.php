@@ -5,6 +5,7 @@ use App\Http\Controllers\Admins\DashobardController;
 use App\Http\Controllers\Admins\ExcelImportController;
 use App\Http\Controllers\Admins\ItemsController;
 use Illuminate\Support\Facades\Route;
+
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware'=> ['admincheckauth']], function(){
        Route::get('dashboard', [DashobardController::class, 'index'])->name('admin.dashboard.index');
@@ -22,4 +23,3 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('login', [AdminsAuthController::class , 'login'])->name('admin.login');
     Route::post('logout', [AdminsAuthController::class , 'logout'])->name('admin.logout');
 });
-

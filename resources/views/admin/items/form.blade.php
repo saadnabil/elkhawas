@@ -89,7 +89,11 @@
                                         {{ $message }}</div>
                                 @enderror
                             </div>
-                            <div id="imagePreview" class="mt-2"></div>
+                            <div id="imagePreview" class="mt-2">
+                                @if (isset($method))
+                                    <img width="100" height="100" src="{{ $item->image != null ? url('storage/'.$item->image) : url('item.png') }}" class="mt-2"/>
+                                @endif
+                            </div>
                         </div><!-- Col -->
 
                     </div><!-- Row -->

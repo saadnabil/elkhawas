@@ -52,8 +52,8 @@
                                         style="height: 50px;width:50px;"
                                         src="{{ $item->image != null ? url('storage/'.$item->image) : url('item.png') }}" />
                                 </td>
-                                <td>{{ $item->title['en'] }}</td>
-                                <td>{{ $item->unit['en'] }}</td>
+                                <td>{{ $item->title[app()->getLocale()] }}</td>
+                                <td>{{ $item->unit[app()->getLocale()] }}</td>
                                 <td>{{ $item->unit_price }} $</td>
                                 <td>{{ $item->units_number }}</td>
                                 <td style="color: goldenrod;">{{ $item->total_price }} $</td>

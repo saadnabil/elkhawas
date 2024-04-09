@@ -91,17 +91,13 @@
 
 		<div class="page-wrapper">
 
-			<!-- partial:../../partials/_navbar.html -->
 			@include('layout.adminnavbar')
-			<!-- partial -->
 
 			<div class="page-content">
 				@yield('content')
 			</div>
 
-			<!-- partial:../../partials/_footer.html -->
 			@include('layout.footer')
-			<!-- partial -->
 
 		</div>
 	</div>
