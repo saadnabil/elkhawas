@@ -34,7 +34,7 @@
 
 
               <li class="nav-item">
-                <a href="/admin/product/index" class="nav-link">Product List</a>
+                <a href="{{ route('admin.items.index') }}" class="nav-link">Product List</a>
               </li>
 
 
