@@ -17,7 +17,7 @@ Route::get('/admin/home', function () {
 
 
 Route::get('/admin/product/index', function () {
-    return view('admin.products.index ');
+    return view('admin.products.index');
 });
 
 

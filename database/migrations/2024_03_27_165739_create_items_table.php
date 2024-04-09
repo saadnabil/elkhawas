@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('units_number')->nullable();
             $table->double('unit_price')->nullable();
             $table->double('total_price')->nullable();
+            $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

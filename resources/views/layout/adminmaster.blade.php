@@ -18,7 +18,6 @@
   <!-- End fonts -->
 
 	<!-- core:css -->
-	<link href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" />
 
 
 	<link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
@@ -41,9 +40,7 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
-
-</head>
-<body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.min.css"><body>
 
 	<div class="main-wrapper">
 
@@ -52,6 +49,7 @@
 	<img class="animation__wobble" src="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" alt="Elkhawas" height="60" width="60">
   </div>
 		<!-- partial:../../partials/_sidebar.html -->
+
 
 		@include('layout.adminmenu')
 
@@ -128,7 +126,7 @@
 	<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
-
+    @include('layout.alert')
 
 	<!-- endinject -->
 

@@ -26,7 +26,7 @@ class AdminsAuthController extends Controller
         if(isset($response['error'])){
             return redirect()->route('admin.showloginform')->withErrors(['login' => $response['error']])->withInput($request->only('login'));
         }
-        return redirect()->route('admindashboard.index');
+        return redirect()->route('admin.dashboard.index');
     }
     public function logout(Request $request){
         auth('admin')->logout();
