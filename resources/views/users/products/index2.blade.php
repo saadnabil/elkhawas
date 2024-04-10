@@ -51,7 +51,6 @@ to be the same img width and height in card
   </nav>
 
 
-
   
 
   <div class="row" id="myProducts">
@@ -63,14 +62,14 @@ to be the same img width and height in card
              type="text" placeholder="Search by  or name card" />
              {{--  need search by barcode too --}}
         </div>
-        <button onclick="location.href='/orders/details'" type="button" class="btn btn-outline-primary position-relative" style="float: right;">
+        {{-- <button onclick="location.href='/orders/details'" type="button" class="btn btn-outline-primary position-relative" style="float: right;">
             <i class="link-icon" data-feather="shopping-cart"></i>
             View Cart
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 5+
                 <span class="visually-hidden">Orders</span>
             </span>
-        </button>
+        </button> --}}
         
     </div>
 
@@ -79,19 +78,44 @@ to be the same img width and height in card
 
     <div class="col-sm-3">
         <div class="card">
-            <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Nutella</h5>
-                <p class="card-text mb-3">Item Name: Corn Item</p>
-                <p class="card-text mb-3">Unit: 1 Carton</p>
-                <p class="card-text mb-3">Unit Price: 1.45 $</p>
-                <p class="card-text mb-3">Qty: 1</p>
-                <p class="card-text mb-3">PIECES: 24</p>
-                <p class="card-text mb-3">Main Price: 50 $</p>
+                <h5 class="card-title">Baba-Ganoush  <span class="badge bg-warning">€9.99</span></h5>
+                <p class="card-text mb-3">Item Name: Corn Item </p>
+                <p class="card-text mb-3">Main Price: <span class="badge bg-primary">€50.99</span></p>
 
-                <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">
                     <i class="link-icon" data-feather="shopping-cart"></i>
                 </button>
+
+
+
+
+<!-- Second Button and Offcanvas Modal -->
+{{-- <button type="button" id="secondButton" class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#demo">
+  <span class="badge bg-danger position-absolute top-0">3</span>
+  <i class="link-icon" data-feather="shopping-cart"></i>
+</button> --}}
+
+{{-- <div class="offcanvas offcanvas-end" id="demo">
+  <!-- Offcanvas Modal Content -->
+</div>
+
+<script>
+  document.getElementById("firstButton").addEventListener("click", function() {
+      document.getElementById("secondButton").click();
+  });
+</script> --}}
+
+
+
+
+
+
+
+
+
+
 
                 <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
                     <i class="feather icon" data-feather="heart"></i>
@@ -102,21 +126,15 @@ to be the same img width and height in card
 
 
 
-
-
     <div class="col-sm-3">
       <div class="card">
           <img src="{{ asset('elkhawas/cofee65781d0b74181.png') }}" class="card-img-top" alt="...">
           <div class="card-body">
-              <h5 class="card-title">cofee</h5>
-              <p class="card-text mb-3">Item Name: Corn Item</p>
-              <p class="card-text mb-3">Unit: 1 Carton</p>
-              <p class="card-text mb-3">Unit Price: 1.45 $</p>
-              <p class="card-text mb-3">Qty: 1</p>
-              <p class="card-text mb-3">PIECES: 24</p>
-              <p class="card-text mb-3">Main Price: 50 $</p>
+              <h5 class="card-title">Baba-Ganoush 100 gr  <span class="badge bg-warning">€9.99</span></h5>
+              <p class="card-text mb-3">Item Name: Corn Item </p>
+                     <p class="card-text mb-3">Main Price: <span class="badge bg-primary">€50.99</span></p>
 
-              <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
+              <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">
                   <i class="link-icon" data-feather="shopping-cart"></i>
               </button>
 
@@ -130,249 +148,89 @@ to be the same img width and height in card
 
 
 
-  <div class="col-sm-3">
-    <div class="card">
-        <img src="{{ asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg') }}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Baba-Ganoush</h5>
-            <p class="card-text mb-3">Item Name: Corn Item</p>
-            <p class="card-text mb-3">Unit: 1 Carton</p>
-            <p class="card-text mb-3">Unit Price: 1.45 $</p>
-            <p class="card-text mb-3">Qty: 1</p>
-            <p class="card-text mb-3">PIECES: 24</p>
-            <p class="card-text mb-3">Main Price: 50 $</p>
 
-            <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-                <i class="link-icon" data-feather="shopping-cart"></i>
-            </button>
 
-            <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-                <i class="feather icon" data-feather="heart"></i>
-            </button>
-        </div>
-    </div>
+
 </div>
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+ 
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-
-<div class="col-sm-3">
-  <div class="card">
-      <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">Nutella</h5>
-          <p class="card-text mb-3">Item Name: Corn Item</p>
-          <p class="card-text mb-3">Unit: 1 Carton</p>
-          <p class="card-text mb-3">Unit Price: 1.45 $</p>
-          <p class="card-text mb-3">Qty: 1</p>
-          <p class="card-text mb-3">PIECES: 24</p>
-          <p class="card-text mb-3">Main Price: 50 $</p>
-
-          <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-          </button>
-
-          <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-              <i class="feather icon" data-feather="heart"></i>
-          </button>
+      <div class="modal-header">
+        <h5 id="modalTitle" class="modal-title">Baba-Ganoush</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-  </div>
-</div>
+
+      
+      <div class="modal-body p-0">
+        <div class="card shadow border-0">
+          <div class="card-body px-lg-5 py-lg-5">
+
+
+            <div class="row">
 
 
 
-<div class="col-sm-3">
-  <div class="card">
-      <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">Nutella</h5>
-          <p class="card-text mb-3">Item Name: Corn Item</p>
-          <p class="card-text mb-3">Unit: 1 Carton</p>
-          <p class="card-text mb-3">Unit Price: 1.45 $</p>
-          <p class="card-text mb-3">Qty: 1</p>
-          <p class="card-text mb-3">PIECES: 24</p>
-          <p class="card-text mb-3">Main Price: 50 $</p>
+              <div class="col-lg-6 text-center" id="modalImgPart">
+                <img id="modalImg" src="{{ asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg') }}" class="img-fluid" alt="Baba-Ganoush Image">
+              </div>
 
-          <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-          </button>
-
-          <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-              <i class="feather icon" data-feather="heart"></i>
-          </button>
-      </div>
-  </div>
-</div>
-
-
-
-
-<div class="col-sm-3">
-  <div class="card">
-      <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">Nutella</h5>
-          <p class="card-text mb-3">Item Name: Corn Item</p>
-          <p class="card-text mb-3">Unit: 1 Carton</p>
-          <p class="card-text mb-3">Unit Price: 1.45 $</p>
-          <p class="card-text mb-3">Qty: 1</p>
-          <p class="card-text mb-3">PIECES: 24</p>
-          <p class="card-text mb-3">Main Price: 50 $</p>
-
-          <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-          </button>
-
-          <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-              <i class="feather icon" data-feather="heart"></i>
-          </button>
-      </div>
-  </div>
-</div>
-
-
-
-
-<div class="col-sm-3">
-  <div class="card">
-      <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">Nutella</h5>
-          <p class="card-text mb-3">Item Name: Corn Item</p>
-          <p class="card-text mb-3">Unit: 1 Carton</p>
-          <p class="card-text mb-3">Unit Price: 1.45 $</p>
-          <p class="card-text mb-3">Qty: 1</p>
-          <p class="card-text mb-3">PIECES: 24</p>
-          <p class="card-text mb-3">Main Price: 50 $</p>
-
-          <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-          </button>
-
-          <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-              <i class="feather icon" data-feather="heart"></i>
-          </button>
-      </div>
-  </div>
-</div>
-
-
-
-
-<div class="col-sm-3">
-  <div class="card">
-      <img src="{{ asset('elkhawas/nutellajpg.jpg') }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">Nutella</h5>
-          <p class="card-text mb-3">Item Name: Corn Item</p>
-          <p class="card-text mb-3">Unit: 1 Carton</p>
-          <p class="card-text mb-3">Unit Price: 1.45 $</p>
-          <p class="card-text mb-3">Qty: 1</p>
-          <p class="card-text mb-3">PIECES: 24</p>
-          <p class="card-text mb-3">Main Price: 50 $</p>
-
-          <button type="button" data-bs-toggle="modal" data-bs-target="#varyingModal" class="btn btn-primary">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-          </button>
-
-          <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-              <i class="feather icon" data-feather="heart"></i>
-          </button>
-      </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-   <!--  model for products-->
-
-
-   <div class="modal fade" id="varyingModal" tabindex="-1" aria-labelledby="varyingModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="varyingModalLabel">Cart Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="" method="POST" enctype="multipart/form-data">
-  
-  
-          <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>ITEM	</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                  <tr>
-                      <td>
-                          <img src="{{ asset('elkhawas/elkhawas_images/9.jpg') }}" alt="not found" width="60" height="60">
-                          Baba Ganuj 
-                        </td>
-                        <td>500 $</td>
-                        <td>
-                          <button type="button" class="btn btn-icon btn-danger">
-                              <i class="link-icon" data-feather="minus"></i>
-                            </button>
-  
-                       
-                            
-                          
-                          1
+              
+              <div class="col-lg-6" id="modalItemDetailsPart">
+                <input id="modalID" type="hidden">
+                <div id="modalItemDetailsPart">
+                  <input id="modalID" type="hidden">
+                  <br>
+                  <h5 id="modalDescription"><strong>Description</strong>  </h5>
+                  <p>this item is so good this item is so good this item is so good this item is so good</p>
+                  <br>
+                  <ul class="list-group">
+                      <li class="list-group-item">1 Carton</li>
+                      <li class="list-group-item">24 PIECES</li>
+                  </ul>
+                  <br>
+                  <div class="quantity-area">
+                      <div class="form-group">
+                          <label style="color: goldenrod" class="form-control-label" for="quantity">Quantity</label>
+                          <input type="number" name="quantity" id="quantity"
+                           class="form-control form-control-alternative" placeholder="1" value="1" required autofocus>
+                      </div>
                       
-                          <button  type="button" class="btn btn-icon  btn-success">
-                              <i class="link-icon" data-feather="plus"></i>
-                            </button>
-  
-  
-                      </td>
-                        <td>1000 $</td>
-                        <td>
-                          <button onclick="" class="btn btn-sm btn-danger"> <i class="link-icon" data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                  </tr>
-                
-                </tbody>
-              </table>
-          
-        
+                      <br>
+                      <div class="quantity-btn">
+                          <button id="secondButton"  data-bs-toggle="offcanvas" data-bs-target="#demo"
+                             class="btn btn-primary">Add To Cart</button>
+                      </div>
+
+                      <div class="offcanvas offcanvas-end" id="demo">
+                        <!-- Offcanvas Modal Content -->
+                      </div>
+                  
+
+                  </div>
+                  <!-- Inform if closed -->
+                  <!-- End inform -->
+              </div>
+              
+                <!-- Inform if closed -->
+                <!-- End inform -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
     </div>
-  
-  
-  
-  
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button onclick="location.href='/orders/details'" type="button" class="btn btn-primary">Ok</button>
-        </div>
-      </div>
-    </div>
   </div>
-  
-  
+</div>
+
+
+
   
 
 
@@ -381,6 +239,13 @@ to be the same img width and height in card
 
 
 <script>
+document.getElementById("secondButton").click();
+// document.getElementById("firstButton").addEventListener("click", function() {
+//                             document.getElementById("secondButton").click();
+//                         });
+
+
+
   function myFunction() {
   var input, filter, cards, cardContainer, title, i;
   input = document.getElementById("myFilter");

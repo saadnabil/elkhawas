@@ -45,4 +45,21 @@ class Item extends Model
     {
         return json_decode($value, true) ?: [];
     }
+
+
+
+    public function setItemNameAttribute($value)
+    {
+        $this->attributes['item_name'] = json_encode(array_map('trim', $value));
+    }
+
+    // Accessor to retrieve translated titles as an array
+    public function getItemNameAttribute($value)
+    {
+        return json_decode($value, true) ?: [];
+    }
+
+
+
+
 }

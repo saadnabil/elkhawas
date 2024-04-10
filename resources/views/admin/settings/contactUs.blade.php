@@ -79,5 +79,63 @@
       </div>
     </div>
   </div>
+
+
+  <br>
+  <div class="col-md-12 ">
+    <div class="card">
+      <div class="card-body">
+
+       
+         
+
+                        <h6 class="card-title">Contact us info </h6>
+                        <p class="text-muted mb-3">Contact us  Settings Table </p>
+                        <div class="table-responsive">
+                                <table id="myInput" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID </th>
+                                            <th>Phone</th>
+                                            <th>Email address</th>
+                                            <th>Company Name</th>
+                                            <th>Address</th>
+                                            <th>Street</th>
+                                            <th>Zip Code</th>
+                                            <th>Url Link</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>+90 541 4199 888</td>
+                                            <td>info@elkhawas.com</td>
+                                             <td>Elkhawas Trade</td>
+                                            <td>Germeny 343 cd</td>
+                                            <td>18gr street</td>
+                                            <td>92128</td>
+                                            <td>elkhawas.com</td>
+                                            <td>
+                                              {{-- <button onclick="location.href=''" type="button" class="btn btn-warning btn-icon">
+                                                <i data-feather="check-square"></i>
+                                              </button> --}}
+                                              <button type="button" class="btn btn-danger btn-icon">
+                                                <i data-feather="trash-2"></i>
+                                              </button>
+                                              
+                                            </td>
+                                        </tr>
+                                       
+                                     
+                                       
+                                    </tbody>
+                                </table>
+                        </div>
+                       </div>
+                     </div>
+                   </div>
+
+
     
 @endsection

@@ -35,7 +35,7 @@
                     <table id="dataTableExample" class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('translation.Image') }}</th>
+                                <th>{{ __('translation.Items') }}</th>
                                 <th>{{ __('translation.Item Name') }}</th>
                                 <th>{{ __('translation.Unit') }}</th>
                                 <th>{{ __('translation.Unit Price') }}</th>
@@ -45,56 +45,64 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($items as $key => $item)
-                            <tr>
-                                <td>
-                                    <img data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                        style="height: 50px;width:50px;"
-                                        src="{{ $item->image != null ? url('storage/'.$item->image) : url('item.png') }}" />
-                                </td>
-                                <td>{{ $item->title[app()->getLocale()] }}</td>
-                                <td>{{ $item->unit[app()->getLocale()] }}</td>
-                                <td>{{ $item->unit_price }} $</td>
-                                <td>{{ $item->units_number }}</td>
-                                <td style="color: goldenrod;">{{ $item->total_price }} $</td>
-                                <td>
-                                    <a href="{{ route('admin.items.edit', $item) }}" type="button"
-                                        class="btn btn-warning btn-icon">
-                                        <i data-feather="check-square"></i>
-                                     </a>
-                                    <a  onclick="" class="btn btn-danger btn-icon confirm-delete">
-                                        <i data-feather="trash-2"></i>
-                                    </a>
-                                    <form action="{{ route('admin.items.destroy' , $item) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                    </form>
-                                </td>
-                            </tr>
+                            @foreach ($items as $key => $item)
+                                <tr>
+                                    <td>
+                                        <img data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            style="height: 50px;width:50px;"
+                                            src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
+
+                                        {{ $item->title[app()->getLocale()] }}
+                                    </td>
+
+                                    <td>{{ $item->item_name[app()->getLocale()] }}</td>
+                                    <td>{{ $item->unit[app()->getLocale()] }}</td>
+                                    <td>{{ $item->unit_price }} $</td>
+                                    <td>{{ $item->units_number }}</td>
+                                    <td style="color: goldenrod;">{{ $item->total_price }} $</td>
+                                    <td>
+                                        <a href="{{ route('admin.items.edit', $item) }}" type="button"
+                                            class="btn btn-warning btn-icon">
+                                            <i data-feather="check-square"></i>
+                                        </a>
+                                        <a onclick="" class="btn btn-danger btn-icon confirm-delete">
+                                            <i data-feather="trash-2"></i>
+                                        </a>
+                                        <form action="{{ route('admin.items.destroy', $item) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                    </td>
+                                </tr>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    {{ $item->title[app()->getLocale()] }} </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img width="100%" height="100%" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"
+                                                    src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Baba Ganouj </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img width="100%" height="100%" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        style="height: 100%;width:100%;"
-                        src="{{ asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg') }}" />
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

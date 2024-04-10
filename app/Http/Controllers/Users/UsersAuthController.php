@@ -28,7 +28,7 @@ class UsersAuthController extends Controller
         if(isset($response['error'])){
             return redirect()->route('user.showloginform')->withErrors(['login' => $response['error']])->withInput($request->only('login'));
         }
-        return redirect()->route('userdashboard.index');
+        return redirect()->route('user.items.index');
     }
 
     public function logout(Request $request){
