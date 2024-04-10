@@ -13,6 +13,7 @@ class ValidateItemForm extends FormRequest
     {
         return true;
     }
+   
 
     /**
      * Get the validation rules that apply to the request.
@@ -23,6 +24,7 @@ class ValidateItemForm extends FormRequest
     {
         return [
             'title.*' => ['required', 'string' ,'max:250'],
+            'item_name.*' => ['required','string','max:250'],
             'description.*' => ['required', 'string'],
             'unit.*' => ['required', 'string' ,'max:250'],
             'units_number' => ['required', 'numeric' ,'min:1'],

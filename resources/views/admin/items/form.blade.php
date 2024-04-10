@@ -29,6 +29,26 @@
                             @foreach ($langs as $key => $lang)
                                 <div class="col-sm-4">
                                     <div class="mb-3">
+                                        <label class="form-label">{{ __('translation.Item Name') }} ({{ $lang }})</label>
+                                        <input required autocomplete="off" name="item_name[{{ $lang }}]"
+                                            value="{{ old('item_name[' . $lang . ']', isset($item->item_name[$lang]) ? $item->item_name[$lang] : '') }}"
+                                            type="text" class="form-control" placeholder="Enter Item Name">
+                                        @error('item_name.' . $lang)
+                                            <div class="mt-1" style="font-size: 12px;color:red;font-weight:bold;">
+                                                {{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                            @endforeach
+                        </div>
+
+
+
+
+                        <div class="row">
+                            @foreach ($langs as $key => $lang)
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
                                         <label class="form-label">{{ __('translation.Unit') }} ({{ $lang }})</label>
                                         <input required autocomplete="off" name="unit[{{ $lang }}]"
                                             value="{{ old('unit[' . $lang . ']', isset($item->unit[$lang]) ? $item->unit[$lang] : '') }}"
@@ -41,6 +61,12 @@
                                 </div><!-- Col -->
                             @endforeach
                         </div>
+
+
+
+
+
+
 
                         <div class="col-sm-4">
                             <div class="mb-3">

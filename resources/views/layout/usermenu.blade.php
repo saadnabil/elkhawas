@@ -23,7 +23,7 @@
         <li class="nav-item">
           <a href="{{ route('user.items.index') }}" class="nav-link">
             <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">Dashboard</span>
+            <span class="link-title">Items</span>
           </a>
         </li>
 

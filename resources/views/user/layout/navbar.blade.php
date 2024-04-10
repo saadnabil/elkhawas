@@ -11,6 +11,235 @@
                 <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
             </div>
         </form>
+
+
+
+         <!-- cart -->
+    <ul class="navbar-nav">
+      <li class="nav-item position-relative">
+          <button type="button" data-bs-toggle="offcanvas" data-bs-target="#demo" class="btn btn-light">
+              <span class="badge bg-danger position-absolute top-0">3</span>
+              <i class="link-icon" data-feather="shopping-cart"></i>
+          </button>
+  
+          <div class="offcanvas offcanvas-end" id="demo">
+              <div class="offcanvas-header">
+                  <h1 class="offcanvas-title">Shopping Cart</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+              </div>
+              <div class="offcanvas-body">
+                <!-- start for each -->
+                  <div class="items col-12 clearfix">
+                      <div class="info-block block-info clearfix">
+
+                        {{-- <div class="row">
+                          <div class="col">
+                              <button type="button" value="1712272785" class="btn btn-outline-primary btn-sm">
+                                  <span class="btn-cart-icon"><i class="link-icon" data-feather="minus"></i></span>
+                              </button>
+                          </div>
+                          <div class="col">
+                              <button type="button" value="1712272785" class="btn btn-outline-primary btn-sm">
+                                  <span class="btn-cart-icon"><i class="link-icon" data-feather="plus"></i></span>
+                              </button>
+                          </div>
+                          <div class="col">
+                              <button type="button" value="1712272785" class="btn btn-outline-primary btn-sm">
+                                  <span class="btn-cart-icon"><i class="link-icon" data-feather="trash"></i></span>
+                              </button>
+                          </div>
+                      </div> --}}
+                        
+
+                      <div class="items col-12 clearfix">
+                        <div class="info-block block-info clearfix">
+    
+    
+                            <div class="square-box float-start">
+                                <img src="{{ asset('elkhawas/nutellajpg.jpg') }}"
+                                 width="150" height="115" alt="" class="productImage">
+                            </div>
+    
+                               <br>
+                            <div class="product-item">
+                              <ul class="list-unstyled">
+                                <li style="text-align: center">
+                                 <strong>Salad Napoli (350g) <strong style="color: goldenrod"> 1 x €11.49</strong></strong> 
+                                </li>
+                                {{-- <li style="text-align: center" >
+                                  <strong> 1 x €11.49</strong>
+                                </li> --}}
+                            </ul>
+    
+                            <br>
+    
+                            <div class="row">
+                              <div class="col">
+                                  <button type="button" value="" class="btn btn-success btn-sm">
+                                     + <span class="btn-cart-icon"><i class="fa fa-plus"></i></span>
+                                  </button>
+                              </div>
+                              <div class="col">
+                                  <button type="button" value="" class="btn btn-warning btn-sm">
+                                  -    <span class="btn-cart-icon"><i class="fa fa-minus"></i></span>
+                                  </button>
+                              </div>
+                              <div class="col">
+                                  <button type="button" value="" class="btn btn-danger btn-sm">
+                                   Delete   <span class="btn-cart-icon"><i class="fa fa-trash"></i></span>
+                                  </button>
+                              </div>
+                          </div>
+    
+                          
+    
+    
+                        </div>
+                    </div>
+
+                    
+
+                    <hr>
+
+                    <div class="items col-12 clearfix">
+                      <div class="info-block block-info clearfix">
+  
+  
+                          <div class="square-box float-start">
+                              <img src="{{ asset('elkhawas/nutellajpg.jpg') }}"
+                               width="150" height="115" alt="" class="productImage">
+                          </div>
+  
+                             <br>
+                          <div class="product-item">
+                            <ul class="list-unstyled">
+                              <li style="text-align: center">
+                               <strong>Salad Napoli (350g) <strong style="color: goldenrod"> 1 x €11.49</strong></strong> 
+                              </li>
+                              {{-- <li style="text-align: center" >
+                                <strong> 1 x €11.49</strong>
+                              </li> --}}
+                          </ul>
+  
+                          <br>
+  
+                          <div class="row">
+                            <div class="col">
+                                <button type="button" value="" class="btn btn-success btn-sm">
+                                   + <span class="btn-cart-icon"><i class="fa fa-plus"></i></span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button type="button" value="" class="btn btn-warning btn-sm">
+                                -    <span class="btn-cart-icon"><i class="fa fa-minus"></i></span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button type="button" value="" class="btn btn-danger btn-sm">
+                                 Delete   <span class="btn-cart-icon"><i class="fa fa-trash"></i></span>
+                                </button>
+                            </div>
+                        </div>
+  
+                        
+  
+  
+                      </div>
+                  </div>
+
+                  
+                  <hr>
+
+
+
+                  <div class="items col-12 clearfix">
+                    <div class="info-block block-info clearfix">
+
+
+                        <div class="square-box float-start">
+                            <img src="{{ asset('elkhawas/nutellajpg.jpg') }}"
+                             width="150" height="115" alt="" class="productImage">
+                        </div>
+
+                           <br>
+                        <div class="product-item">
+                          <ul class="list-unstyled">
+                            <li style="text-align: center">
+                             <strong>Salad Napoli (350g) <strong style="color: goldenrod"> 1 x €11.49</strong></strong> 
+                            </li>
+                            {{-- <li style="text-align: center" >
+                              <strong> 1 x €11.49</strong>
+                            </li> --}}
+                        </ul>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col">
+                              <button type="button" value="" class="btn btn-success btn-sm">
+                                 + <span class="btn-cart-icon"><i class="fa fa-plus"></i></span>
+                              </button>
+                          </div>
+                          <div class="col">
+                              <button type="button" value="" class="btn btn-warning btn-sm">
+                              -    <span class="btn-cart-icon"><i class="fa fa-minus"></i></span>
+                              </button>
+                          </div>
+                          <div class="col">
+                              <button type="button" value="" class="btn btn-danger btn-sm">
+                               Delete   <span class="btn-cart-icon"><i class="fa fa-trash"></i></span>
+                              </button>
+                          </div>
+                      </div>
+
+                      
+
+
+                    </div>
+                </div>
+
+
+                       
+              
+
+
+
+                   <!-- end for each -->
+                  <br>
+                  <!-- Add more items here -->
+                  <div id="totalPrices">
+                      <div class="card mb-4 mb-xl-0">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col">
+                                      <span><strong style="color: goldenrod">Subtotal:</strong></span>
+                                      <span class="ammount"><strong>€51.43</strong></span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <br>
+                      <div>
+                          <a href="" class="btn btn-primary">Complete Order</a>
+                          <a href="" class="btn btn-outline-primary btn-block btn-sm"
+                           style="text-transform: none;">Continue Shopping</a>
+
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </li>
+  </ul>
+  
+  
+  <!--end cart -->
+  
+
+
+
+
+
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
