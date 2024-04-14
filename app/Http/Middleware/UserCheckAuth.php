@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserCheckAuth
@@ -18,6 +19,14 @@ class UserCheckAuth
         if(!auth()->check()){
             return redirect()->route('user.showloginform');
         }
+
+
+        if (Auth::user()->status == 0) {
+            Auth::logout(); // Logout the user if inactive
+            return redirect()->route('user.login')->with('error', 'Your account is inactive. Please contact the administrator.');
+        }
+
+
         return $next($request);
     }
 }

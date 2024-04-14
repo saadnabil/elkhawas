@@ -33,8 +33,29 @@
     <!-- End layout styles -->
 
     <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
+    <style>
+	.spinner-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.8);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999;
+	}
+	.spinner-img {
+		width: 100px; /* Adjust the width of the spinner image */
+		height: 100px; /* Adjust the height of the spinner image */
+	}
+</style>
 </head>
 <body>
+<div class="spinner-overlay" id="spinner">
+        <img src="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" alt="Loading Spinner" class="spinner-img">
+    </div>
 
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
@@ -87,7 +108,12 @@
             </div>
         </div>
     </div>
-
+<script>
+        window.addEventListener('load', function() {
+            // Hide the spinner once the page is fully loaded
+            document.getElementById('spinner').style.display = 'none';
+        });
+    </script>
     <!-- core:js -->
     <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
     <!-- endinject -->

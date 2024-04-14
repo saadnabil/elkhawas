@@ -27,11 +27,15 @@ class Kernel extends HttpKernel
 
     ];
 
+  
+    
+
     /**
      * The application's route middleware groups.
      *
      * @var array<string, array<int, class-string|string>>
      */
+    
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
@@ -42,7 +46,10 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             HandleLang::class,
 
+
         ],
+
+       
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
@@ -72,6 +79,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admincheckauth' =>AdminCheckAuth::class,
         'usercheckauth' =>UserCheckAuth::class,
+
 
     ];
 }

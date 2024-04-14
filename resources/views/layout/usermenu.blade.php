@@ -74,7 +74,7 @@
           <div class="collapse" id="setting">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="/setttings" class="nav-link">Settings</a>
+                <a href="{{route('user.UserShowPassword')}}" class="nav-link">Change Password</a>
 
               </li>
 
@@ -96,7 +96,7 @@
 
 
         <li class="nav-item">
-          <a href="/settings/contactus" class="nav-link">
+          <a href="{{route('userContactus.index')}}" class="nav-link">
             <i class="link-icon" data-feather="message-circle"></i>
             <span class="link-title">Contact Us</span>
           </a>

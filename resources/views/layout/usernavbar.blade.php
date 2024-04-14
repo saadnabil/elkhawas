@@ -339,8 +339,8 @@
                             <img class="wd-80 ht-80 rounded-circle" src="{{ asset('elkhawas/elkhawas_images/9.jpg') }}" alt="not found">
                         </div>
                         <div class="text-center">
-                            <p class="tx-16 fw-bolder">Mohammed Jameel</p>
-                            <p class="tx-12 text-muted">webdivteknolji@gmail.com</p>
+                            <p class="tx-16 fw-bolder">{{ Auth::guard('web')->user()->name }}</p>
+                            <p class="tx-12 text-muted">{{ Auth::guard('web')->user()->email }}</p>
                         </div>
                     </div>
     <ul class="list-unstyled p-1">

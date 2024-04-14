@@ -6,6 +6,7 @@ use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -13,8 +14,23 @@ class ItemsController extends Controller
      * Display a listing of the resource.
      */
 
+     public function __construct()
+    {
+        
+        $this->middleware(['auth']);
+    }
+    
+
     public function index()
     {
+        // $user = Auth::user(); 
+
+        // if ($user->status === 2) { // Check if the user is inactive
+        //     Auth::logout();
+        //     return redirect()->route('login')->with('error', 'Your account is inactive. Please contact the administrator.');
+        // }
+        
+
         $items = Item::latest()->paginate(8);
         return view('user.items.index', compact('items'));
     }

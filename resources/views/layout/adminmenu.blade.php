@@ -29,7 +29,7 @@
             <ul class="nav sub-menu">
 
               <li class="nav-item">
-                <a href="/admin/home" class="nav-link">Dashboard</a>
+                <a href="{{route('admin.dashboard.index')}}" class="nav-link">Dashboard</a>
               </li>
 
 
@@ -119,7 +119,7 @@
           <div class="collapse" id="user">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="/admin/users/" class="nav-link">Show User</a>
+                <a href="{{ route('users.index') }}" class="nav-link">Show User</a>
 
               </li>
 
@@ -133,7 +133,7 @@
 
         <li class="nav-item nav-category">Pages</li>
         <li class="nav-item">
-          <a href="/contactUs"  class="nav-link">
+          <a href="{{ route('ContactUs.index') }}"  class="nav-link">
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}
            <i class="link-icon" data-feather="message-circle"></i>
 
@@ -145,7 +145,7 @@
 
         <li class="nav-item nav-category">Logout</li>
         <li class="nav-item">
-          <a href="/auth"  class="nav-link">
+          <a href="{{route('admin.logout')}}"  class="nav-link">
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}
            <i class="link-icon" data-feather="log-out"></i>
 
