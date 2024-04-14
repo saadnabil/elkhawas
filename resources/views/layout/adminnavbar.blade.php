@@ -29,8 +29,6 @@
                 </a>
 
 
-
-
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
                     <a href="{{ route('changelang', ['lang' => 'en']) }}" class="dropdown-item py-2"><i
                             class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1">
