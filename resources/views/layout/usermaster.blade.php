@@ -41,6 +41,28 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    .cartbutton{
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        color: #8898aa;
+        border: 0.0625rem solid #dee2e6;
+        font-size: 10px;
+        border-width:1px;
+        background:#fff;
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .cartbutton:hover{
+        background:#ccc;
+        color:#fff;
+        transition: .3s;
+    }
+  </style>
+
 
 </head>
 <body>
@@ -133,6 +155,10 @@
 	<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    @stack('script')
+
 
 
 	<!-- endinject -->

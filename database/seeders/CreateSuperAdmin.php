@@ -20,6 +20,10 @@ class CreateSuperAdmin extends Seeder
             'phone' => '01143707240',
             'password' => bcrypt('123456'),
             'status' => 1,
+            'birthdate' => '1995-05-05',
+            'country_id' => 1,
+            'address' => 'fdfdgf fg fg f',
+            'phone' => '+20 1156466662',
         ]);
     }
 }

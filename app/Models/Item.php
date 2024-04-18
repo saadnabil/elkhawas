@@ -21,7 +21,7 @@ class Item extends Model
     // Accessor to retrieve translated titles as an array
     public function getTitleAttribute($value)
     {
-        return json_decode($value, true) ?: [];
+        return json_decode($value, true)[app()->getLocale()] ?: '';
     }
 
     public function setDescriptionAttribute($value)
@@ -32,7 +32,7 @@ class Item extends Model
     // Accessor to retrieve translated description as an array
     public function getDescriptionAttribute($value)
     {
-        return json_decode($value, true) ?: [];
+        return json_decode($value, true)[app()->getLocale()] ?: '';
     }
 
     public function setUnitAttribute($value)
