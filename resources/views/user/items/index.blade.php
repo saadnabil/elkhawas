@@ -37,27 +37,12 @@
                                 €</span></h5>
                         <p class="card-text mb-3">Item Name: {{ $item->item_name}} </p>
 
-<<<<<<< HEAD
-        <div class="row">
-            @foreach ($items as $key => $item)
-                <div class="col-sm-3">
-                    <div class="card">
-                        <img src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
-                            class="card-img-top custom-card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ $item->title[app()->getLocale()] }} <span
-                                    class="badge bg-info">{{ $item->unit_price }} €</span></h5>
-                            <p class="card-text mb-3">{{ __('translation.Item Name') }}: {{ $item->item_name[app()->getLocale()] }}</p>
-                            <p class="card-text mb-3">{{ __('translation.Total Price') }}: <span class="badge bg-primary"> {{ $item->total_price }}
-                              €</span></p>
-=======
                         <p class="card-text mb-3">Main Price: <span class="badge bg-primary"> {{ $item->total_price }}
                                 €</span></p>
                         <button data-id="{{ $item->id }}" data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"  data-unit_price="{{ $item->unit_price}}"  data-total_price="{{ $item->total_price }}"  data-description="{{ $item->description }}" data-title="{{ $item->title }}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                             class="openmodal btn btn-primary">
                             <i class="link-icon" data-feather="shopping-cart"></i>
                         </button>
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
 
                         <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
                             <i class="feather icon" data-feather="heart"></i>
@@ -76,11 +61,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-<<<<<<< HEAD
-                    <h5 id="modalTitle" class="modal-title"> {{ $item->title[app()->getLocale()] }}</h5>
-=======
                     <h5 id="modalTitle" class="modal-title title"></h5>
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
@@ -103,14 +84,9 @@
                                        
 
                                         <ul class="list-group">
-<<<<<<< HEAD
-                                            <li class="list-group-item">{{ __('translation.Unit') }} : {{ $item->unit[app()->getLocale()] }}</li>
-                                            <li class="list-group-item"> {{ __('translation.pieces') }} : {{ $item->units_number }}</li>
-=======
                                             <li class="list-group-item " >Unit Price : <span class="unit"></span></li>
                                             <li class="list-group-item " >Total Price : <span class="total badge bg-primary"></span></li>
                                             <li class="list-group-item"> Units Number : {{ $item->units_number }}</li>
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
                                         </ul>
                                         <br>
                                         <div class="quantity-area">

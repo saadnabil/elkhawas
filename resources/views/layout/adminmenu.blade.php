@@ -59,12 +59,12 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('showorder')}}" class="nav-link">{{ __('translation.Show Orders') }}</a>
+                <a href="" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
 
 
               <li class="nav-item">
-                <a href="{{route('showtracking')}}" class="nav-link">{{ __('translation.Track/Change Orders') }} </a>
+                <a href="" class="nav-link">{{ __('translation.Track/Change Orders') }} </a>
               </li>
 
 
