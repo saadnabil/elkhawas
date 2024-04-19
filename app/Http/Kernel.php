@@ -44,10 +44,6 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             HandleLang::class,
-<<<<<<< HEAD
-
-=======
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
         ],
 
 
