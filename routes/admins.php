@@ -30,10 +30,6 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
         Route::put('users/update/{id}', [UserController::class, 'update'])->name('users.update');
         Route::delete('users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-////export and import user
-Route::post('users/import', [UserController::class, 'importUser'])->name('users.importUser');
-
-Route::get('users/export', [UserController::class, 'exportUser'])->name('users.exportUser');
 
 
 
@@ -44,22 +40,12 @@ Route::get('users/export', [UserController::class, 'exportUser'])->name('users.e
          Route::put('ContactUs/update/{id}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
          Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
 
- 
-         Route::get('order', [AdminContactUsController::class, 'showorder'])->name('showorder');
-         Route::get('order/detailsOrder', [AdminContactUsController::class, 'detailsOrder'])->name('detailsOrder');
-
-         Route::get('order/showtracking', [AdminContactUsController::class, 'showtracking'])->name('showtracking');
-         Route::get('order/showtrackingDetails', [AdminContactUsController::class, 'showtrackingDetails'])->name('showtrackingDetails');
 
 
 
-
-         
 
 
         Route::post('items/upload-excel',  [ExcelImportController::class, 'import'])->name('admins.itemsexcelimport');
-        Route::get('items/export', [ItemsController::class, 'ExportItems'])->name('items.ExportItems');
-
     });
     Route::get('login', [AdminsAuthController::class, 'showloginform'])->name('admin.showloginform');
     Route::post('login', [AdminsAuthController::class, 'login'])->name('admin.login');

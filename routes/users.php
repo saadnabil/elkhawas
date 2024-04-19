@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware'=> ['usercheckauth']], function(){
        Route::get('items' , [ItemsController::class, 'index'])->name('user.items.index');
-<<<<<<< HEAD
-       Route::get('items/thankyou' , [ItemsController::class, 'thankyou'])->name('user.thankyou');
-
-=======
        route::post('carts/add', [CartsController::class, 'add'])->name('carts.add');
        route::get('carts/plus/{id}', [CartsController::class, 'plus'])->name('carts.plus');
        route::get('carts/minus/{id}', [CartsController::class, 'minus'])->name('carts.minus');
@@ -23,7 +19,6 @@ Route::group(['prefix' => 'user'], function(){
        route::resource('orders', OrdersController::class)->names([
             'index' => 'users.orders.index',
        ]);
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
        Route::get('contactus',[UserContactUsController::class,'user'])->name('userContactus.index');
 
     });
@@ -35,9 +30,6 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('password/change', [UsersAuthController::class , 'UserChangePassword'])->name('user.UserChangePassword');
 
 
-    Route::get('inactive', [UsersAuthController::class , 'designInactivePage'])->name('user.designInactivePage');
-
-    
 
 });
 
