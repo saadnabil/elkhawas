@@ -44,16 +44,13 @@ Route::get('users/export', [UserController::class, 'exportUser'])->name('users.e
          Route::put('ContactUs/update/{id}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
          Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
 
-<<<<<<< HEAD
  
          Route::get('order', [AdminContactUsController::class, 'showorder'])->name('showorder');
          Route::get('order/detailsOrder', [AdminContactUsController::class, 'detailsOrder'])->name('detailsOrder');
 
          Route::get('order/showtracking', [AdminContactUsController::class, 'showtracking'])->name('showtracking');
          Route::get('order/showtrackingDetails', [AdminContactUsController::class, 'showtrackingDetails'])->name('showtrackingDetails');
-=======
 
->>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
 
 
 
