@@ -46,7 +46,7 @@
                             @foreach ($items as $key => $item)
                                 <tr>
                                     <td>
-                                        <img data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        <img data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}"
                                             style="height: 50px;width:50px;"
                                             src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
 
@@ -75,7 +75,7 @@
 
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                <div class="modal fade" id="exampleModal-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
