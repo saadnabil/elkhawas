@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Exports\ItemExport;
 use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ValidateItemForm;
+use App\Imports\ItemsImport;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemsController extends Controller
@@ -19,6 +22,10 @@ class ItemsController extends Controller
 
         $items = Item::latest()->get();
         return view('admin.items.index',compact('items'));
+    }
+
+    public function ExportItems(Request $request){
+        return Excel::download(new ItemExport, 'items.xlsx');
     }
 
     /**

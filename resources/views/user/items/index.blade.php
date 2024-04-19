@@ -47,10 +47,10 @@
                         <img src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
                             class="card-img-top custom-card-img" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $item->title['en'] }} <span
+                            <h5 class="card-title"> {{ $item->title[app()->getLocale()] }} <span
                                     class="badge bg-info">{{ $item->unit_price }} €</span></h5>
-                            <p class="card-text mb-3">Item Name: {{ $item->item_name[app()->getLocale()] }}</p>
-                            <p class="card-text mb-3">Main Price: <span class="badge bg-primary"> {{ $item->total_price }}
+                            <p class="card-text mb-3">{{ __('translation.Item Name') }}: {{ $item->item_name[app()->getLocale()] }}</p>
+                            <p class="card-text mb-3">{{ __('translation.Total Price') }}: <span class="badge bg-primary"> {{ $item->total_price }}
                               €</span></p>
 
                                
@@ -92,7 +92,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 id="modalTitle" class="modal-title">{{ $item->title['en'] }}</h5>
+                    <h5 id="modalTitle" class="modal-title"> {{ $item->title[app()->getLocale()] }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -122,9 +122,11 @@
                                         <h5 id=""><strong>Description</strong> </h5>
                                         <p>{{ $item->description['en'] }}</p>
                                         <br>
+                                       
+
                                         <ul class="list-group">
-                                            <li class="list-group-item">Unit : {{ $item->unit['en'] }}</li>
-                                            <li class="list-group-item"> PIECES : {{ $item->units_number }}</li>
+                                            <li class="list-group-item">{{ __('translation.Unit') }} : {{ $item->unit[app()->getLocale()] }}</li>
+                                            <li class="list-group-item"> {{ __('translation.pieces') }} : {{ $item->units_number }}</li>
                                         </ul>
                                         <br>
                                         <div class="quantity-area">

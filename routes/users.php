@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware'=> ['usercheckauth']], function(){
        Route::get('items' , [ItemsController::class, 'index'])->name('user.items.index');
+       Route::get('items/thankyou' , [ItemsController::class, 'thankyou'])->name('user.thankyou');
+
        Route::get('contactus',[UserContactUsController::class,'user'])->name('userContactus.index');
 
     });
@@ -18,6 +20,9 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('password/change', [UsersAuthController::class , 'UserChangePassword'])->name('user.UserChangePassword');
   
 
+    Route::get('inactive', [UsersAuthController::class , 'designInactivePage'])->name('user.designInactivePage');
+
+    
 
 });
 

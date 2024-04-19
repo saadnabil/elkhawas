@@ -220,8 +220,8 @@
                       </div>
                       <br>
                       <div>
-                          <a href="" class="btn btn-primary">Complete Order</a>
-                          <a href="" class="btn btn-outline-primary btn-block btn-sm"
+                          <a href="{{route('user.thankyou')}}" class="btn btn-primary">Complete Order</a>
+                          <a href="{{route('user.items.index')}}" class="btn btn-outline-primary btn-block btn-sm"
                            style="text-transform: none;">Continue Shopping</a>
 
                       </div>
@@ -237,19 +237,33 @@
   
 
 
+ @php
+            $flagArr = [
+                'en' => 'flag-icon flag-icon-us',
+                'ar' => 'flag-icon flag-icon-sa',
+                'de' => 'flag-icon flag-icon-de',
+            ];
+        @endphp
+
 
 
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
+                    <i class="{{ $flagArr[app()->getLocale()] }} mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">{{ __('translation.' . app()->getLocale()) }}</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="languageDropdown">
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-sa" title="sa" id="sa"></i> <span class="ms-1"> Arabic </span></a>
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
+                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                    <a href="{{ route('changelang', ['lang' => 'en']) }}" class="dropdown-item py-2"><i
+                            class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1">
+                            English </span></a>
+                    <a href="{{ route('changelang', ['lang' => 'ar']) }}" class="dropdown-item py-2"><i
+                            class="flag-icon flag-icon-sa" title="sa" id="sa"></i> <span class="ms-1">
+                            Arabic </span></a>
+                    <a href="{{ route('changelang', ['lang' => 'de']) }}" class="dropdown-item py-2"><i
+                            class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1">
+                            German </span></a>
 
-  </div>
+                </div>
 </li>
 
             <li class="nav-item dropdown">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == "ar" ? 'rtl' : 'ltr' }}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,11 +36,16 @@
 	<!-- endinject -->
 
   <!-- Layout styles -->
+  @if ( app()->getLocale() == "ar"  )
+	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style-rtl.css') }}">
+  @else
 	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
+  @endif
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.min.css"><body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.min.css">
+<body>
 
 <style>
 	.spinner-overlay {
@@ -59,6 +64,11 @@
 		width: 100px; /* Adjust the width of the spinner image */
 		height: 100px; /* Adjust the height of the spinner image */
 	}
+
+
+
+
+
 </style>
 
 
@@ -76,7 +86,7 @@
 		@include('layout.adminmenu')
 
 
-		{{-- <nav class="settings-sidebar">
+		<nav class="settings-sidebar">
 			<div class="sidebar-body">
 			  <a href="#" class="settings-sidebar-toggler">
 				<i data-feather="settings"></i>
@@ -96,7 +106,7 @@
 				  </label>
 				</div>
 			  </div>
-			  <div class="theme-wrapper">
+			  {{-- <div class="theme-wrapper">
 				<h6 class="text-muted mb-2">Light Version:</h6>
 
 				<a class="theme-item active" href="{{ asset('assets/css/demo1/style.css') }}">
@@ -106,9 +116,9 @@
 				<a class="theme-item" href="{{ asset('assets/css/demo2/style.css') }}">
 				  <img src="{{ asset('assets/images/screenshots/dark.jpg') }}" alt="light version">
 				</a>
-			  </div>
+			  </div> --}}
 			</div>
-		  </nav>  --}}
+		  </nav> 
 		<!-- partial -->
 
 		<div class="page-wrapper">

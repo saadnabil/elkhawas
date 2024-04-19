@@ -78,5 +78,25 @@ class AdminContactUsController extends Controller
         session()->flash('success', ' Deleted successfully');
         return redirect()->route('ContactUs.index');
     }
+
+    public function showorder(){
+        return response()->view('admin.orders.orders');
+    }
+    public function showtracking(){
+        return response()->view('admin.orders.show-track-change-orders');
+    }
+
+    public function detailsOrder(){
+        return response()->view('admin.orders.order-details');
+    }
+
+    public function showtrackingDetails(){
+        return response()->view('admin.orders.track-orders-details');
+    }
+
+    
+
+    
     //
+    
 }

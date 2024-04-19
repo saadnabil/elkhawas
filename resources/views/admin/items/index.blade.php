@@ -19,15 +19,12 @@
                         <i data-feather="plus"></i>
                         Add Product</a>
                 </div>
+{{-- onclick="location.href='{{route('items.ExportItems')}}'" --}}
 
-
-                <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
-                        <button type="button" class="btn btn-inverse-secondary">
-                            <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                            Export Product</button>
+                        <a href="{{route('items.ExportItems')}}" 
+                        type="button" class="btn btn-inverse-secondary">Export Items</a>
                     </div>
-                </form>
                 <h6 class="card-title">{{ __('translation.Items') }}</h6>
                 <p class="text-muted mb-3">{{ __('translation.Here you can see all your items in the table.') }}</p>
 

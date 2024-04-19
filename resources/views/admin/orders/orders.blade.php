@@ -98,7 +98,7 @@
                                        
                                         <tr style="background-color: #d9f2f2">
                                      
-                                          <td><button onclick="location.href='/ordersdetails'" class="btn btn-outline-dark">#454</button></td>
+                                          <td><button onclick="location.href='{{route('detailsOrder')}}'" class="btn btn-outline-dark">#454</button></td>
                                           <td>Bassam Elashqar</td>
                                             <td>+90 541 4199 888</td>
                                             <th><span class="badge bg-info">Delivered</span></th>

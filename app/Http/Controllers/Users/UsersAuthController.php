@@ -63,6 +63,10 @@ class UsersAuthController extends Controller
 }
 
 
+public function designInactivePage(){
+    return response()->view('user.inactive-account');
+}
+
 
 
     public function logout(Request $request){

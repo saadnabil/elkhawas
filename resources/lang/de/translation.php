@@ -1,6 +1,6 @@
 <?php
 return [
-    'Company Name' => 'Khawas Trade',
+    'Company Name' => 'Khawas',
     'Welcome back! Log in to your account' => 'Welcome back! Log in to your account',
     'Enter your phone or email' => 'Enter your phone or email',
     'Password' => 'Password',
@@ -29,41 +29,42 @@ return [
     'Save' => 'Save',
     'Import Product' => 'Import Product',
     'Imported Successfully' => 'Imported Successfully',
-
-    'Dashboard' => 'Dashboard',
-    'Main' => 'Main',
-    'Product List' => 'Product List',
-    'Orders' => 'Orders',
-    'Show Orders' => 'Show Orders',
-    'Track/Change Orders' => 'Track/Change Orders',
-    'Setting' => 'Settings',
-    'user' => 'user',
-    'showUser' => 'showUser',
-    'Pages' => 'Pages',
-    'Contact Us' => 'Contact Us',
-    'admin' => 'Admins',
-
-    'Total Users' => 'Total Users',
-    'Total Admins' => 'Total Admins',
-    'Total Orders' => 'Total Orders',
-    'Total Money' => 'Total Money',
-    'Revenue this mounth' => 'Revenue this mounth',
-    'Revenue last mounth' => 'Revenue last mounth',
-    ' Revenue Last 30 days' => 'Revenue Last 30 days',
-
-    'ADMIN|EMPLOYEE|CUSTOMER' => 'ADMIN|EMPLOYEE|CUSTOMER',
-    'NAME' => 'NAME',
-    'EMAIL' => 'EMAIL',
-    'PHONE NUMBER' => 'PHONE NUMBER',
-    'ROLES' => 'ROLES',
-    'STATUS' => 'STATUS',
-    'CREATED AT' => 'CREATED AT',
-    'inactive' => ' Inactive',
-    'active' => ' Active',
-    'Employee' => 'Employee',
-
-
     'en' => 'English',
     'ar' => 'Arabic',
-    'de' => 'Germany'
+    'de' => 'Germany',
+
+  
+ 'Dashboard' => 'Armaturenbrett' ,
+    'Main' => 'Hauptsächlich' ,
+    'Product List' => 'Produktliste' ,
+    'Orders' => 'Aufträge' ,
+    'Show Orders' => ' Bestellungen anzeigen' ,
+    'Track/Change Orders' => 'Bestellungen verfolgen/ändern' ,
+    'Setting' => 'Einstellung' ,
+    'user' => 'Benutzer' ,
+    'showUser' => 'İstifadəçini göstər' ,
+    'Pages' => 'Seiten' ,
+    'Contact Us' => 'Kontaktiere uns' ,
+    'admin' => 'Admins' ,
+  
+'Total Users' => 'Gesamtzahl der Benutzer' ,
+'Total Admins' => 'Gesamtzahl der Administratoren' ,
+'Total Orders' => 'Gesamtbestellungen' ,
+'Total Money' => 'Gesamtgeld' ,
+'Revenue this mounth' => 'Einnahmen aus diesem Reittier' ,
+'Revenue last mounth' => 'Umsatz zuletzt gestiegen' ,
+' Revenue Last 30 days' => 'Umsatz Letzte 30 Tage' ,  
+
+
+'ADMIN|EMPLOYEE|CUSTOMER' => 'ADMIN | MITARBEITER | KUNDE' ,
+'NAME' => 'NAME' ,
+'EMAIL' => 'EMAIL' ,
+'PHONE NUMBER' => 'TELEFONNUMMER ' ,
+'ROLES' => 'ROLLEN' ,
+'STATUS' => 'STATUS' ,
+'CREATED AT' => ' HERGESTELLT IN ' ,
+'inactive' => ' inaktiv' ,
+'active' => ' aktiv' ,
+'Employee' => 'Mitarbeiter' ,
+
 ];
