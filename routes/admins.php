@@ -9,14 +9,11 @@ use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Users\UserContactUsController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::group(['middleware' => ['admincheckauth']], function () {
+Route::group(['prefix' => 'admin'], function(){
+    Route::group(['middleware'=> ['admincheckauth']], function(){
 
-        Route::get('dashboard', [DashobardController::class, 'index'])->name('admin.dashboard.index');
-
-        //// items routes
-
-        Route::resource('items', ItemsController::class)->names([
+       Route::get('dashboard', [DashobardController::class, 'index'])->name('admin.dashboard.index');
+       Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
             'create' => 'admin.items.create',
             'edit' => 'admin.items.edit',
@@ -47,12 +44,16 @@ Route::get('users/export', [UserController::class, 'exportUser'])->name('users.e
          Route::put('ContactUs/update/{id}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
          Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
 
+<<<<<<< HEAD
  
          Route::get('order', [AdminContactUsController::class, 'showorder'])->name('showorder');
          Route::get('order/detailsOrder', [AdminContactUsController::class, 'detailsOrder'])->name('detailsOrder');
 
          Route::get('order/showtracking', [AdminContactUsController::class, 'showtracking'])->name('showtracking');
          Route::get('order/showtrackingDetails', [AdminContactUsController::class, 'showtrackingDetails'])->name('showtrackingDetails');
+=======
+
+>>>>>>> 9876272acb407fa124ce5f7d0db82b4ee6530394
 
 
 

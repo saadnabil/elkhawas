@@ -41,6 +41,29 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    .cartbutton{
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        color: #8898aa;
+        border: 0.0625rem solid #dee2e6;
+        font-size: 10px;
+        border-width:1px;
+        background:#fff;
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .cartbutton:hover{
+        background:#ccc;
+        color:#fff;
+        transition: .3s;
+    }
+  </style>
+
+
 <style>
 	.spinner-overlay {
 		position: fixed;
@@ -157,6 +180,135 @@
 	<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    @stack('script')
+
+
+    <script>
+    $(document).ready(function(){
+        $('.openmodal').click(function(){
+            var description = $(this).data('description');
+            var image = $(this).data('image');
+            var title = $(this).data('title');
+            var unit_price = $(this).data('unit_price');
+            var total_price = $(this).data('total_price');
+            var id = $(this).data('id');
+            $('.modal').find('.description').text(description);
+            $('.modal').find('.title').text(title);
+            $('.modal').find('.image').attr('src' , image);
+            $('.modal').find('.unit').text(unit_price);
+            $('.modal').find('.total').text(total_price);
+            $('.modal').find('input[name="item_id"]').val(id);
+        });
+
+
+        //carts operation
+        $(document).on('click','button.plus-quantity',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click','button.minus-quantity',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click','button.delete-item',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click', 'button.additem', function(e) {
+            e.preventDefault();
+            // Serialize the form data
+            let form = $('#additem')[0];
+            let data = new FormData(form);
+            var url = "{{ route('carts.add') }}";
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: data,
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    $('.modal').modal('hide');
+
+                    $('#usercart').html(response);
+
+                    $('.opencartsidebar').trigger('click');
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+        //carts operation
+    });
+</script>
+
+@include('layout.alert')
+
+
+
 
 
 	<!-- endinject -->

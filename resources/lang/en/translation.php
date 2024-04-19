@@ -65,5 +65,18 @@ return [
 
     'en' => 'English',
     'ar' => 'Arabic',
-    'de' => 'Germany'
+    'de' => 'Germany',
+    'Shopping Cart' => 'Shopping Cart',
+    'Check Out' => 'Check Out',
+    'Continue Shopping' => 'Continue Shopping',
+    'Proceed to Checkout' => 'Proceed to Checkout',
+    'Checkout' => 'Checkout',
+    'Payment type' => 'Payment type',
+    'Cash on delivery' => 'Cash on delivery',
+    'City' => 'City',
+    'State' => 'State',
+    'Zip' => 'Zip',
+    'Address Details' => 'Address Details',
+    'Oops! It seems like your cart is empty. Please add items to your cart before proceeding.' => 'Oops! It seems like your cart is empty. Please add items to your cart before proceeding.',
+    'Your order has been completed successfully. Thank you for your purchase' => 'Your order has been completed successfully. Thank you for your purchase'
 ];

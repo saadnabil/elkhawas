@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->json('title')->nullable();
+            $table->json('item_name')->nullable();
             $table->json('description')->nullable();
             $table->json('unit')->nullable();
             $table->integer('units_number')->nullable();
