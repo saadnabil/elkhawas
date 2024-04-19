@@ -7,16 +7,10 @@
             <li class="breadcrumb-item active" aria-current="page">All Items</li>
 
         </ol>
-
     </nav>
 
 
-
-
-
     <div class="row" id="myProducts">
-
-
         <div style="float: right;">
             <div style="float: right; margin-left: 15px">
                 <input id="myFilter" class="form-control" onkeyup="myFunction()" type="text"
@@ -42,7 +36,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }} <span class="badge bg-info">{{ $item->unit_price }}
                                 €</span></h5>
-                        <p class="card-text mb-3">Item Name: {{ $item->item_name[app()->getLocale()] }} </p>
+                        <p class="card-text mb-3">Item Name: {{ $item->item_name}} </p>
 
                         <p class="card-text mb-3">Main Price: <span class="badge bg-primary"> {{ $item->total_price }}
                                 €</span></p>
@@ -131,142 +125,4 @@
     </div>
 @endsection
 
-@push('script')
-<script>
-    $(document).ready(function(){
 
-        $('.openmodal').click(function(){
-            var description = $(this).data('description');
-            var image = $(this).data('image');
-            var title = $(this).data('title');
-            var unit_price = $(this).data('unit_price');
-            var total_price = $(this).data('total_price');
-            var id = $(this).data('id');
-            $('.modal').find('.description').text(description);
-            $('.modal').find('.title').text(title);
-            $('.modal').find('.image').attr('src' , image);
-            $('.modal').find('.unit').text(unit_price);
-            $('.modal').find('.total').text(total_price);
-            $('.modal').find('input[name="item_id"]').val(id);
-        });
-
-
-        //carts operation
-
-        $(document).on('click','button.plus-quantity',function(e){
-            e.preventDefault();
-            var url = $(this).data('route');
-            $.ajax({
-                url: url,
-                method: 'GET',
-                processData : false,
-                contentType:false,
-                success:function(response)
-                {
-                    //$('.modal').modal('hide');
-
-                    $('#usercart').html(response);
-
-                    $('.opencartsidebar').trigger('click');
-                },
-                error: function(response) {
-                    alert('error')
-                }
-            });
-        });
-
-        $(document).on('click','button.minus-quantity',function(e){
-            e.preventDefault();
-            var url = $(this).data('route');
-            $.ajax({
-                url: url,
-                method: 'GET',
-                processData : false,
-                contentType:false,
-                success:function(response)
-                {
-                    $('#usercart').html(response);
-
-                    $('.opencartsidebar').trigger('click');
-                },
-                error: function(response) {
-                    alert('error')
-                }
-            });
-        });
-
-        $(document).on('click','button.delete-item',function(e){
-            e.preventDefault();
-            var url = $(this).data('route');
-            $.ajax({
-                url: url,
-                method: 'GET',
-                processData : false,
-                contentType:false,
-                success:function(response)
-                {
-                    $('#usercart').html(response);
-
-                    $('.opencartsidebar').trigger('click');
-                },
-                error: function(response) {
-                    alert('error')
-                }
-            });
-        });
-
-
-        $(document).on('click','span.minus-quantity',function(e){
-            e.preventDefault();
-            var url = $(this).data('route');
-            $.ajax({
-                url: url,
-                method: 'GET',
-                processData : false,
-                contentType:false,
-                success:function(response)
-                {
-
-                    $('#usercart').html(response);
-
-                    $('.opencartsidebar').trigger('click');
-                },
-                error: function(response) {
-                    alert('error')
-                }
-            });
-        });
-
-
-
-        $(document).on('click', 'button.additem', function(e) {
-            e.preventDefault();
-            // Serialize the form data
-            let form = $('#additem')[0];
-            let data = new FormData(form);
-            var url = "{{ route('carts.add') }}";
-            $.ajax({
-                url: url,
-                method: 'POST',
-                data: data,
-                processData : false,
-                contentType:false,
-                success:function(response)
-                {
-                    $('.modal').modal('hide');
-
-                    $('#usercart').html(response);
-
-                    $('.opencartsidebar').trigger('click');
-                },
-                error: function(response) {
-                    alert('error')
-                }
-            });
-        });
-
-
-    });
-</script>
-
-@endpush

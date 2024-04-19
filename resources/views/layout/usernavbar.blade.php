@@ -12,14 +12,11 @@
             </div>
         </form>
 
-
+        @if(!in_array(request()->url() , [route('carts.details'), route('carts.checkoutform')]))
         <section id="usercart" style="padding-top: 10px;">
             @include('layout.usercart')
         </section>
-
-
-
-
+        @endif
 
 
         <ul class="navbar-nav">

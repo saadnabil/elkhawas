@@ -1,6 +1,4 @@
 @extends('layout.adminmaster')
-
-
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -52,11 +50,11 @@
                                             style="height: 50px;width:50px;"
                                             src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
 
-                                        {{ $item->title[app()->getLocale()] }}
+                                        {{ $item->title }}
                                     </td>
 
-                                    <td>{{ $item->item_name[app()->getLocale()] }}</td>
-                                    <td>{{ $item->unit[app()->getLocale()] }}</td>
+                                    <td>{{ $item->item_name}}</td>
+                                    <td>{{ $item->unit }}</td>
                                     <td>{{ $item->unit_price }} $</td>
                                     <td>{{ $item->units_number }}</td>
                                     <td style="color: goldenrod;">{{ $item->total_price }} $</td>
@@ -83,7 +81,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                    {{ $item->title[app()->getLocale()] }} </h5>
+                                                    {{ $item->title }} </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>

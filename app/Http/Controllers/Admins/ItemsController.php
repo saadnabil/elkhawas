@@ -40,7 +40,7 @@ class ItemsController extends Controller
         $data = $request->validated();
         // dd($data);
 
-       
+
 
         if(isset($data['image'])){
             $data['image'] = FileHelper::upload_file('items', $data['image']);

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Users\CartsController;
 use App\Http\Controllers\Users\ItemsController;
+use App\Http\Controllers\Users\OrdersController;
 use App\Http\Controllers\Users\UsersAuthController;
 use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
@@ -11,6 +12,12 @@ Route::group(['prefix' => 'user'], function(){
        route::get('carts/plus/{id}', [CartsController::class, 'plus'])->name('carts.plus');
        route::get('carts/minus/{id}', [CartsController::class, 'minus'])->name('carts.minus');
        route::get('carts/remove.{id}', [CartsController::class, 'remove'])->name('carts.remove');
+       route::get('carts/details', [CartsController::class, 'cartsdetails'])->name('carts.details');
+       route::get('carts/checkout', [CartsController::class, 'checkoutform'])->name('carts.checkoutform');
+       route::post('carts/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
+       route::resource('orders', OrdersController::class)->names([
+            'index' => 'users.orders.index',
+       ]);
     });
     Route::get('login', [UsersAuthController::class , 'showloginform'])->name('user.showloginform');
     Route::post('login', [UsersAuthController::class , 'login'])->name('user.login');

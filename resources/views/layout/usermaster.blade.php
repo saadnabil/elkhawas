@@ -160,6 +160,131 @@
     @stack('script')
 
 
+    <script>
+    $(document).ready(function(){
+        $('.openmodal').click(function(){
+            var description = $(this).data('description');
+            var image = $(this).data('image');
+            var title = $(this).data('title');
+            var unit_price = $(this).data('unit_price');
+            var total_price = $(this).data('total_price');
+            var id = $(this).data('id');
+            $('.modal').find('.description').text(description);
+            $('.modal').find('.title').text(title);
+            $('.modal').find('.image').attr('src' , image);
+            $('.modal').find('.unit').text(unit_price);
+            $('.modal').find('.total').text(total_price);
+            $('.modal').find('input[name="item_id"]').val(id);
+        });
+
+
+        //carts operation
+        $(document).on('click','button.plus-quantity',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click','button.minus-quantity',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click','button.delete-item',function(e){
+            e.preventDefault();
+            var url = $(this).data('route');
+            $.ajax({
+                url: url,
+                method: 'GET',
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    if(response['route'] == 'cartsidebar'){
+                        $('#usercart').html(response['view']);
+                        $('.opencartsidebar').trigger('click');
+                    }
+                    else if(response['route'] == 'cartpagedetails'){
+                        $('#cartcomponentsection').html(response['view']);
+                    }
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+
+        $(document).on('click', 'button.additem', function(e) {
+            e.preventDefault();
+            // Serialize the form data
+            let form = $('#additem')[0];
+            let data = new FormData(form);
+            var url = "{{ route('carts.add') }}";
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: data,
+                processData : false,
+                contentType:false,
+                success:function(response)
+                {
+                    $('.modal').modal('hide');
+
+                    $('#usercart').html(response);
+
+                    $('.opencartsidebar').trigger('click');
+                },
+                error: function(response) {
+                    alert('error')
+                }
+            });
+        });
+        //carts operation
+    });
+</script>
+
+@include('layout.alert')
+
+
+
+
 
 	<!-- endinject -->
 

@@ -11,7 +11,7 @@
         </button>
         <div class="offcanvas offcanvas-end" id="demo">
             <div class="offcanvas-header">
-                <h1 class="offcanvas-title">Shopping Cart</h1>
+                <h1 class="offcanvas-title">{{ __('translation.Shopping Cart') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
             </div>
             <div class="offcanvas-body">
@@ -35,15 +35,15 @@
                                     </ul>
                                     <br>
                                     <div class="buttondiv">
-                                        <button data-route="{{ route('carts.minus', $cartitem) }}" class="cartbutton minus-quantity" type="button"
+                                        <button data-route="{{ route('carts.minus', ['id' => $cartitem->id, 'route' => 'cartsidebar'] ) }}" class="cartbutton minus-quantity" type="button"
                                             style="">
                                             <span class="btn-cart-icon " ><i class="fa fa-minus"></i></span>
                                         </button>
-                                        <button data-route="{{ route('carts.plus', $cartitem) }}" class="cartbutton plus-quantity" type="button"
+                                        <button data-route="{{ route('carts.plus', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}" class="cartbutton plus-quantity" type="button"
                                             style="">
                                             <span class="btn-cart-icon" ><i class="fa fa-plus"></i></span>
                                         </button>
-                                        <button data-route="{{ route('carts.remove', $cartitem) }}" class="cartbutton delete-item" type="button"
+                                        <button data-route="{{ route('carts.remove', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}" class="cartbutton delete-item" type="button"
                                             style="">
                                             <span class="btn-cart-icon">  <i class="fas fa-trash-alt"></i></span>
                                         </button>
@@ -69,9 +69,9 @@
                                 </div>
                                 <br>
                                 <div>
-                                    <a href="" class="btn btn-primary">Complete Order</a>
-                                    <a href="" class="btn btn-outline-primary btn-block btn-sm"
-                                        style="text-transform: none;">Continue Shopping</a>
+                                    @if(count($cartitems) > 0)
+                                        <a href="{{ route('carts.details') }}" class="btn btn-primary btn-block" style="width:100%;font-size:30px;">{{ __('translation.Check Out') }}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -82,3 +82,4 @@
 
     </li>
 </ul>
+
