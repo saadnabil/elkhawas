@@ -19,7 +19,7 @@
                 </div>
 
                     <div style="float: right; margin-right: 10px">
-                        <a href="" 
+                        <a href="{{route('item.ItemExport')}}" 
                         type="button" class="btn btn-inverse-secondary">Export Items</a>
                     </div>
                 <h6 class="card-title">{{ __('translation.Items') }}</h6>
