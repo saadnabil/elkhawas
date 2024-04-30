@@ -1,429 +1,113 @@
-@extends('users.layout.index')
 
-
+@php
+$backgrounds = [
+    'delivered' => '#d9f2f2',
+    'shipped' => '#cfe8da',
+    'pending' => '#fcdfa8',
+    'canceled' => '#f5b6c6',
+];
+@endphp
+@extends('layout.usermaster')
+@push('style')
+    <style>
+        .act{
+            border: 2px solid #000;
+        }
+    </style>
+@endpush
 @section('content')
-
-<nav class="page-breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Orders</li>
-    </ol>
-  </nav>
-
-
-
-  <!-- ul tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="icon-tab-0" data-bs-toggle="tab" href="#icon-tabpanel-0" role="tab" aria-controls="icon-tabpanel-0" aria-selected="true"> All Order</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a style="background: rgb(252, 223, 168);" class="nav-link" id="icon-tab-1" data-bs-toggle="tab" href="#icon-tabpanel-1" role="tab" aria-controls="icon-tabpanel-1" aria-selected="false"> Pending</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a style="background: #d9f2f2;" class="nav-link" id="icon-tab-2" data-bs-toggle="tab" href="#icon-tabpanel-2" role="tab" aria-controls="icon-tabpanel-2" aria-selected="false"> Delivered </a>
-    </li>
-
-    <li class="nav-item" role="presentation">
-      <a style="background: #cfe8da;" class="nav-link" id="icon-tab-3" data-bs-toggle="tab" href="#icon-tabpanel-3" role="tab" aria-controls="icon-tabpanel-3" aria-selected="false"> Shipped </a>
-    </li>
-
-
-    <li class="nav-item" role="presentation">
-      <a style="background: #f5b6c6;" class="nav-link" id="icon-tab-4" data-bs-toggle="tab" href="#icon-tabpanel-4" role="tab" aria-controls="icon-tabpanel-4" aria-selected="false"> Cancelled </a>
-    </li>
-
-  </ul>
-<!-- end ul tabs -->
-
-
-
-
-<!-- ul div tabs -->
-
- <!-- start all order  -->
- <div class="tab-content pt-5" id="tab-content">
-  <div class="tab-pane active" id="icon-tabpanel-0" role="tabpanel" aria-labelledby="icon-tab-0">
-
+    {{--  <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">All Items</li>
+        </ol>
+    </nav>  --}}
 
     <div class="col-md-12 ">
-      <div class="card">
-        <div class="card-body">
-          <div style="float: right; ">
-              <input class="form-control" type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for anythings.." title="Type in a name" />
-            </div>
-                          <h6 class="card-title">All Orders</h6>
-                          <p class="text-muted mb-3">Here you can see all orders from the client</p>
-                          <div class="table-responsive">
-                                  <table id="myInput"  class="table table-hover">
-                                      <thead>
-                                        <tr>
-                                          <th># ID </th>
-                                          <th>Customer</th>
-                                          <th>Phone</th>
-                                          <th>Status</th>
-                                          <th></th>
-                                          <th>Total</th>
-                                          <th>Date Purchased</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody  id="myTable">
-
-                                        <tr style="background-color: #d9f2f2">
-
-                                          <td><button onclick="location.href='/ordersdetails'" class="btn btn-outline-dark">#454</button></td>
-                                          <td>Bassam Elashqar</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-info">Delivered</span></th>
-                                            <td> <div class="spinner-grow text-info" role="status">
-                                              <span class="visually-hidden">Loading...</span>
-                                            </div></td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-
-
-                                        </tr>
-                                        <tr style="background-color: #cfe8da">
-                                          <td><button onclick="location.href=''" class="btn btn-outline-dark">#453</button></td>
-                                          <td>Mohammed ali</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-success">Shipped</span></th>
-                                            <td>
-
-                                            </td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-                                        </tr>
-                                        <tr style="background-color: #fcdfa8">
-                                            <td><button onclick="location.href=''" class="btn btn-outline-dark">#451</button></td>
-                                            <td>Bassam Elashqar</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-warning">Pending</span></th>
-                                            <td>
-
-                                                <div class="spinner-grow text-warning" role="status">
-                                                  <span class="visually-hidden">Loading...</span>
-                                                </div>
-                                              </td>
-                                              <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-                                          </tr>
-                                        <tr style="background-color: #f5b6c6">
-                                          <td><button onclick="location.href=''" class="btn btn-outline-dark">#452</button></td>
-                                          <td>Mohammed ali</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-danger">Cancelled</span></th>
-                                            <td></td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-                                        </tr>
-
-                                      </tbody>
-                                  </table>
-                          </div>
-                          </div>
-                        </div>
-                     </div>
-
-
-  </div>
-
-<!-- end all order -->
-
-
-
-<!-- start pending order  -->
-  <div class="tab-pane" id="icon-tabpanel-1" role="tabpanel" aria-labelledby="icon-tab-1">
-
-    <div class="col-md-12 ">
-      <div class="card">
-        <div class="card-body">
-          <div style="float: right; ">
-              <input class="form-control" type="search" id="Pendingsearch" onkeyup="myFunction()" placeholder="Search for anythings.." title="Type in a name" />
-            </div>
-                          <h6 class="card-title">Pending Orders</h6>
-                          <p class="text-muted mb-3">Here you can see all orders from the client</p>
-                          <div class="table-responsive">
-                                  <table id="Pendingsearch"  class="table table-hover">
-                                      <thead>
-                                        <tr>
-                                          <th># ID </th>
-                                          <th>Customer</th>
-                                          <th>Phone</th>
-                                          <th>Status</th>
-                                          <th></th>
-                                          <th>Total</th>
-                                          <th>Date Purchased</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody  id="PendingFilter">
-
-
-                                        <tr style="background-color: #fcdfa8">
-                                          <td><button onclick="location.href=''" class="btn btn-outline-dark">#451</button></td>
-                                          <td>Bassam Elashqar</td>
-                                          <td>+90 541 4199 888</td>
-                                          <th><span class="badge bg-warning">Pending</span></th>
-                                          <td>
-
-                                              <div class="spinner-grow text-warning" role="status">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div style="float: right; margin-right: 10px">
+                        <button type="button" class="btn btn-inverse-secondary">
+                            <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
+                            Export Product</button>
+                    </div>
+                </form>
+                <h6 class="card-title">{{ __('translation.Orders') }}</h6>
+                <p class="text-muted mb-3">{{ __('translation.Here you can see all your orders in the table.') }}</p>
+                <div class="table-responsive">
+                    <div class="mb-3">
+                        <a href="{{ route('user.orders.index') }}" style ="background-color: #ffffff" class="btn btn-light {{ $status == 'all' ? 'act' : '' }}">All</a>
+                        <a href="{{ route('user.orders.index',['status' => 'pending']) }}" style ="background-color:#fcdfa8" class="btn  {{ $status == 'pending' ? 'act' : '' }} ">Pending</a>
+                        <a href="{{ route('user.orders.index',['status' => 'delivered']) }}" style ="background-color: #d9f2f2"  class="btn  {{ $status == 'delivered' ? 'act' : '' }}">Deliverd</a>
+                        <a href="{{ route('user.orders.index',['status' => 'shipped']) }}" style ="background-color: #cfe8da" class="btn  {{ $status == 'shipped' ? 'act' : '' }}">Shipped</a>
+                        <a href="{{ route('user.orders.index',['status' => 'canceled']) }}" style ="background-color: #f5b6c6" class="btn  {{ $status == 'canceled' ? 'act' : '' }}">Canceled</a>
+                    </div>
+                    <table id="dataTableExample" class="table">
+                        <thead>
+                            <tr>
+                                <th>#{{ __('translation.ID') }}</th>
+                                <th>#{{ __('translation.Order Code') }}</th>
+                                <th>{{ __('translation.Status') }}</th>
+                                <th>{{ __('translation.Total Price') }}</th>
+                                <th>{{ __('translation.Payment Type') }}</th>
+                                <th>{{ __('translation.Shipped Date') }}</th>
+                                {{--  <th>{{ __('translation.Date Purchased') }}</th>  --}}
+                                <th></th>
+                                <th>{{ __('translation.Payment Status') }}</th>
+                                <th>{{ __('translation.Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($orders as $key => $order)
+                                <tr style="background-color: {{ $backgrounds[$order->status] }}">
+                                    <td>#{{ $order->id}}</td>
+                                    <td>{{ $order->order_id}}</td>
+                                    <td>
+                                        @if($order->status == 'pending')
+                                            <span class="badge bg-warning">Pending</span>
+                                        @elseif($order->status == 'shipped')
+                                            <span class="badge bg-success">Shipped</span>
+                                        @elseif($order->status == 'delivered')
+                                            <span class="badge bg-info">Delivered</span>
+                                        @elseif ($order->status == 'canceled')
+                                            <span class="badge bg-danger">Cancelled</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $order->total_price }} $</td>
+                                    <td>{{ $order->payment_type }}</td>
+                                    <td>{{ $order->shipped_date ?? '-' }}</td>
+                                    {{--  <td>{{ Carbon\Carbon::parse($order->created_at)->format('Y m d, H:i a') }}</td>  --}}
+                                    <td>
+                                        @if($order->status == 'pending')
+                                            <div class="spinner-grow text-warning" role="status">
                                                 <span class="visually-hidden">Loading...</span>
-                                              </div>
-                                            </td>
-                                            <th>€82.00</th>
-                                          <th>Nov 20, 2024</th>
-                                        </tr>
-
-
-                                      </tbody>
-                                  </table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-
-
-
-  </div>
-  <!-- end pending order -->
-
-
-   <!-- start Delivered order  -->
-  <div class="tab-pane" id="icon-tabpanel-2" role="tabpanel" aria-labelledby="icon-tab-2">
-
-
-    <div class="col-md-12 ">
-      <div class="card">
-        <div class="card-body">
-          <div style="float: right; ">
-              <input class="form-control" type="search" id="Deliveredsearch" onkeyup="myFunction()" placeholder="Search for anythings.." title="Type in a name" />
+                                            </div>
+                                        @elseif($order->status == 'delivered')
+                                            <div class="spinner-grow text-info" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($order->payment_status == 'not_paid')
+                                            <span class="badge bg-warning">Not Paid</span>
+                                        @elseif($order->payment_status == 'paid')
+                                            <span class="badge bg-success">Paid</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a style="background:#fff;" href="{{ route('user.orders.show',$order) }}" type="button"
+                                            class="btn  btn-icon btn-sm">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-                          <h6 class="card-title">Delivered Orders</h6>
-                          <p class="text-muted mb-3">Here you can see all orders from the client</p>
-                          <div class="table-responsive">
-                                  <table id="Deliveredsearch"  class="table table-hover">
-                                      <thead>
-                                        <tr>
-                                          <th># ID </th>
-                                          <th>Customer</th>
-                                          <th>Phone</th>
-                                          <th>Status</th>
-                                          <th></th>
-                                          <th>Total</th>
-                                          <th>Date Purchased</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody  id="DeliveredFilter">
-                                        <tr style="background-color: #d9f2f2">
-
-                                          <td><button onclick="location.href='/ordersdetails'" class="btn btn-outline-dark">#454</button></td>
-                                          <td>Bassam Elashqar</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-info">Delivered</span></th>
-                                            <td> <div class="spinner-grow text-info" role="status">
-                                              <span class="visually-hidden">Loading...</span>
-                                            </div></td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-
-
-                                        </tr>
-
-
-
-
-                                      </tbody>
-                                  </table>
-                          </div>
-                         </div>
-                       </div>
-                     </div>
-
-
-  </div>
-<!-- end Delivered order -->
-
-
-
-
-<!-- start Shipped order  -->
-  <div class="tab-pane" id="icon-tabpanel-3" role="tabpanel" aria-labelledby="icon-tab-3">
-
-
-    <div class="col-md-12 ">
-      <div class="card">
-        <div class="card-body">
-          <div style="float: right; ">
-              <input class="form-control" type="search" id="shippedsearch" onkeyup="myFunction()" placeholder="Search for anythings.." title="Type in a name" />
-            </div>
-                          <h6 class="card-title">Shipped Orders</h6>
-                          <p class="text-muted mb-3">Here you can see all orders from the client</p>
-                          <div class="table-responsive">
-                                  <table id="shippedsearch"  class="table table-hover">
-                                      <thead>
-                                        <tr>
-                                          <th># ID </th>
-                                          <th>Customer</th>
-                                          <th>Phone</th>
-                                          <th>Status</th>
-                                          <th></th>
-                                          <th>Total</th>
-                                          <th>Date Purchased</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody  id="shippedFilter">
-
-                                        <tr style="background-color: #cfe8da">
-
-                                          <td><button onclick="location.href='/ordersdetails'" class="btn btn-outline-dark">#454</button></td>
-                                          <td>Bassam Elashqar</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-success">Delivered</span></th>
-                                            <td></td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-
-
-                                        </tr>
-
-
-                                      </tbody>
-                                  </table>
-                          </div>
-                       </div>
-                     </div>
-                      </div>
-
-
-  </div>
-<!-- end Shipped order -->
-
-
-<!-- start Cancelled order  -->
-  <div class="tab-pane" id="icon-tabpanel-4" role="tabpanel" aria-labelledby="icon-tab-4">
-
-
-    <div class="col-md-12 ">
-      <div class="card">
-        <div class="card-body">
-          <div style="float: right; ">
-              <input class="form-control" type="search" id="cancelsearch" onkeyup="myFunction1()" placeholder="Search for anythings.." title="Type in a name" />
-            </div>
-                          <h6 class="card-title">Cancelled Orders</h6>
-                          <p class="text-muted mb-3">Here you can see all orders from the client</p>
-                          <div class="table-responsive">
-                                  <table id="cancelsearch"  class="table table-hover">
-                                      <thead>
-                                        <tr>
-                                          <th># ID </th>
-                                          <th>Customer</th>
-                                          <th>Phone</th>
-                                          <th>Status</th>
-                                          <th></th>
-                                          <th>Total</th>
-                                          <th>Date Purchased</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody  id="CancelFilter">
-
-
-
-                                        <tr style="background-color: #f5b6c6">
-                                          <td><button onclick="location.href=''" class="btn btn-outline-dark">#452</button></td>
-                                          <td>Mohammed ali</td>
-                                            <td>+90 541 4199 888</td>
-                                            <th><span class="badge bg-danger">Cancelled</span></th>
-                                            <td></td>
-                                            <th>€82.00</th>
-                                            <th>Nov 20, 2024</th>
-
-                                        </tr>
-
-                                      </tbody>
-                                  </table>
-                          </div>
-                       </div>
-                     </div>
-                      </div>
-
-
-
-
-  </div>
-<!-- end Cancelled order -->
-
-
-
-</div>
-<!-- end ul div tabs -->
-
-
-
-
-
-
-
-
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-
-$(document).ready(function(){
-  $("#cancelsearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#CancelFilter tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-
-$(document).ready(function(){
-  $("#shippedsearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#shippedFilter tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-
-$(document).ready(function(){
-  $("#Deliveredsearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#DeliveredFilter tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-
-$(document).ready(function(){
-  $("#Pendingsearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#PendingFilter tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-
-</script>
-
-
+        </div>
+    </div>
 @endsection

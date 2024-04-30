@@ -15,7 +15,7 @@ class AdminContactUsController extends Controller
         $data = ContactUs::latest()->paginate(8);
 
         $contact = new ContactUs();
-       
+
         return response()->view('admin.settings.contactUs', compact('data','contact'));
     }
     public function create()
@@ -25,9 +25,9 @@ class AdminContactUsController extends Controller
     {
         try {
             $validatedData = $contactUsRequest->validated();
-            
+
             $storeContact = ContactUs::create($validatedData);
-    
+
             if ($storeContact) {
                 session()->flash('success', 'Information created successfully');
                 return redirect()->route('ContactUs.index');
@@ -39,12 +39,12 @@ class AdminContactUsController extends Controller
             return redirect()->back()->withErrors(['message' => 'An unexpected error occurred. Please try again.'])->withInput();
         }
     }
-    
+
 
     public function edit(Request $request, $id)
 {
     try {
-        $contact = ContactUs::findOrFail($id); 
+        $contact = ContactUs::findOrFail($id);
         return view('admin.settings.contactUs', compact('contact'));
     } catch (\Exception $e) {
         Log::error('Error fetching contact: ' . $e->getMessage());
@@ -56,20 +56,20 @@ class AdminContactUsController extends Controller
     {
         try {
             $validatedData = $contactUsRequest->validated();
-            
+
             // Fetch the existing contact record
-            $contact = ContactUs::findOrFail($id); 
-            
+            $contact = ContactUs::findOrFail($id);
+
             // Update the attributes with the validated data
             $contact->update($validatedData);
-        
+
             session()->flash('success', 'Information updated successfully');
             return redirect()->route('ContactUs.index');
         } catch (\Exception $e) {
             Log::error('Error updating contact: ' . $e->getMessage());
             return redirect()->back()->withErrors(['message' => 'An unexpected error occurred. Please try again.'])->withInput();
         }
-        
+
     }
     public function destroy(Request $request,$id)
     {

@@ -19,7 +19,7 @@
                 <div class="items col-12 clearfix">
                     <div class="info-block block-info clearfix">
                         <div class="items col-12 clearfix">
-                            @foreach($cartitems as $key => $cartitem)
+                            @foreach ($cartitems as $key => $cartitem)
                             <div class="info-block block-info clearfix mb-3">
                                 <div class="square-box float-start " style="margin-right:5px;">
                                     <img src="{{ url('storage/'.$cartitem->item->image )  }}" style="width: 100%;"
@@ -29,7 +29,7 @@
                                 <div class="product-item ">
                                     <ul class="list-unstyled">
                                         <li style="">
-                                            <strong style="">{{ $cartitem->item->title }} <br/> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
+                                            <strong style="">{{ $cartitem->item->title[app()->getLocale()] }} <br/> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
                                                     €{{ $cartitem->item->total_price }}</span></strong>
                                         </li>
                                     </ul>
@@ -69,7 +69,7 @@
                                 </div>
                                 <br>
                                 <div>
-                                    @if(count($cartitems) > 0)
+                                    @if (count($cartitems) > 0)
                                         <a href="{{ route('carts.details') }}" class="btn btn-primary btn-block" style="width:100%;font-size:30px;">{{ __('translation.Check Out') }}</a>
                                     @endif
                                 </div>
@@ -79,7 +79,8 @@
                 </div>
             </div>
         </div>
-
     </li>
 </ul>
+
+
 

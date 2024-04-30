@@ -38,4 +38,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
+
+    public function coupons(){
+        return $this->belongsToMany(Coupon::class , 'coupon_users');
+    }
+
+    public function appliedcoupon(){
+        return $this->belongsTo(Coupon::class, 'coupon_id');
+    }
+
 }

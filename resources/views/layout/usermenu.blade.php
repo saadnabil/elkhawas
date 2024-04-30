@@ -18,7 +18,7 @@
         <li class="nav-item nav-category">Main</li>
 
 
-       
+
 
         <li class="nav-item">
           <a href="{{ route('user.items.index') }}" class="nav-link">
@@ -26,9 +26,6 @@
             <span class="link-title">Items</span>
           </a>
         </li>
-
-
-
 
         <li class="nav-item nav-category">Orders</li>
         <li class="nav-item">
@@ -40,18 +37,17 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
 
-
-
               <li class="nav-item">
-                <a href="/orders" class="nav-link">Show Orders </a>
+                <a href="{{ route('user.orders.index') }}" class="nav-link">Show Orders</a>
               </li>
 
               <li class="nav-item">
-                <a href="/orders/wishlist" class="nav-link">WishList </a>
+                <a href="{{ route('wishlist.index') }}" class="nav-link">WishList </a>
               </li>
 
-
-
+              <li class="nav-item">
+                <a href="{{ route('coupons.index') }}" class="nav-link">Coupons </a>
+              </li>
 
             </ul>
           </div>

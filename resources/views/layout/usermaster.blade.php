@@ -23,8 +23,7 @@
 
 	<link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/vendors/flatpickr/flatpickr.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
 
 	<!-- endinject -->
 
@@ -63,6 +62,8 @@
     }
   </style>
 
+  @stack('style')
+
 
 <style>
 	.spinner-overlay {
@@ -96,42 +97,6 @@
 
 
 		@include('layout.usermenu')
-
-
-		{{-- <nav class="settings-sidebar">
-			<div class="sidebar-body">
-			  <a href="#" class="settings-sidebar-toggler">
-				<i data-feather="settings"></i>
-			  </a>
-			  <h6 class="text-muted mb-2">Sidebar:</h6>
-			  <div class="mb-3 pb-3 border-bottom">
-				<div class="form-check form-check-inline">
-				  <label class="form-check-label">
-					<input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight" value="sidebar-light" checked>
-					Light
-				  </label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <label class="form-check-label">
-					<input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark" value="sidebar-dark">
-					Dark
-				  </label>
-				</div>
-			  </div>
-			  <div class="theme-wrapper">
-				<h6 class="text-muted mb-2">Light Version:</h6>
-
-				<a class="theme-item active" href="{{ asset('assets/css/demo1/style.css') }}">
-				  <img src="{{ asset('assets/images/screenshots/light.jpg') }}" alt="light version">
-				</a>
-				<h6 class="text-muted mb-2">Dark Version:</h6>
-				<a class="theme-item" href="{{ asset('assets/css/demo2/style.css') }}">
-				  <img src="{{ asset('assets/images/screenshots/dark.jpg') }}" alt="light version">
-				</a>
-			  </div>
-			</div>
-		  </nav>  --}}
-		<!-- partial -->
 
 		<div class="page-wrapper">
 
@@ -176,32 +141,14 @@
 	<script src="{{ asset('assets/js/template.js') }}"></script>
 	<script src="{{ asset('assets/js/dashboard-dark.js') }}"></script>
 	<script src="{{ asset('assets/js/dashboard-light.js') }}"></script>
-
 	<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
 
     @stack('script')
-
-
     <script>
     $(document).ready(function(){
-        $('.openmodal').click(function(){
-            var description = $(this).data('description');
-            var image = $(this).data('image');
-            var title = $(this).data('title');
-            var unit_price = $(this).data('unit_price');
-            var total_price = $(this).data('total_price');
-            var id = $(this).data('id');
-            $('.modal').find('.description').text(description);
-            $('.modal').find('.title').text(title);
-            $('.modal').find('.image').attr('src' , image);
-            $('.modal').find('.unit').text(unit_price);
-            $('.modal').find('.total').text(total_price);
-            $('.modal').find('input[name="item_id"]').val(id);
-        });
-
 
         //carts operation
         $(document).on('click','button.plus-quantity',function(e){

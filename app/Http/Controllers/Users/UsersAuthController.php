@@ -37,30 +37,28 @@ class UsersAuthController extends Controller
         return response()->view('user.settings.changepassword');
 
     }
-    
+
     public function UserChangePassword(Request $request)
-{
-    $user = auth()->guard('web')->user();
+    {
+        $user = auth()->guard('web')->user();
+        // Validate user input
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:6|different:current_password',
+            'confirm_password' => 'required|string|min:6|same:new_password',
+        ]);
 
-    // Validate user input
-    $request->validate([
-        'current_password' => 'required',
-        'new_password' => 'required|string|min:6|different:current_password',
-        'confirm_password' => 'required|string|min:6|same:new_password',
-    ]);
+        // Check if the current password matches the one provided
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.'])->withInput();
+        }
 
-    // Check if the current password matches the one provided
-    if (!Hash::check($request->current_password, $user->password)) {
-        return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.'])->withInput();
+        // Update the user's password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Password changed successfully.');
     }
-
-    // Update the user's password
-    $user->password = Hash::make($request->new_password);
-    $user->save();
-
-    // Redirect back with success message
-    return redirect()->back()->with('success', 'Password changed successfully.');
-}
 
 
 

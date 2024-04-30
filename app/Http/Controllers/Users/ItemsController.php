@@ -16,22 +16,14 @@ class ItemsController extends Controller
 
      public function __construct()
     {
-        
+
         $this->middleware(['auth']);
     }
-    
+
 
     public function index()
     {
-        // $user = Auth::user(); 
-
-        // if ($user->status === 2) { // Check if the user is inactive
-        //     Auth::logout();
-        //     return redirect()->route('login')->with('error', 'Your account is inactive. Please contact the administrator.');
-        // }
-        
-
-        $items = Item::latest()->paginate(8);
+        $items = Item::with('wishlisted')->latest()->paginate(8);
         return view('user.items.index', compact('items'));
     }
 

@@ -22,24 +22,19 @@
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#dashboard" role="button" aria-expanded="false" aria-controls="dashboard">
             <i class="link-icon" data-feather="box"></i>
-            <span class="link-title">Dashboard</span>
+            <span class="link-title">{{ __('translation.Dashboard') }}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="dashboard">
             <ul class="nav sub-menu">
 
               <li class="nav-item">
-                <a href="{{route('admin.dashboard.index')}}" class="nav-link">Dashboard</a>
+                <a href="{{route('admin.dashboard.index')}}" class="nav-link">{{ __('translation.Dashboard') }}</a>
               </li>
-
 
               <li class="nav-item">
-                <a href="{{ route('admin.items.index') }}" class="nav-link">Product List</a>
+                <a href="{{ route('admin.items.index') }}" class="nav-link">{{ __('translation.Product List') }}</a>
               </li>
-
-
-
-
 
             </ul>
           </div>
@@ -60,37 +55,27 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="/order" class="nav-link">Show Orders</a>
+                <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
-
-
-              <li class="nav-item">
-                <a href="/showtracking" class="nav-link">Track/Change Orders </a>
-              </li>
-
-
             </ul>
           </div>
         </li>
 
-
-
-
-
-
-
-
-        <li class="nav-item nav-category">Settings</li>
+        <li class="nav-item nav-category">{{ __('translation.Admins') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
             <i class="link-icon" data-feather="settings"></i>
-            <span class="link-title">Setting</span>
+            <span class="link-title">{{ __('translation.Admin Jobs') }}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="setting">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="/profile" class="nav-link">Setting</a>
+                <a href="{{ route('admins.index') }}" class="nav-link">{{ __('translation.Admin List') }}</a>
+
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('roles.index') }}" class="nav-link">{{ __('translation.Roles') }}</a>
 
               </li>
 
@@ -130,7 +115,6 @@
           </div>
         </li>
 
-
         <li class="nav-item nav-category">Pages</li>
         <li class="nav-item">
           <a href="{{ route('ContactUs.index') }}"  class="nav-link">
@@ -141,15 +125,16 @@
           </a>
         </li>
 
-
-
         <li class="nav-item nav-category">Logout</li>
         <li class="nav-item">
           <a href="{{route('admin.logout')}}"  class="nav-link">
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}
            <i class="link-icon" data-feather="log-out"></i>
 
-            <span class="link-title">Logout</span>
+            <span onclick="event.preventDefault(); $('#logout-form').submit();" class="link-title">{{ __('translation.Logout') }}</span>
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                @csrf
+            </form>
           </a>
         </li>
       </ul>

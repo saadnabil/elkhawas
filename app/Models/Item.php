@@ -18,10 +18,14 @@ class Item extends Model
         $this->attributes['title'] = json_encode(array_map('trim', $value));
     }
 
+    public function wishlisted(){
+        return $this->hasOne(Wishlist::class)->where('user_id', auth()->user()->id);
+    }
+
     // Accessor to retrieve translated titles as an array
     public function getTitleAttribute($value)
     {
-        return json_decode($value, true)[app()->getLocale()] ?: '';
+        return json_decode($value, true)?: '';
     }
 
     public function setDescriptionAttribute($value)
@@ -32,7 +36,7 @@ class Item extends Model
     // Accessor to retrieve translated description as an array
     public function getDescriptionAttribute($value)
     {
-        return json_decode($value, true)[app()->getLocale()] ?: '';
+        return json_decode($value, true)?: '';
     }
 
     public function setUnitAttribute($value)
@@ -43,7 +47,7 @@ class Item extends Model
     // Accessor to retrieve translated description as an array
     public function getUnitAttribute($value)
     {
-        return json_decode($value, true)[app()->getLocale()] ?: [];
+        return json_decode($value, true)?: [];
     }
 
 
@@ -56,10 +60,8 @@ class Item extends Model
     // Accessor to retrieve translated titles as an array
     public function getItemNameAttribute($value)
     {
-        return json_decode($value, true)[app()->getLocale()] ?: [];
+        return json_decode($value, true)?: [];
     }
-
-
 
 
 }

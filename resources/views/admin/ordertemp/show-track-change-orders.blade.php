@@ -10,9 +10,6 @@
     </ol>
   </nav>
 
-
-
-
   <div class="col-md-12 ">
     <div class="card">
       <div class="card-body">
@@ -20,8 +17,6 @@
 <div style="float: right; ">
             <input class="form-control" type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for anythings.." title="Type in a name" />
           </div>
-
-        
         <h6 class="card-title">All Orders</h6>
                         <p class="text-muted mb-3">Here you can see all orders from the client</p>
                         <div class="table-responsive">
@@ -87,7 +82,7 @@
                                             <td>1000 $</td>
                                             <td>Nov 20, 2024</td>
                                         </tr>
-                                       
+
                                     </tbody>
                                 </table>
                         </div>
@@ -97,7 +92,7 @@
 
 
 
-                  
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -110,5 +105,5 @@ $(document).ready(function(){
 });
 </script>
 
-    
+
 @endsection
