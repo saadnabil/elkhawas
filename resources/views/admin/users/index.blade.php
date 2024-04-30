@@ -23,7 +23,7 @@
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
-                        <button type="button" class="btn btn-inverse-secondary">Export Users</button>
+                        <button onclick="location.href='{{route('users.exportUser')}}'" type="button" class="btn btn-inverse-secondary">Export Users</button>
                     </div>
                 </form>
 

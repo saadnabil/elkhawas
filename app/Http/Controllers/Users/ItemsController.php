@@ -30,8 +30,10 @@ class ItemsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function thankyou()
     {
+        return response()->view('user.items.thankyou');
+
         //
     }
 

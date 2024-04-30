@@ -1,6 +1,6 @@
 <?php
 return [
-    'Company Name' => 'Khawas',
+    'Company Name' => 'Khawas Trade',
     'Welcome back! Log in to your account' => 'Welcome back! Log in to your account',
     'Enter your phone or email' => 'Enter your phone or email',
     'Password' => 'Password',
@@ -29,6 +29,40 @@ return [
     'Save' => 'Save',
     'Import Product' => 'Import Product',
     'Imported Successfully' => 'Imported Successfully',
+
+    'Dashboard' => 'Dashboard',
+    'Main' => 'Main',
+    'Product List' => 'Product List',
+    'Orders' => 'Orders',
+    'Show Orders' => 'Show Orders',
+    'Track/Change Orders' => 'Track/Change Orders',
+    'Setting' => 'Settings',
+    'user' => 'user',
+    'showUser' => 'showUser',
+    'Pages' => 'Pages',
+    'Contact Us' => 'Contact Us',
+    'admin' => 'Admins',
+
+    'Total Users' => 'Total Users',
+    'Total Admins' => 'Total Admins',
+    'Total Orders' => 'Total Orders',
+    'Total Money' => 'Total Money',
+    'Revenue this mounth' => 'Revenue this mounth',
+    'Revenue last mounth' => 'Revenue last mounth',
+    ' Revenue Last 30 days' => 'Revenue Last 30 days',
+
+    'ADMIN|EMPLOYEE|CUSTOMER' => 'ADMIN|EMPLOYEE|CUSTOMER',
+    'NAME' => 'NAME',
+    'EMAIL' => 'EMAIL',
+    'PHONE NUMBER' => 'PHONE NUMBER',
+    'ROLES' => 'ROLES',
+    'STATUS' => 'STATUS',
+    'CREATED AT' => 'CREATED AT',
+    'inactive' => ' Inactive',
+    'active' => ' Active',
+    'Employee' => 'Employee',
+
+
     'en' => 'English',
     'ar' => 'Arabic',
     'de' => 'Germany',

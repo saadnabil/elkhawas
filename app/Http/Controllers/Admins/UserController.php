@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Exports\UserExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Stmt\Return_;
 
 class UserController extends Controller
 {
@@ -106,6 +109,16 @@ class UserController extends Controller
     }
 
 
+    public function importUser (){
+    
+    }
+
+
+public function exportUser (Request $request){
+   
+     return Excel::download(new UserExport, 'users.xlsx');
+
+}
 
 
 

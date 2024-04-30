@@ -15,10 +15,9 @@
       <ul class="nav">
 
 
-        <li class="nav-item nav-category">Main</li>
+        <li class="nav-item nav-category">{{ __('translation.Main') }}</li>
 
-
-        <li class="nav-item nav-category">Dashboard</li>
+        <li class="nav-item nav-category">{{ __('translation.Dashboard') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#dashboard" role="button" aria-expanded="false" aria-controls="dashboard">
             <i class="link-icon" data-feather="box"></i>
@@ -45,11 +44,11 @@
 
 
 
-        <li class="nav-item nav-category">Orders</li>
+        <li class="nav-item nav-category">{{ __('translation.Orders') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
             <i class="link-icon" data-feather="shopping-bag"></i>
-            <span class="link-title">Orders</span>
+            <span class="link-title">{{ __('translation.Orders') }}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="order">
@@ -94,17 +93,17 @@
 
 
 
-        <li class="nav-item nav-category">Users</li>
+        <li class="nav-item nav-category">{{ __('translation.user') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#user" role="button" aria-expanded="false" aria-controls="user">
             <i class="link-icon" data-feather="user"></i>
-            <span class="link-title">User</span>
+            <span class="link-title">{{ __('translation.user') }}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="user">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">Show User</a>
+                <a href="{{ route('users.index') }}" class="nav-link">{{ __('translation.showUser') }}</a>
 
               </li>
 
@@ -115,17 +114,20 @@
           </div>
         </li>
 
-        <li class="nav-item nav-category">Pages</li>
+
+        <li class="nav-item nav-category">{{ __('translation.Pages') }}</li>
         <li class="nav-item">
           <a href="{{ route('ContactUs.index') }}"  class="nav-link">
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}
            <i class="link-icon" data-feather="message-circle"></i>
 
-            <span class="link-title">Contact Us</span>
+            <span class="link-title">{{ __('translation.Contact Us') }}</span>
           </a>
         </li>
 
-        <li class="nav-item nav-category">Logout</li>
+
+
+        <li class="nav-item nav-category">{{ __('translation.Log Out') }}</li>
         <li class="nav-item">
           <a href="{{route('admin.logout')}}"  class="nav-link">
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}

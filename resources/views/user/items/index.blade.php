@@ -120,6 +120,8 @@
                                         <h5 id="modalDescription"><strong>Description</strong> </h5>
                                         <p class="description"></p>
                                         <br>
+                                       
+
                                         <ul class="list-group">
                                             <li class="list-group-item ">Unit Price : <span class="unit"></span></li>
                                             <li class="list-group-item ">Total Price : <span
