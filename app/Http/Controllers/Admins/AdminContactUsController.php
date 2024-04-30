@@ -17,7 +17,7 @@ class AdminContactUsController extends Controller
         $data = ContactUs::latest()->paginate(8);
 
         $contact = new ContactUs();
-       
+
         return response()->view('admin.settings.contactUs', compact('data','contact'));
     }
     public function create()
@@ -41,7 +41,7 @@ class AdminContactUsController extends Controller
             return redirect()->back()->withErrors(['message' => 'An unexpected error occurred. Please try again.'])->withInput();
         }
     }
-    
+
 
     public function edit($id)
     {
@@ -69,7 +69,6 @@ public function update(ContactUsRequest $contactUsRequest, )
    
     
 }
-
 
     public function destroy(Request $request,$id)
     {

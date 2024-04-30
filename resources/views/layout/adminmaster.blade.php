@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/vendors/flatpickr/flatpickr.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 
 	<!-- endinject -->
@@ -71,10 +73,13 @@
 
 </style>
 
+@stack('style')
+
+
 
 	<div class="main-wrapper">
 
-		
+
 <div class="spinner-overlay" id="spinner">
         <img src="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" alt="Loading Spinner" class="spinner-img">
     </div>
@@ -161,8 +166,9 @@
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
     @include('layout.alert')
 
-	<!-- endinject -->
+    @stack('script')
 
+	<!-- endinject -->
 	<!-- Custom js for this page -->
   <!-- End custom js for this page -->
 </body>

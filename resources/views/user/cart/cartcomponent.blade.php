@@ -1,21 +1,50 @@
 @php
     $cartitems = App\Models\Cart::with('item')->where('user_id', auth()->user()->id)->get();
     $result = 0;
+    $user = auth()->user()->load('appliedcoupon');
 @endphp
+@push('style')
+<style>
+    .coupon{
+        padding: 2px 10px;
+        border-width: 2px;
+        border-style: dashed;text-align:center;
+        font-weigt:bold;
+    }
+    .input-group {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .coupon-input {
+        flex: 1; /* Allow the input to take up remaining space */
+        border-top-right-radius: 0; /* Ensure button and input have the same border radius */
+        border-bottom-right-radius: 0;
+    }
+
+    .coupon-button {
+        border-top-left-radius: 0; /* Ensure button and input have the same border radius */
+        border-bottom-left-radius: 0;
+    }
+
+
+</style>
+
+@endpush
 @if(count($cartitems) > 0)
     <div class="col-md-8 ">
         <div class="card">
             <div class="card-body">
-                <h6 class="card-title">Cart Details</h6>
+                <h6 class="card-title">{{ __('translation.Cart Details') }}</h6>
                 <hr>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th>{{ __('translation.Item') }}</th>
+                                <th>{{ __('translation.Price') }}</th>
+                                <th>{{ __('translation.Quantity') }}</th>
+                                <th>{{ __('translation.Total') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,7 +54,7 @@
                                     <td>
                                         <img src="{{ url('storage/' . $cartitem->item->image) }}" alt="not found"
                                             width="60" height="60">
-                                        {{ $cartitem->item->title }}
+                                        {{ $cartitem->item->title[app()->getLocale()] }}
                                     </td>
                                     <td>{{ $cartitem->quantity }} x
                                         €{{ $cartitem->item->total_price }}</td>
@@ -68,18 +97,51 @@
         <div class="card">
             <div class="card-body">
                 <div class="sub-title">
-                    <h2 class="">Cart Summery</h3>
+                    <h2 class="">{{ __('translation.Cart Summery') }}</h3>
                 </div>
                 <hr>
-                
+
                 <div class="d-flex justify-content-between pb-2">
-                    <div><strong>Subtotal</strong></div>
-                    <div><strong>{{number_format($result,2)  }}</strong>€</div>
+                    <div>{{ __('translation.Subtotal') }}</div>
+                    <div>{{ $result }}€</div>
                 </div>
-                <div class="input-group apply-coupan mt-4">
-                    <input type="text" placeholder="Coupon Code" class="form-control">
-                    <button class="btn btn-primary" type="button" id="button-addon2">Apply Coupon</button>
-                </div>
+
+                @if($user->appliedcoupon == null)
+                    <div class="input-group apply-coupan mt-4">
+                        <form id="applycoupon" autocomplete="">
+                            @csrf
+                            <div class="input-group">
+                                <input required type="text" name="code" placeholder="Coupon Code" class="form-control coupon-input">
+                                <button class="btn btn-primary applycoupon coupon-button" type="button" id="button-addon2">Apply Coupon</button>
+                            </div>
+                            <br>
+                            <div class="addresserrors">
+                            </div>
+                        </form>
+                    </div>
+                @else
+                    <div class="d-flex justify-content-between pb-2 text-danger">
+                        <div>{{ __('translation.Discount') }}</div>
+                        <div>{{ $user->appliedcoupon->discount }}%</div>
+                    </div>
+                    <div class="d-flex justify-content-between pb-2">
+                        <div>{{ __('translation.Total') }}</div>
+                        <div>{{ $result - ($result * $user->appliedcoupon->discount / 100) }}€</div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="coupon">
+                                {{$user->appliedcoupon->code }}
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <a href="#" data-route="{{ route('carts.disapplycoupon') }}" style="cursor:pointer;" class="disapplycoupon">
+                                <i style="font-size:24px;" class="fa fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endif
                 <div class="pt-5">
                     <a href="{{ route('carts.checkoutform') }}" class="btn-primary btn btn-block w-100">{{ __('translation.Proceed to Checkout') }}</a>
                 </div>

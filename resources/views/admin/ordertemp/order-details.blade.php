@@ -16,7 +16,7 @@
       <div class="card-body">
         <div class="container-fluid d-flex justify-content-between">
           <div class="col-lg-3 ps-0">
-            <a href="#" class="noble-ui-logo logo-light d-block mt-3">Elkhawas<span>LTD</span></a>                 
+            <a href="#" class="noble-ui-logo logo-light d-block mt-3">Elkhawas<span>LTD</span></a>
             <p class="mt-1 mb-1"><b>Elkhawas Company</b></p>
             <p>108,<br> Great Russell St,<br>London, WC1B 3NA.</p>
             <h5 class="mt-5 mb-2 text-muted">Invoice to :</h5>
@@ -108,13 +108,13 @@
             </div>
           </div>
         </div>
-        
-        
+
+
         <div class="container-fluid w-100">
 
 
           <div class="btn-group float-end mt-4 ms-2" role="group" aria-label="Button group with nested dropdown">
-           
+
             <div class="btn-group " role="group">
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="send" class="me-3 icon-md"></i>   Send Invoice
@@ -130,7 +130,7 @@
           <button onclick="window.print();"  class="btn btn-outline-primary float-end mt-4 ">
             <i data-feather="printer" class="me-2 icon-md"></i>Print
           </button>
-        
+
         </div>
       </div>
     </div>
@@ -143,5 +143,5 @@
 <!-- Your button -->
 
 
-      
+
   @endsection

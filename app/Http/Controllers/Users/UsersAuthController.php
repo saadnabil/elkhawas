@@ -37,7 +37,7 @@ class UsersAuthController extends Controller
         return response()->view('user.settings.changepassword');
 
     }
-    
+
     public function UserChangePassword(Request $request)
     {
         $user = auth()->guard('web')->user();

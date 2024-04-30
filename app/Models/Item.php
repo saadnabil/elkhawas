@@ -18,24 +18,14 @@ class Item extends Model
         $this->attributes['title'] = json_encode(array_map('trim', $value));
     }
 
+    public function wishlisted(){
+        return $this->hasOne(Wishlist::class)->where('user_id', auth()->user()->id);
+    }
+
     // Accessor to retrieve translated titles as an array
     public function getTitleAttribute($value)
     {
-        // Decode the JSON value into an array
-        $decodedValue = json_decode($value, true);
-    
-        // Check if decoding was successful and $decodedValue is an array
-        if (is_array($decodedValue)) {
-            // Check if the key for the current locale exists in the array
-            $locale = app()->getLocale();
-            if (isset($decodedValue[$locale])) {
-                // Return the value for the current locale
-                return $decodedValue[$locale];
-            }
-        }
-        
-        // Return an empty string if the key doesn't exist or if the value is null
-        return '';
+        return json_decode($value, true)?: '';
     }
     
 
@@ -47,22 +37,7 @@ class Item extends Model
     // Accessor to retrieve translated description as an array
     public function getDescriptionAttribute($value)
     {
-        // Decode the JSON value into an array
-        $decodedValue = json_decode($value, true);
-        
-        // Check if decoding was successful and $decodedValue is an array
-        if (is_array($decodedValue)) {
-            $locale = app()->getLocale();
-            
-            // Check if the key for the current locale exists in the array
-            if (array_key_exists($locale, $decodedValue)) {
-                // Return the value for the current locale
-                return $decodedValue[$locale];
-            }
-        }
-        
-        // Return an empty string if the key doesn't exist or if the value is null
-        return '';
+        return json_decode($value, true)?: '';
     }
     
 
@@ -73,19 +48,8 @@ class Item extends Model
 
     // Accessor to retrieve translated description as an array
     public function getUnitAttribute($value)
-{
-    // Decode the JSON value into an array
-    $decodedValue = json_decode($value, true);
-    
-    // Check if decoding was successful and $decodedValue is an array
-    if (is_array($decodedValue)) {
-        $locale = app()->getLocale();
-        
-        // Check if the key for the current locale exists in the array
-        if (array_key_exists($locale, $decodedValue)) {
-            // Return the value associated with the current locale
-            return $decodedValue[$locale];
-        }
+    {
+        return json_decode($value, true)?: [];
     }
     
     // Return an empty array if the key doesn't exist or if decoding fails
@@ -103,24 +67,9 @@ class Item extends Model
     // Accessor to retrieve translated titles as an array
     public function getItemNameAttribute($value)
     {
-        // Decode the JSON value into an array
-        $decodedValue = json_decode($value, true);
-    
-        // Check if decoding was successful and $decodedValue is an array
-        if (is_array($decodedValue)) {
-            $locale = app()->getLocale();
-            // Check if the key for the current locale exists in the array
-            if (array_key_exists($locale, $decodedValue)) {
-                return $decodedValue[$locale];
-            }
-        }
-        
-        // Return an empty array if the key doesn't exist or if the value is null
-        return [];
+        return json_decode($value, true)?: [];
     }
     
-
-
 
 
 }

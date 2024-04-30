@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\AddCartsValidation;
+use App\Http\Requests\Users\ApplyCouponValidation;
 use App\Http\Requests\Users\CheckOutValidation;
 use App\Models\Address;
 use App\Models\Cart;
@@ -13,6 +14,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 class CartsController extends Controller
 {
+
+    public function disapplycoupon(){
+        $user = auth()->user();
+        $user->update([
+            'coupon_id' => null,
+        ]);
+        return view('user.cart.cartcomponent');
+    }
 
     public function add(AddCartsValidation $request){
         $data = $request->validated();
@@ -38,9 +47,38 @@ class CartsController extends Controller
         return view('layout.usercart');
     }
 
+    public function applycoupon(ApplyCouponValidation $request){
+        $data = $request->validated();
+        $user = auth()->user()->load('coupons.couponusers');
+        $currentDateTime = Carbon::now();
+        $coupon = $user->coupons()
+                        ->where([
+                            'code' => $data['code'],
+                        ])
+                        ->where(function ($q) use ($currentDateTime) {
+                            $q->where('valid_from', '<=', $currentDateTime)
+                                  ->where('valid_to', '>=', $currentDateTime);
+                        })
+                        ->whereHas('couponusers',function($query){
+                            $query->where('is_used',0)
+                                  ->where('user_id',auth()->user()->id);
+                        })->first();
+        if(!$coupon){
+            return response()->json([
+                'message' => __('translation.Invalid Coupon'),
+                'errors' => [
+                    'code' => [__('translation.Invalid Coupon')]
+                ]
+            ], 422);
+        }
+        $user->update([
+            'coupon_id' => $coupon->id,
+        ]);
+        return view('user.cart.cartcomponent');
+    }
+
     public function plus($id){
         $route = request('route');
-
         $cart = Cart::where([
             'user_id' => auth()->user()->id,
             'id' => $id,
@@ -59,8 +97,9 @@ class CartsController extends Controller
                 'view' => view('user.cart.cartcomponent')->render()
             ];
         }
-
     }
+
+
 
     public function minus($id){
         $route = request('route');
@@ -132,16 +171,24 @@ class CartsController extends Controller
         $data = $request->validated();
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
 
-        /**check cart is empty**/
+        //check cart is empty
         if(count($cartitems)==0){
             session()->flash('error', __('translation.Oops! It seems like your cart is empty. Please add items to your cart before proceeding.'));
             return redirect()->back();
         }
-       /**check cart is empty**/
 
-        $data['user_id'] = auth()->user()->id;
+        //load user with applied coupon and coupon users
+        $user = auth()->user()->load('appliedcoupon.couponusers');
+
+        //store order with initial data
+        $data['user_id'] = $user->id;
         $data['order_id'] = generate_code_unique();
+        if($user->applycoupon){
+            $data['coupon_id'] =$user->applycoupon->id;
+        }
         $order = Order::create($data);
+
+        //store order details
         $result = 0;
         foreach($cartitems as $cartitem){
             $total_price = $cartitem->quantity * $cartitem->item->total_price;
@@ -152,13 +199,30 @@ class CartsController extends Controller
                 'total_price' =>  $total_price,
             ]);
             $result += $total_price ;
-
             //reset user cart
             $cartitem->delete();
         }
-        $order->update([
-            'total_price' =>  $result,
+
+        //update order if coupon is applied
+        $updatedData = [
+            'total_price' => $result,
+            'subtotal' => $result
+        ];
+        if($user->applycoupon){
+            $updatedData['coupon_id'] =$user->applycoupon->id;
+            $updatedData['total_price'] =$result - ( $result * $user->applycoupon->discount / 100 ) ;
+        }
+        $order->update($updatedData);
+
+        //reset appllied coupon
+        $user->update([
+            'coupon_id' => null,
         ]);
+
+        //mark this coupon as used
+        $user->appliedcoupon->couponusers->where(['user_id' => auth()->user()->id])->update(['is_used' =>  1]);
+
+
 
         session()->flash('success', __('translation.Your order has been completed successfully. Thank you for your purchase'));
         return redirect()->route('user.items.index');

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Wishlist extends Model
 {
     use HasFactory;
+
+    protected $guarded  = [];
+
+    public function item(){
+        return $this->belongsTo(Item::class);
+    }
+
+
+
 }

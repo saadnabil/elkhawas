@@ -17,7 +17,6 @@
                         <i data-feather="plus"></i>
                         Add Product</a>
                 </div>
-{{-- onclick="location.href='{{route('items.ExportItems')}}'" --}}
 
                     <div style="float: right; margin-right: 10px">
                         <a href="{{route('item.ItemExport')}}" 
@@ -47,20 +46,20 @@
                                             style="height: 40px;width:40px;"
                                             src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
 
-                                       <strong style="color:#6571ff"> {{ $item->title }}</strong>
+                                        {{ $item->title[app()->getLocale()] }}
                                     </td>
 
-                                    <td>{{ $item->item_name}}</td>
-                                    <td>{{ $item->unit }}</td>
+                                    <td>{{ $item->item_name[app()->getLocale()]}}</td>
+                                    <td>{{ $item->unit[app()->getLocale()] }}</td>
                                     <td>{{ $item->unit_price }} $</td>
                                     <td>{{ $item->units_number }}</td>
                                     <td style="color: goldenrod;">{{ $item->total_price }} $</td>
                                     <td>
                                         <a href="{{ route('admin.items.edit', $item) }}" type="button"
-                                            class="btn btn-warning btn-icon">
+                                            class="btn btn-white btn-icon">
                                             <i data-feather="check-square"></i>
                                         </a>
-                                        <a onclick="" class="btn btn-danger btn-icon confirm-delete">
+                                        <a onclick="" class="btn btn-white btn-icon confirm-delete">
                                             <i data-feather="trash-2"></i>
                                         </a>
                                         <form action="{{ route('admin.items.destroy', $item) }}" method="POST">
@@ -78,7 +77,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                    {{ $item->title }} </h5>
+                                                    {{ $item->title[app()->getLocale()] }} </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>

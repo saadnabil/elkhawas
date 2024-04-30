@@ -15,20 +15,39 @@
         <ul class="nav">
 
 
-            <li class="nav-item nav-category">Main</li>
+        <li class="nav-item nav-category">Main</li>
 
 
 
 
-            <li class="nav-item">
-                <a href="{{ route('user.items.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Items</span>
-                </a>
-            </li>
+        <li class="nav-item">
+          <a href="{{ route('user.items.index') }}" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">Items</span>
+          </a>
+        </li>
 
+        <li class="nav-item nav-category">Orders</li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
+            <i class="link-icon" data-feather="shopping-bag"></i>
+            <span class="link-title">Orders</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
+          </a>
+          <div class="collapse" id="order">
+            <ul class="nav sub-menu">
 
+              <li class="nav-item">
+                <a href="{{ route('user.orders.index') }}" class="nav-link">Show Orders</a>
+              </li>
 
+              <li class="nav-item">
+                <a href="{{ route('wishlist.index') }}" class="nav-link">WishList </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('coupons.index') }}" class="nav-link">Coupons </a>
+              </li>
 
             <li class="nav-item nav-category">Orders</li>
             <li class="nav-item">
