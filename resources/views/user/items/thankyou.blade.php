@@ -67,19 +67,27 @@
     <br>
 
                 </div>
+                  @php
+    $cartitems = App\Models\Cart::with('item')->where('user_id', auth()->user()->id)->get();
+    $result = 0;
+@endphp
                 <div class="card order-card">
                     <div class="card-body">
                         <h2 class="card-title">Thank you for your order!</h2>
                         <p class="card-text">Here are the details of your order:</p>
                         <ul class="list-group">
-                            <li class="list-group-item"><img src="{{asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg')}}" alt="Product 1" class="product-img">
-                            <strong>Product 1</strong>  - $10.00</li>
-                            <li class="list-group-item"><img src="{{asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg')}}" alt="Product 1" class="product-img"> 
-                          <strong>Product 2</strong>   - $15.00</li>
-                            <li class="list-group-item"><img src="{{asset('elkhawas/elkhawas_images/Baba-Ganoush-.jpg')}}" alt="Product 1" class="product-img">
-                           <strong>Product 3</strong>   - $20.00</li>
+                         @foreach($cartitems as $cartitem)
+                            <li class="list-group-item">
+                            <img src="{{ url('storage/'.$cartitem->item->image) }}" alt="Product 1" class="product-img">
+                            <strong>{{ $cartitem->item->title }}</strong>  | €{{ $cartitem->item->total_price }}</li>
+
+                            @php
+                        $result +=  $cartitem->item->total_price;
+                                @endphp
+                            @endforeach
+                            
                         </ul>
-                        <p class="card-text mt-3 total"><strong>Total: $45.00</strong></p>
+                        <p class="card-text mt-3 total"><strong>Total: €{{number_format($result,2)  }}</strong></p>
                     </div>
                 </div>
             </div>

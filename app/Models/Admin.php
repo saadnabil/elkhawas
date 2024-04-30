@@ -9,4 +9,9 @@ use Laravel\Sanctum\HasApiTokens;
 class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function getUsers(){
+        return $this->hasMany(User::class);
+    }
+
 }

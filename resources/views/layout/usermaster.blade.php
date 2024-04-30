@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == "ar" ? 'rtl' : 'ltr' }}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,11 @@
 	<!-- endinject -->
 
   <!-- Layout styles -->
+	 @if ( app()->getLocale() == "ar"  )
+	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style-rtl.css') }}">
+  @else
 	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
+  @endif
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />

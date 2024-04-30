@@ -7,7 +7,7 @@
 
                 <h6 class="card-title">Change Password</h6>
 
-                <form id="changePasswordForm" action="{{ route('user.UserChangePassword') }}" method="POST">
+                <form id="changePasswordForm" action="{{ route('user.UserChangePassword') }}" enctype="multipart/form-data"  method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -34,6 +34,11 @@
                         @enderror
                     </div>
                     <br>
+
+  
+
+
+
                     <button type="button" id="changePasswordBtn" class="btn btn-primary">Change Password</button>
                 </form>
 

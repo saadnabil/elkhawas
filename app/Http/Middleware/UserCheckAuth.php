@@ -23,7 +23,7 @@ class UserCheckAuth
 
         if (Auth::user()->status == 0) {
             Auth::logout(); // Logout the user if inactive
-            return redirect()->route('user.designInactivePage')->with('error', 'Your account is inactive. Please contact the administrator.');
+            return redirect()->route('user.inactiveAccount')->with('error', 'Your account is inactive. Please contact the administrator.');
         }
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ContactUsRequest;
 use App\Models\ContactUs;
+use App\Models\Inquiry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -12,6 +13,7 @@ class AdminContactUsController extends Controller
 {
     public function index()
     {
+
         $data = ContactUs::latest()->paginate(8);
 
         $contact = new ContactUs();
@@ -26,7 +28,7 @@ class AdminContactUsController extends Controller
         try {
             $validatedData = $contactUsRequest->validated();
             
-            $storeContact = ContactUs::create($validatedData);
+            $storeContact = ContactUs::findOrFail($validatedData);
     
             if ($storeContact) {
                 session()->flash('success', 'Information created successfully');
@@ -41,36 +43,34 @@ class AdminContactUsController extends Controller
     }
     
 
-    public function edit(Request $request, $id)
-{
-    try {
-        $contact = ContactUs::findOrFail($id); 
-        return view('admin.settings.contactUs', compact('contact'));
-    } catch (\Exception $e) {
-        Log::error('Error fetching contact: ' . $e->getMessage());
-        return redirect()->back()->withErrors(['message' => 'Contact not found.'])->withInput();
+    public function edit($id)
+    {
+        $contact = ContactUs::findOrFail(8);
+        // This will print the ID and stop the execution
+
+        return view('contactus.edit', compact('contact'));
     }
+
+public function update(ContactUsRequest $contactUsRequest, )
+{
+    
+        // Retrieve validated data from the request
+        $validatedData = $contactUsRequest->validated();
+        
+        // Find the existing ContactUs record by ID from the request
+        $contact = ContactUs::findOrFail(8);
+
+        // Update the ContactUs record with the validated data
+        $contact->update($validatedData);
+
+        // Flash a success message and redirect to the index route
+        session()->flash('success', 'Information updated successfully');
+        return redirect()->route('ContactUs.index');
+   
+    
 }
 
-    public function update(ContactUsRequest $contactUsRequest,$id)
-    {
-        try {
-            $validatedData = $contactUsRequest->validated();
-            
-            // Fetch the existing contact record
-            $contact = ContactUs::findOrFail($id); 
-            
-            // Update the attributes with the validated data
-            $contact->update($validatedData);
-        
-            session()->flash('success', 'Information updated successfully');
-            return redirect()->route('ContactUs.index');
-        } catch (\Exception $e) {
-            Log::error('Error updating contact: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['message' => 'An unexpected error occurred. Please try again.'])->withInput();
-        }
-        
-    }
+
     public function destroy(Request $request,$id)
     {
         $contact = ContactUs::findOrFail($id);
@@ -79,21 +79,7 @@ class AdminContactUsController extends Controller
         return redirect()->route('ContactUs.index');
     }
 
-    public function showorder(){
-        return response()->view('admin.orders.orders');
-    }
-    public function showtracking(){
-        return response()->view('admin.orders.show-track-change-orders');
-    }
-
-    public function detailsOrder(){
-        return response()->view('admin.orders.order-details');
-    }
-
-    public function showtrackingDetails(){
-        return response()->view('admin.orders.track-orders-details');
-    }
-
+   
     
 
     

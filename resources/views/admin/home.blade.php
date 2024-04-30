@@ -152,33 +152,30 @@
                         </tr>
                     </thead>
                     <tbody id="myTable" >
+                     @foreach ($admins as  $list)
                         <tr>
-                            <td>1</td>
-                            <td>Mohammed ali</td>
-                            <td>mohammed@gmail.com</td>
-                            <td>05990942210</td>
+                            <td>{{$loop->index + 1}}</td>
+                            <td>{{$list->name}}</td>
+                            <td>{{$list->email}}</td>
+                            <td>{{$list->phone}}</td>
                             <td>{{ __('translation.admin') }}</td>
-                            <td><span class="badge bg-success">{{ __('translation.active') }}</span></td>
-                            <td>01/01/2023</td>
+                            <td>
+                            @if ($list->status == 1)
+                              <span class="badge bg-success">{{ __('translation.active') }}
+                            </span></td>  
+                            @else
+                                <span class="badge bg-danger">{{ __('translation.inactive') }}
+                            </span></td>
+                            @endif
+                            
+                            <td>{{$list->created_at->diffForHumans()}}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Ahmed ali</td>
-                            <td>ahmed@gmail.com</td>
-                            <td>05990942210</td>
-                            <td>{{ __('translation.Employee') }}</td>
-                            <td><span class="badge bg-danger">{{ __('translation.inactive') }}</span></td>
-                            <td>01/01/2023</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Ahmed ali</td>
-                            <td>ahmed@gmail.com</td>
-                            <td>05990942210</td>
-                            <td>{{ __('translation.user') }}</td>
-                            <td><span class="badge bg-success">{{ __('translation.active') }}</span></td>
-                            <td>01/01/2023</td>
-                        </tr>
+
+                       
+                            
+                      
+                          @endforeach
+                        
                     </tbody>
                 </table>
             </div>
