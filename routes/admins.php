@@ -7,12 +7,9 @@ use App\Http\Controllers\Admins\DashobardController;
 use App\Http\Controllers\Admins\ExcelImportController;
 use App\Http\Controllers\Admins\ItemsController;
 use App\Http\Controllers\Admins\MessageInquiresController;
-<<<<<<< HEAD
 use App\Http\Controllers\Admins\orderController;
-=======
 use App\Http\Controllers\Admins\OrdersController;
 use App\Http\Controllers\Admins\RolesController;
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Users\UserContactUsController;
 use Illuminate\Support\Facades\Route;
@@ -84,22 +81,6 @@ Route::group(['prefix' => 'dashboard'], function(){
          Route::get('ContactUs/edit/{id}', [AdminContactUsController::class, 'edit'])->name('ContactUs.edit');
          Route::put('ContactUs/update}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
          Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
-<<<<<<< HEAD
-
-//// order routes 
-Route::get('order', [orderController::class, 'order'])->name('order');
-Route::get('order/details', [orderController::class, 'OrderDetails'])->name('OrderDetails');
-Route::get('order/track', [orderController::class, 'orderTrack'])->name('orderTrack');
-Route::get('order/trackdetails', [orderController::class, 'ordertrackdetails'])->name('trackdetails');
-
-
-
-         
-         Route::get('users/exportUser', [UserController::class, 'exportUser'])->name('users.exportUser');
-         Route::get('item/export', [ItemsController::class, 'ItemExport'])->name('item.ItemExport');
-
-=======
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
         Route::post('items/upload-excel',  [ExcelImportController::class, 'import'])->name('admins.itemsexcelimport');
     });
     Route::get('login', [AdminsAuthController::class, 'showloginform'])->name('admin.showloginform');
