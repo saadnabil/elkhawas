@@ -24,22 +24,8 @@ class ItemsController extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
-        // $user = Auth::user(); 
-
-        // if ($user->status === 2) { // Check if the user is inactive
-        //     Auth::logout();
-        //     return redirect()->route('login')->with('error', 'Your account is inactive. Please contact the administrator.');
-        // }
-        
-
-        $items = Item::latest()->paginate(8);
-        $user = User::orderBy('image','ASC')->first();
-        return view('user.items.index', compact('items','user'));
-=======
         $items = Item::with('wishlisted')->latest()->paginate(8);
         return view('user.items.index', compact('items'));
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
     }
 
     /**
