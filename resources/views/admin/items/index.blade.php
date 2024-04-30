@@ -20,7 +20,7 @@
 {{-- onclick="location.href='{{route('items.ExportItems')}}'" --}}
 
                     <div style="float: right; margin-right: 10px">
-                        <a href="{{route('items.ExportItems')}}" 
+                        <a href="{{route('item.ItemExport')}}" 
                         type="button" class="btn btn-inverse-secondary">Export Items</a>
                     </div>
                 <h6 class="card-title">{{ __('translation.Items') }}</h6>
@@ -44,10 +44,10 @@
                                 <tr>
                                     <td>
                                         <img data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}"
-                                            style="height: 50px;width:50px;"
+                                            style="height: 40px;width:40px;"
                                             src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
 
-                                        {{ $item->title }}
+                                       <strong style="color:#6571ff"> {{ $item->title }}</strong>
                                     </td>
 
                                     <td>{{ $item->item_name}}</td>

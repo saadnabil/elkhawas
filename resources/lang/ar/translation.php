@@ -2,7 +2,11 @@
 return [
     
 
-    'Company Name' => 'El Khawas',
+    'Company Name' => 'الخواص',
+    'Welcome back! Log in to your account' => 'مرحبا مجددا ! قم بتسجيل الدخول الي حسابك',
+    'Enter your phone or email' => 'ادخل رقم الهاتف او بريدك الالكتروني',
+    'Password' => 'كلمة السر',
+    'Login' => 'تسجيل الدخول',
     'Dashboard' => 'الوحة التحكم' ,
     'Main' => 'الرئسية' ,
     'Product List' => ' قائمة المنتجات' ,

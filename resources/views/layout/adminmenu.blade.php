@@ -59,12 +59,12 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="" class="nav-link">{{ __('translation.Show Orders') }}</a>
+                <a href="{{route('order')}}" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
 
 
               <li class="nav-item">
-                <a href="" class="nav-link">{{ __('translation.Track/Change Orders') }} </a>
+                <a href="{{route('orderTrack')}}" class="nav-link">{{ __('translation.Track/Change Orders') }} </a>
               </li>
 
 
@@ -139,6 +139,16 @@
             <span class="link-title">{{ __('translation.Contact Us') }}</span>
           </a>
         </li>
+
+       <!--  <li class="nav-item">
+          <a href="{{ route('ContactUs.index') }}"  class="nav-link">
+            {{-- <i class="link-icon" data-feather="unlock"></i> --}}
+          <i class="link-icon" data-feather="file-text"></i>
+
+
+            <span class="link-title">Transaction History</span>
+          </a>
+        </li>-->
 
 
 

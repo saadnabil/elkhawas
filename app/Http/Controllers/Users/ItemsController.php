@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,8 @@ class ItemsController extends Controller
         
 
         $items = Item::latest()->paginate(8);
-        return view('user.items.index', compact('items'));
+        $user = User::orderBy('image','ASC')->first();
+        return view('user.items.index', compact('items','user'));
     }
 
     /**

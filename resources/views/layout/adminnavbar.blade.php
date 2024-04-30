@@ -148,6 +148,12 @@
             </li> --}}
 
 
+            @php
+
+                $messages = App\Models\Inquiry::orderBy('created_at', 'desc')->get();
+                $unreadMessagesCount = $messages->where('is_read', 0)->count();
+
+            @endphp
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,87 +163,55 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
+                    <!-- Badge to indicate unread messages -->
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                        {{ $unreadMessagesCount }}
+                    </span>
                 </a>
+
                 <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
                     <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                        <p>9 New Messages</p>
-                        <a href="javascript:;" class="text-muted">Clear all</a>
+                        <p> ( {{ $unreadMessagesCount }}) New Messages</p>
+                        {{-- <a href="javascript:;" class="text-muted">  {{ $inqyey->links('pagination::bootstrap-5') }}</a> --}}
                     </div>
-                    <div class="p-1">
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="https://www.nobleui.com/laravel/template/demo1/assets/images/faces/face2.jpg"
-                                    alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>Leonardo Payne</p>
-                                    <p class="tx-12 text-muted">Project status</p>
+
+                    @foreach ($messages as $message)
+                        <div class="p-1">
+
+                            <a href="{{ route('admin.indexMessage', ['user_id' => $message->user_id, 'message_id' => $message->id]) }}"
+                                class="dropdown-item d-flex align-items-center py-2">
+                                <div class="me-3">
+                                    <img class="wd-30 ht-30 rounded-circle"
+                                        src="{{ $message->user && $message->user->image
+                                            ? asset('images/' . $message->user->image)
+                                            : asset('images/default/no-image.png') }}"
+                                        alt="No image available">
+
+
                                 </div>
-                                <p class="tx-12 text-muted">2 min ago</p>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="https://www.nobleui.com/laravel/template/demo1/assets/images/faces/face3.jpg"
-                                    alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>Carl Henson</p>
-                                    <p class="tx-12 text-muted">Client meeting</p>
+                                <div class="d-flex justify-content-between flex-grow-1">
+                                    <div class="me-4">
+                                        <p>{{ $message->user ? $message->user->name : 'Unknown User' }}</p>
+
+                                        <p class="tx-12 text-muted">
+                                            {{ $message->user ? $message->subject : 'Subject not available' }}</p>
+                                    </div>
+                                    <p class="tx-12 text-muted">{{ $message->created_at->diffForHumans() }}</p>
                                 </div>
-                                <p class="tx-12 text-muted">30 min ago</p>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="https://www.nobleui.com/laravel/template/demo1/assets/images/faces/face4.jpg"
-                                    alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>Jensen Combs</p>
-                                    <p class="tx-12 text-muted">Project updates</p>
-                                </div>
-                                <p class="tx-12 text-muted">1 hrs ago</p>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="https://www.nobleui.com/laravel/template/demo1/assets/images/faces/face5.jpg"
-                                    alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>Amiah Burton</p>
-                                    <p class="tx-12 text-muted">Project deatline</p>
-                                </div>
-                                <p class="tx-12 text-muted">2 hrs ago</p>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="https://www.nobleui.com/laravel/template/demo1/assets/images/faces/face6.jpg"
-                                    alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>Yaretzi Mayo</p>
-                                    <p class="tx-12 text-muted">New record</p>
-                                </div>
-                                <p class="tx-12 text-muted">5 hrs ago</p>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+
+
+                        </div>
+                    @endforeach
+
                     <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                        <a href="javascript:;">View all</a>
+                        <form action="{{ route('admin.deleteAllReadMessages') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete All Read Messages</button>
+                        </form>
                     </div>
+
                 </div>
             </li>
 
@@ -253,8 +227,8 @@
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
-                            <img class="wd-80 ht-80 rounded-circle"
-                                src="{{ asset('elkhawas/elkhawas_images/9.jpg') }}" alt="not found">
+                            <img class="wd-80 ht-80 rounded-circle" src="{{ asset('elkhawas/elkhawas_images/9.jpg') }}"
+                                alt="not found">
                         </div>
                         <div class="text-center">
                             <p class="tx-16 fw-bolder">{{ Auth::guard('admin')->user()->name }}</p>

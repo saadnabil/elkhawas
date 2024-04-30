@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admins;
 use App\Exports\UserExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
+use App\Imports\UserImport;
+use App\Models\Inquiry;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +17,7 @@ class UserController extends Controller
 {
     public function index()
     {
+
         $users = User::latest()->paginate(8);
         return response()->view('admin.users.index', compact('users'));
     }
@@ -109,9 +112,26 @@ class UserController extends Controller
     }
 
 
-    public function importUser (){
-    
+    public function importUser(Request $request)
+    {
+        // Check if the file exists in the request
+        $file = $request->file('file');
+        
+        if ($file) {
+            try {
+                // Specify the file type explicitly if needed (e.g., 'Csv', 'Xlsx', 'Xls')
+                Excel::import(new UserImport, $file, null, 'Csv');
+                
+                return redirect()->back()->with('success', 'File imported successfully!');
+            } catch (\Exception $e) {
+                // Handle the exception and return an error message
+                return redirect()->back()->with('error', 'Error importing file: ' . $e->getMessage());
+            }
+        } else {
+            return redirect()->back()->with('error', 'No file provided.');
+        }
     }
+    
 
 
 public function exportUser (Request $request){
@@ -120,6 +140,16 @@ public function exportUser (Request $request){
 
 }
 
+
+
+public function inactive(){
+    return view('admin.inActive_Admin');
+}
+
+
+public function forgotpassword(){
+    return view('layout.auth.forgot-password');
+}
 
 
     public function destroy(Request $request, $id)

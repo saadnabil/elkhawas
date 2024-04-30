@@ -20,14 +20,17 @@
                     </div>
                 @endif
 
-                <form class="forms-sample" action="{{ route('ContactUs.store') }}" method="POST">
+               <form class="forms-sample" action="{{ route('ContactUs.update') }}" method="POST">
+
                     @csrf
+                    @method('PUT')
+                    
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control" id="exampleInputUsername1"
-                                   value="{{ old('phone', $contact->phone) }}" autocomplete="off" placeholder="Phone">
+                                    value="{{ $contact->phone }}" autocomplete="off" placeholder="Phone">
                             </div>
                         </div>
 
@@ -35,7 +38,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                value="{{ old('email', $contact->email) }}"    placeholder="Email">
+                                    value="{{ $contact->email }}" placeholder="Email">
                             </div>
                         </div>
 
@@ -44,7 +47,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Company Name</label>
                                 <input type="text" name="CompanyName" class="form-control" id="exampleInputUsername1"
-                                 value="{{ old('CompanyName', $contact->CompanyName) }}"   autocomplete="off" placeholder="Company Name">
+                                    value="{{ $contact->CompanyName }}" autocomplete="off" placeholder="Company Name">
                             </div>
                         </div>
 
@@ -52,7 +55,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Address</label>
                                 <input type="text" name="address" class="form-control" id="exampleInputUsername1"
-                                  value="{{ old('address', $contact->address) }}"   autocomplete="off" placeholder="Address">
+                                    value="{{ $contact->address }}" autocomplete="off" placeholder="Address">
                             </div>
                         </div>
 
@@ -62,7 +65,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Street</label>
                                 <input type="text" name="street" class="form-control" id="exampleInputUsername1"
-                                value="{{ old('street', $contact->street) }}"     autocomplete="off" placeholder="Street">
+                                    value="{{ $contact->street }}" autocomplete="off" placeholder="Street">
                             </div>
                         </div>
 
@@ -72,7 +75,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Zip Code</label>
                                 <input type="text" name="zip" class="form-control" id="exampleInputUsername1"
-                                value="{{ old('zip', $contact->zip) }}"     autocomplete="off" placeholder="Zip Code">
+                                    value="{{ $contact->zip }}" autocomplete="off" placeholder="Zip Code">
                             </div>
                         </div>
 
@@ -81,7 +84,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Url Link</label>
                                 <input type="text" name="UrlLink" class="form-control" id="exampleInputUsername1"
-                                value="{{ old('UrlLink', $contact->UrlLink) }}"     autocomplete="off" placeholder="Url Link">
+                                    value="{{ $contact->UrlLink }}" autocomplete="off" placeholder="Url Link">
                             </div>
                         </div>
 
@@ -175,10 +178,10 @@
                         @method('DELETE')
                         @csrf
 
-                        <button type="button" class="btn btn-danger btn-icon delete-btn"
+                        {{-- <button type="button" class="btn btn-danger btn-icon delete-btn"
                             data-user-id="{{ $show->id }}">
                             <i data-feather="trash-2"></i>
-                        </button>
+                        </button> --}}
                     </form>
                 </div>
                 @endforeach

@@ -44,7 +44,8 @@
                                 {{ __('translation.Cash on delivery') }}
                             </label>
                             <div class="pt-5">
-                                <button type="submit" class="btn-primary btn btn-block w-100">{{ __('translation.Checkout') }}</button>
+                            {{-- {{route('carts.thankyou')}} --}}
+                                <a href="{{route('carts.thankyou')}}"   type="submit" class="btn-primary btn btn-block w-100">{{ __('translation.Checkout') }}</a>
                             </div>
                         </div>
                     </div>

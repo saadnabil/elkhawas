@@ -39,28 +39,55 @@ class UsersAuthController extends Controller
     }
     
     public function UserChangePassword(Request $request)
-{
-    $user = auth()->guard('web')->user();
-
-    // Validate user input
-    $request->validate([
-        'current_password' => 'required',
-        'new_password' => 'required|string|min:6|different:current_password',
-        'confirm_password' => 'required|string|min:6|same:new_password',
-    ]);
-
-    // Check if the current password matches the one provided
-    if (!Hash::check($request->current_password, $user->password)) {
-        return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.'])->withInput();
+    {
+        $user = auth()->guard('web')->user();
+    
+        // Validate user input
+        $validatedData = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:6|different:current_password',
+            'confirm_password' => 'required|string|min:6|same:new_password',
+            'image' => 'nullable|image|mimes:png,jpg,gif,svg|max:2048',
+        ]);
+    
+        // Check if the current password matches the one provided
+        if (!Hash::check($validatedData['current_password'], $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.'])->withInput();
+        }
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+    
+            // Move the file to the 'images' directory
+            if ($file->move(public_path('images'), $fileName)) {
+                // Store the image file name in the validated data
+                $validatedData['image'] = $fileName;
+            } else {
+                // If the file upload fails, redirect back with an error message
+                return redirect()->back()->withErrors(['image' => 'Failed to upload image. Please try again.'])->withInput();
+            }
+        }
+    
+        // Update the user's password
+        $user->password = Hash::make($validatedData['new_password']);
+    
+        // If image was uploaded, update the user record
+        if (isset($validatedData['image'])) {
+            $user->image = $validatedData['image'];
+        }
+    
+        // Save the user record
+        $user->save();
+    
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Password changed successfully.');
     }
+    
 
-    // Update the user's password
-    $user->password = Hash::make($request->new_password);
-    $user->save();
 
-    // Redirect back with success message
-    return redirect()->back()->with('success', 'Password changed successfully.');
-}
+
 
 
 public function designInactivePage(){

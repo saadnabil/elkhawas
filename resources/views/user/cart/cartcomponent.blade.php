@@ -50,7 +50,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td> {{ $cartitem->quantity * $cartitem->item->total_price }}€</td>
+                                    <td> {{ number_format($cartitem->quantity * $cartitem->item->total_price,2) }}€</td>
 
                                 </tr>
                                 @php
@@ -71,9 +71,10 @@
                     <h2 class="">Cart Summery</h3>
                 </div>
                 <hr>
+                
                 <div class="d-flex justify-content-between pb-2">
-                    <div>Subtotal</div>
-                    <div>{{ $result }}€</div>
+                    <div><strong>Subtotal</strong></div>
+                    <div><strong>{{number_format($result,2)  }}</strong>€</div>
                 </div>
                 <div class="input-group apply-coupan mt-4">
                     <input type="text" placeholder="Coupon Code" class="form-control">

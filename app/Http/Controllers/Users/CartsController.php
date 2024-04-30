@@ -20,6 +20,8 @@ class CartsController extends Controller
             'user_id' => auth()->user()->id,
             'item_id' => $data['item_id'],
         ])->first();
+
+        
         if(!$ItemInCart){
             Cart::create([
                 'user_id' => auth()->user()->id,
@@ -106,6 +108,10 @@ class CartsController extends Controller
         }
     }
 
+    public function inactiveAccount(){
+        return view('user.inactive-account');
+    }
+
     public function cartsdetails(){
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
         return view('user.cart.cartdetails',compact('cartitems'));
@@ -115,6 +121,11 @@ class CartsController extends Controller
         $addresses = Address::where('user_id', auth()->user()->id)->latest()->get();
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
         return view('user.cart.checkout',compact('addresses','cartitems'));
+    }
+
+    public function thankyou(){
+        $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
+        return view('user.items.thankyou',compact('cartitems'));
     }
 
     public function checkout(CheckOutValidation $request){

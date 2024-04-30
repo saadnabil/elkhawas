@@ -21,7 +21,7 @@
                         User</button>
                 </div>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('users.exportUser')}}" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
                         <button onclick="location.href='{{route('users.exportUser')}}'" type="button" class="btn btn-inverse-secondary">Export Users</button>
                     </div>
@@ -45,7 +45,6 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -64,7 +63,6 @@
                                 </td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>Admin</td>
 
 
                                 <th>
