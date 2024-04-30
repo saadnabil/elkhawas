@@ -62,12 +62,6 @@
                             @endforeach
                         </div>
 
-
-
-
-
-
-
                         <div class="col-sm-4">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('translation.The Number Of Pieces') }}</label>

@@ -20,7 +20,6 @@ class ItemsController extends Controller
      */
     public function index()
     {
-
         $items = Item::latest()->get();
         return view('admin.items.index',compact('items'));
     }
@@ -47,7 +46,6 @@ class ItemsController extends Controller
     public function store(ValidateItemForm $request)
     {
         $data = $request->validated();
-
         if(isset($data['image'])){
             $data['image'] = FileHelper::upload_file('items', $data['image']);
         }
@@ -62,7 +60,6 @@ class ItemsController extends Controller
     public function show(string $id)
     {
         //
-
     }
 
     /**

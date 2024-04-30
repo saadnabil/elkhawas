@@ -15,6 +15,7 @@
         <ul class="nav">
 
 
+<<<<<<< HEAD
             <li class="nav-item nav-category">Main</li>
 
 
@@ -80,6 +81,92 @@
 
                         </li>
 
+=======
+        <li class="nav-item nav-category">Main</li>
+
+
+
+
+        <li class="nav-item">
+          <a href="{{ route('user.items.index') }}" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">Items</span>
+          </a>
+        </li>
+
+        <li class="nav-item nav-category">Orders</li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
+            <i class="link-icon" data-feather="shopping-bag"></i>
+            <span class="link-title">Orders</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
+          </a>
+          <div class="collapse" id="order">
+            <ul class="nav sub-menu">
+
+              <li class="nav-item">
+                <a href="{{ route('user.orders.index') }}" class="nav-link">Show Orders</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('wishlist.index') }}" class="nav-link">WishList </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('coupons.index') }}" class="nav-link">Coupons </a>
+              </li>
+
+            <li class="nav-item nav-category">Orders</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false"
+                    aria-controls="order">
+                    <i class="link-icon" data-feather="shopping-bag"></i>
+                    <span class="link-title">Orders</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="order">
+                    <ul class="nav sub-menu">
+
+
+
+                        <li class="nav-item">
+                            <a href="/orders" class="nav-link">Show Orders </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/orders/wishlist" class="nav-link">WishList </a>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+
+
+
+
+            <li class="nav-item nav-category">Settings</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false"
+                    aria-controls="setting">
+                    <i class="link-icon" data-feather="settings"></i>
+                    <span class="link-title">Settings</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="setting">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('user.UserShowPassword') }}" class="nav-link">Change Password</a>
+
+                        </li>
+
+>>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                         <li class="nav-item">
                             <a href="{{ route('user.showProfileImage') }}" class="nav-link">Change Profile Image</a>
 

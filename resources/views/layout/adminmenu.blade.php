@@ -31,14 +31,9 @@
                 <a href="{{route('admin.dashboard.index')}}" class="nav-link">{{ __('translation.Dashboard') }}</a>
               </li>
 
-
               <li class="nav-item">
                 <a href="{{ route('admin.items.index') }}" class="nav-link">{{ __('translation.Product List') }}</a>
               </li>
-
-
-
-
 
             </ul>
           </div>
@@ -59,6 +54,7 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{route('order')}}" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
 
@@ -68,28 +64,29 @@
               </li>
 
 
+=======
+                <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
+              </li>
+>>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
             </ul>
           </div>
         </li>
 
-
-
-
-
-
-
-
-        <li class="nav-item nav-category">{{ __('translation.Setting') }}</li>
+        <li class="nav-item nav-category">{{ __('translation.Admins') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
             <i class="link-icon" data-feather="settings"></i>
-            <span class="link-title">{{ __('translation.Setting') }}</span>
+            <span class="link-title">{{ __('translation.Admin Jobs') }}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="setting">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="/profile" class="nav-link">{{ __('translation.Setting') }}</a>
+                <a href="{{ route('admins.index') }}" class="nav-link">{{ __('translation.Admin List') }}</a>
+
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('roles.index') }}" class="nav-link">{{ __('translation.Roles') }}</a>
 
               </li>
 
@@ -158,7 +155,10 @@
             {{-- <i class="link-icon" data-feather="unlock"></i> --}}
            <i class="link-icon" data-feather="log-out"></i>
 
-            <span class="link-title">{{ __('translation.Log Out') }}</span>
+            <span onclick="event.preventDefault(); $('#logout-form').submit();" class="link-title">{{ __('translation.Logout') }}</span>
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                @csrf
+            </form>
           </a>
         </li>
       </ul>
