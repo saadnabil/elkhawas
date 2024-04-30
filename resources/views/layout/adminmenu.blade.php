@@ -54,20 +54,8 @@
           <div class="collapse" id="order">
             <ul class="nav sub-menu">
               <li class="nav-item">
-<<<<<<< HEAD
-                <a href="{{route('order')}}" class="nav-link">{{ __('translation.Show Orders') }}</a>
-              </li>
-
-
-              <li class="nav-item">
-                <a href="{{route('orderTrack')}}" class="nav-link">{{ __('translation.Track/Change Orders') }} </a>
-              </li>
-
-
-=======
                 <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
             </ul>
           </div>
         </li>
