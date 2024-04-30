@@ -87,7 +87,6 @@
     </nav>
 
     <div class="row" id="myProducts">
-<<<<<<< HEAD
         <form class="form-inline">
             <div class="input-group">
                 <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
@@ -101,57 +100,10 @@
 
 
 
-=======
-
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
     <div class="mt-2">
         {{ $items->links() }}
     </div>
 
-<<<<<<< HEAD
-    @foreach ($items as $key => $item)
-        <div class="col-lg-3">
-            <div class="card text-center mb-2">
-
-
-                <div class="image-container py-2 px-4">
-                    <img src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
-                        alt="Image not found" class="img-fluid mb-4" />
-                </div>
-
-
-                <div class="card-body">
-
-
-                    <h5 class="card-title">
-                        {{ $item->title }}
-                        <span class="badge bg-info">{{ $item->unit_price }} €</span>
-                    </h5>
-
-
-                    <p class="card-text mb-3">Item Name: {{ $item->item_name }}</p>
-                    <p class="card-text mb-3">Main Price:
-                        <span class="badge bg-primary">{{ $item->total_price }} €</span>
-                    </p>
-
-
-                    <button data-id="{{ $item->id }}"
-                        data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
-                        data-unit_price="{{ $item->unit_price }}" data-total_price="{{ $item->total_price }}"
-                        data-description="{{ $item->description }}" data-title="{{ $item->title }}" type="button"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal" class="openmodal btn btn-primary">
-                        <i class="link-icon" data-feather="shopping-cart"></i>
-                    </button>
-                    <button onclick="location.href='/orders/wishlist'" type="button" class="btn btn-danger">
-                        <i class="feather icon" data-feather="heart"></i>
-                    </button>
-
-
-                </div>
-                <div class="bg-danger text-white small position-absolute end-0 top-0 px-2 py-2 lh-1 text-center">
-                    <span class="d-block">10%</span>
-                    <span class="d-block">OFF</span>
-=======
         @foreach ($items as $key => $item)
             <div class="col-lg-3">
                 <div class="card text-center mb-3">
@@ -190,7 +142,6 @@
                         <span class="d-block">10%</span>
                         <span class="d-block">OFF</span>
                     </div>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                 </div>
             </div>
         </div>
@@ -229,12 +180,8 @@
                                             <li class="list-group-item ">Unit Price : <span class="unit"></span></li>
                                             <li class="list-group-item ">Total Price : <span
                                                     class="total badge bg-primary"></span></li>
-<<<<<<< HEAD
-                                            <li class="list-group-item"> Units Number : {{ $item->units_number }}</li>
-=======
                                             <li class="list-group-item"> Units Number: <span class="units_number"></span>
                                             </li>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                                         </ul>
                                         <br>
                                         <div class="quantity-area">
@@ -245,12 +192,7 @@
                                                     @csrf
                                                     <input type="number" name="quantity" id="quantity"
                                                         class="form-control form-control-alternative" min="1"
-<<<<<<< HEAD
-                                                        name="quantity" placeholder="1" value="1" required
-                                                        autofocus>
-=======
                                                         name="quantity" placeholder="1" value="1" required autofocus>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                                                     <input placeholder="item id" type="hidden" name="item_id"
                                                         value="" />
                                                 </form>
@@ -280,8 +222,6 @@
         </div>
     </div>
 @endsection
-<<<<<<< HEAD
-=======
 
 @push('script')
     <script>
@@ -326,4 +266,3 @@
         });
     </script>
 @endpush
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
