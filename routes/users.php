@@ -1,14 +1,9 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\Admins\MessageInquiresController;
-use App\Http\Controllers\Users\CartsController;
-use App\Http\Controllers\Users\changeProfileImage;
-=======
 use App\Http\Controllers\Users\AddressesController;
 use App\Http\Controllers\Users\CartsController;
+use App\Http\Controllers\Users\changeProfileImage;
 use App\Http\Controllers\Users\CouponsController;
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
 use App\Http\Controllers\Users\ItemsController;
 use App\Http\Controllers\Users\OrdersController;
 use App\Http\Controllers\Users\UserContactUsController;
@@ -28,7 +23,6 @@ Route::group(['prefix' => 'user'], function(){
        route::get('carts/remove/{id}', [CartsController::class, 'remove'])->name('carts.remove');
        route::get('carts/details', [CartsController::class, 'cartsdetails'])->name('carts.details');
        route::get('carts/checkout', [CartsController::class, 'checkoutform'])->name('carts.checkoutform');
-<<<<<<< HEAD
        route::post('carts/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
        route::get('carts/thankyou', [CartsController::class, 'thankyou'])->name('carts.thankyou');
 
@@ -58,8 +52,6 @@ Route::group(['prefix' => 'user'], function(){
        Route::get('contactus',[UserContactUsController::class,'user'])->name('userContactus.index');
        Route::post('Inquiry/store',[UserContactUsController::class,'store'])->name('userInquiry.store');
 
-=======
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
 
        Route::post('orders/{order}/cancel',[OrdersController::class, 'cancel'])->name('user.orders.cancel');
        route::post('orders/checkout', [OrdersController::class, 'checkout'])->name('user.orders.checkout');
