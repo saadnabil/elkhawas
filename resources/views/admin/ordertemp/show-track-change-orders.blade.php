@@ -35,7 +35,7 @@
                                     </thead>
                                     <tbody id="myTable">
                                         <tr>
-                                            <td><button onclick="location.href='{{route('showtrackingDetails')}}'" class="btn btn-primary">OR756374</button></td>
+                                            <td><button onclick="location.href='{{route('trackdetails')}}'" class="btn btn-primary">OR756374</button></td>
                                             <td>Bassam Elashqar</td>
                                             <td>bassam@bxtra.de</td>
                                             <td>+90 541 4199 888</td>

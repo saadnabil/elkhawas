@@ -35,6 +35,10 @@
 @endpush
 @section('content')
     <div class="row" id="myProducts">
+        <form class="form-inline">
+            <div class="input-group">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
 
         {{--  <div class="itemscontainer">
             @include('user.items.itemscomponent')

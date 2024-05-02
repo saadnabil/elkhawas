@@ -126,6 +126,16 @@
           </a>
         </li>
 
+       <!--  <li class="nav-item">
+          <a href="{{ route('ContactUs.index') }}"  class="nav-link">
+            {{-- <i class="link-icon" data-feather="unlock"></i> --}}
+          <i class="link-icon" data-feather="file-text"></i>
+
+
+            <span class="link-title">Transaction History</span>
+          </a>
+        </li>-->
+
 
 
         <li class="nav-item nav-category">{{ __('translation.Log Out') }}</li>

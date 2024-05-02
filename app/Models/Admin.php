@@ -10,7 +10,10 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-    protected $guard = 'admin';
-    protected $guarded = [];
+    use HasApiTokens, HasFactory, Notifiable;
+
+    public function getUsers(){
+        return $this->hasMany(User::class);
+    }
+
 }

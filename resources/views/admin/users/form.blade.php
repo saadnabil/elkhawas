@@ -132,24 +132,26 @@
     </form>
     <br>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-
-        <div class="col-md-6 ">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title">Add Users By Excel
-                        <button class="btn btn-primary" style="float: right">Download Excel file </button>
-                    </h6>
+  <form action="{{ route('AdminUser.ImportUser') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Add Users By Excel
+                    {{-- Uncomment the button below if you want to provide a download link for the Excel file --}}
+                    {{-- <button onclick="location.href='{{ route('AdminUser.ImportUser') }}'" class="btn btn-primary" style="float: right">Download Excel file</button> --}}
+                </h6>
+                <br>
+                <div class="col-12">
+                    <!-- File input with name attribute -->
+                    <input type="file" class="form-control" name="user_excel_file" required>
                     <br>
-                    <div class="col-12">
-                        <input type="file" class="form-control">
-                        <br>
-                        <button type="button" class="btn btn-dark">Import Users</button>
-                    </div>
-
-
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-dark">Import Users</button>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
+
 @endsection

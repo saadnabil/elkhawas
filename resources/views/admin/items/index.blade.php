@@ -50,7 +50,7 @@
                                 <tr>
                                     <td>
                                         <img data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}"
-                                            style="height: 50px;width:50px;"
+                                            style="height: 40px;width:40px;"
                                             src="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}" />
 
                                         {{ $item->title[app()->getLocale()] }}

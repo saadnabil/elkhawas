@@ -7,6 +7,7 @@ use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ValidateItemForm;
 use App\Imports\ItemsImport;
+use App\Models\Inquiry;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -42,6 +43,7 @@ class ItemsController extends Controller
     public function create()
     {
         $langs = availableLanguages();
+
         $item = new Item();
         $action = route('admin.items.store');
         return view('admin.items.form',compact('langs','item','action'));
@@ -74,6 +76,7 @@ class ItemsController extends Controller
      */
     public function edit(Item $item)
     {
+
         $langs = availableLanguages();
         $action = route('admin.items.update', $item);
         $method = true;
@@ -92,6 +95,10 @@ class ItemsController extends Controller
         $item->update($data);
         session()->flash('success', __('translation.Item updated successfully'));
         return redirect()->route('admin.items.index');
+    }
+
+    public function ItemExport(){
+        return Excel::download(new ItemExport, 'Items.xlsx');
     }
 
     /**
