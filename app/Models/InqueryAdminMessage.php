@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class inqueryAdminMessage extends Model
+class InqueryAdminMessage extends Model
 {
     use HasFactory;
-    protected $fillable = ['admin_id', 'subject', 'message'];
+    protected $guarded = [];
 
-   
     public function admin() {
         return $this->belongsTo(Admin::class);
     }
-    
+
 }

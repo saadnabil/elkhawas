@@ -74,7 +74,7 @@
                 <div class="cart-summary mb-4 p-3 bg-light border rounded">
                     <div class="d-flex justify-content-between">
                         <span><strong style="color: goldenrod">Subtotal:</strong></span>
-                        <span class="amount"><strong>€{{ number_format($total, 2) }}</strong></span>
+                        <span class="amount"><strong>€{{ number_format($result, 2) }}</strong></span>
                     </div>
                 </div>
 
