@@ -53,7 +53,9 @@ class RolesController extends Controller
 
         $role = Role::Create(['name' => $data ['name'], 'guard_name' => 'admin' ]);
 
-        $role->syncPermissions(['blog-list','blog-create','blog-edit']);
+        $permissions = Permission::pluck('name')->toarray();
+
+        $role->syncPermissions($permissions);
 
         session()->flash('success', __('Item created successfully'));
 
