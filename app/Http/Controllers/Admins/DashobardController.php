@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DashobardController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:dashboard', ['only' => ['index']]);
+
+    }
    public function index(){
 
       $totalUser = User::count();

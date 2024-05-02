@@ -27,13 +27,17 @@
           <div class="collapse" id="dashboard">
             <ul class="nav sub-menu">
 
+            @can('dashboard')
               <li class="nav-item">
                 <a href="{{route('admin.dashboard.index')}}" class="nav-link">{{ __('translation.Dashboard') }}</a>
               </li>
+            @endcan
 
+            @can('item-list')
               <li class="nav-item">
                 <a href="{{ route('admin.items.index') }}" class="nav-link">{{ __('translation.Product List') }}</a>
               </li>
+            @endcan
 
             </ul>
           </div>
@@ -43,7 +47,7 @@
 
 
 
-
+        @can('order-list')
         <li class="nav-item nav-category">{{ __('translation.Orders') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
@@ -52,13 +56,17 @@
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="order">
+
             <ul class="nav sub-menu">
+
               <li class="nav-item">
                 <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
               </li>
+
             </ul>
           </div>
         </li>
+        @endcan
 
         <li class="nav-item nav-category">{{ __('translation.Admins') }}</li>
         <li class="nav-item">
@@ -69,19 +77,17 @@
           </a>
           <div class="collapse" id="setting">
             <ul class="nav sub-menu">
+            @can('admin-list')
               <li class="nav-item">
                 <a href="{{ route('admins.index') }}" class="nav-link">{{ __('translation.Admin List') }}</a>
-
               </li>
+              @endcan
+
+              @can('role-list')
               <li class="nav-item">
                 <a href="{{ route('roles.index') }}" class="nav-link">{{ __('translation.Roles') }}</a>
-
               </li>
-
-              {{-- <li class="nav-item">
-                <a href="" class="nav-link">Change Password</a>
-
-              </li> --}}
+              @endcan
 
 
             </ul>
@@ -104,12 +110,7 @@
             <ul class="nav sub-menu">
               <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">{{ __('translation.showUser') }}</a>
-
               </li>
-
-
-
-
             </ul>
           </div>
         </li>

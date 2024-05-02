@@ -8,16 +8,15 @@
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                <input type="text" name="search" class="form-control" id="navbarForm" placeholder="{{ __('translation.Search here...') }}">
             </div>
         </form>
 
-        @if (!in_array(request()->url(), [route('carts.details'), route('carts.checkoutform')]))
-            <section id="usercart" style="padding-top: 10px;">
-                @include('layout.usercart')
-            </section>
+        @if(!in_array(request()->url() , [route('carts.details'), route('carts.checkoutform')]))
+        <section class="" id="usercart" style="padding-top: 10px;">
+            @include('layout.usercart')
+        </section>
         @endif
-
 
 
         @php
@@ -47,10 +46,8 @@
                     <a href="{{ route('changelang', ['lang' => 'de']) }}" class="dropdown-item py-2"><i
                             class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1">
                             German </span></a>
-
                 </div>
             </li>
-
 
             @php
 

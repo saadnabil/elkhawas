@@ -14,7 +14,17 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('permission:order-list', ['only' => ['index']]);
+        $this->middleware('permission:order-show', ['only' => ['show']]);
+        $this->middleware('permission:order-export', ['only' => ['export']]);
+        $this->middleware('permission:order-send-invoice', ['only' => ['sendInvoice']]);
+        $this->middleware('permission:order-update-status', ['only' => ['updateStatus']]);
+
+
+    }
+
     public function index(){
         $orders = Order::with('order_details.item','address','coupon','user')->latest();
         if(request()->has('status')){

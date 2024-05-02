@@ -94,6 +94,7 @@
                         </div>
                     </div>
 
+                    @can('order-send-invoice')
                     <div class="btn-group float-end mt-4 ms-2" role="group" aria-label="Button group with nested dropdown">
                         <div class="btn-group " role="group">
                           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,10 +110,13 @@
                           </div>
                         </div>
                     </div>
+                    @endcan
 
+                    @can('order-print-invoice')
                     <button onclick="window.print();" class="btn btn-outline-primary float-end mt-4 ms-2 ">
                         <i data-feather="printer" class="me-2 icon-md"></i>Print
                     </button>
+                    @endcan
                 </div>
             </div>
         </div>

@@ -149,4 +149,6 @@ return [
     'add Product ' => 'Add Product ',
     
     
+    'Search here...' => 'Search here...',
+    'Oops! No products matched your search.' => 'Oops! No products matched your search.'
 ];

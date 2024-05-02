@@ -29,127 +29,13 @@
             background-position:center;
              background-size:cover;
              background-repeat:no-repeat;
-
         }
-
-
     </style>
+
 @endpush
-
 @section('content')
-    <style>
-        /* Card Styles */
-        .card {
-            box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 0 solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-        }
-
-        /* Card Body Styles */
-        .card-body {
-            flex: 1 1 auto;
-            padding: 1.5rem;
-        }
-
-        /* Image Container Styles */
-        .image-container {
-            width: 300px;
-            /* Adjust to desired width */
-            height: 300px;
-            /* Adjust to desired height */
-            overflow: hidden;
-            /* Hide overflow */
-        }
-
-        /* Image Styles */
-        .image-container img {
-            width: 100%;
-            /* Make the image take up the full width of the container */
-            height: 100%;
-            /* Make the image take up the full height of the container */
-            object-fit: cover;
-            /* Crop the image if necessary to fit the container */
-        }
-    </style>
-    <nav class="page-breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Items</li>
-
-        </ol>
-    </nav>
-
     <div class="row" id="myProducts">
-        <form class="form-inline">
-            <div class="input-group">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-
-        </form>
-
-    </div>
-
-
-
-
-
-    <div class="mt-2">
-        {{ $items->links() }}
-    </div>
-
-        @foreach ($items as $key => $item)
-            <div class="col-lg-3">
-                <div class="card text-center mb-3">
-                    <div class="image-container"
-                     style=" background-image:url({{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }});">
-                    </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ $item->title[app()->getLocale()] }}
-                            <span class="badge bg-info">{{ $item->unit_price }} €</span>
-                        </h5>
-
-
-                        <p class="card-text mb-3">Item Name: {{ $item->item_name[app()->getLocale()] }}</p>
-                        <p class="card-text mb-3">Main Price:
-                            <span class="badge bg-primary">{{ $item->total_price }} €</span>
-                        </p>
-
-
-                        <button data-id="{{ $item->id }}"
-                            data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
-                            data-unit_price="{{ $item->unit_price }}" data-total_price="{{ $item->total_price }}"
-                            data-description="{{ $item->description[app()->getLocale()] }}"
-                            data-title="{{ $item->title[app()->getLocale()] }}"" type="button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" class="openmodal btn btn-primary">
-                            <i class="link-icon" data-feather="shopping-cart"></i>
-                        </button>
-                        <a data-route="{{ route('wishlist.favourite', $item) }}" onclick="" type="button"
-                            class="btn btn-light {{ $item->wishlisted != null ? 'text-danger' : '' }} addwishlist">
-                            <i class="fas fa-heart"></i>
-                        </a>
-
-
-                    </div>
-                    <div class="bg-danger text-white small position-absolute end-0 top-0 px-2 py-2 lh-1 text-center">
-                        <span class="d-block">10%</span>
-                        <span class="d-block">OFF</span>
-                    </div>
-                </div>
-            </div>
-        
-    @endforeach
-    <div class="mt-3">
-        {{ $items->links() }}
-    </div>
+        @livewire('search')
     </div>
 
     <!-- Modal -->
@@ -176,7 +62,6 @@
                                         <p class="description"></p>
                                         <br>
 
-
                                         <ul class="list-group">
                                             <li class="list-group-item ">Unit Price : <span class="unit"></span></li>
                                             <li class="list-group-item ">Total Price : <span
@@ -200,8 +85,7 @@
                                             </div>
                                             <br>
                                             <div class="quantity-btn">
-                                                <button type="submit" id="secondButton" form="additem"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#demo"
+                                                <button type="submit" id="secondButton" data-route="{{ route('carts.add') }}" form="additem"
                                                     class="btn btn-primary additem">Add To Cart</button>
                                             </div>
 
@@ -227,7 +111,7 @@
 @push('script')
     <script>
         $(document).ready(function() {
-            $('.openmodal').click(function() {
+            $(document).on('click', '.openmodal' ,function(){
                 var description = $(this).data('description');
                 var image = $(this).data('image');
                 var title = $(this).data('title');
@@ -244,9 +128,32 @@
                 $('.modal').find('input[name="item_id"]').val(id);
             });
 
+
+            $(document).on('keyup', 'input[name="search"]', function(e) {
+                e.preventDefault();
+                var search = $(this).val();
+                var url = `{{ route('user.items.index')}}?search=${search}`;
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    data: {
+                        search: search
+                    },
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                       $('.itemscontainer').html(response);
+                    },
+                    error: function(response) {
+                        alert('error')
+                    }
+                });
+            });
+
             $(document).on('click', 'a.addwishlist', function(e) {
                 e.preventDefault();
                 var url = $(this).data('route');
+                var element = $(this);
                 $.ajax({
                     url: url,
                     method: 'GET',
@@ -254,9 +161,9 @@
                     contentType: false,
                     success: function(response) {
                         if (response == 1) {
-                            $('a.addwishlist').addClass('text-danger');
+                            element.addClass('text-danger');
                         } else {
-                            $('a.addwishlist').removeClass('text-danger');
+                            element.removeClass('text-danger');
                         }
                     },
                     error: function(response) {
@@ -266,4 +173,7 @@
             });
         });
     </script>
+
 @endpush
+
+

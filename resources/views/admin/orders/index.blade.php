@@ -92,14 +92,18 @@
                                     {{--  <td>{{ Carbon\Carbon::parse($order->created_at)->format('Y m d, H:i a') }}</td>  --}}
 
                                     <td>
+                                        @can('order-show')
                                         <a  title="{{ __('translation.Show') }}" style="background:#fff;" href="{{ route('admin.orders.show', $order) }}"
                                             type="button" class="btn  btn-icon btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
+                                        @endcan
+                                        @can('order-track')
                                         <a title="{{ __('translation.Tracking Order') }}" style="background:#fff;" href="{{ route('admin.orders.trackorderdetails', $order) }}"
                                             type="button" class="btn  btn-icon btn-sm">
                                             <i class="fas fa-map-marked-alt"></i>
                                         </a>
+                                        @endcan
                                     </td>
 
                                 </tr>

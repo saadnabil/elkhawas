@@ -18,6 +18,15 @@ class ItemsController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+         $this->middleware('permission:item-list', ['only' => ['index']]);
+         $this->middleware('permission:item-create', ['only' => ['create','store']]);
+         $this->middleware('permission:item-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:item-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:item-export', ['only' => ['export']]);
+     }
     public function index()
     {
         $items = Item::latest()->get();

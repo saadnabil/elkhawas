@@ -14,10 +14,34 @@ class CreatePermissions extends Seeder
     public function run(): void
     {
         $permissions = [
-            'blog-list',
-            'blog-create',
-            'blog-edit',
-            'blog-delete',
+            'dashboard',
+
+            'admin-list',
+            'admin-create',
+            'admin-edit',
+            'admin-delete',
+            'admin-export',
+
+            'item-list',
+            'item-create',
+            'item-edit',
+            'item-delete',
+            'item-export',
+
+            'order-list',
+            'order-show',
+            'order-track',
+            'order-print-invoice',
+            'order-send-invoice',
+            'order-edit-status',
+            'product-export',
+
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'role-export',
+
         ];
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(

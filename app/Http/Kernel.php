@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminCheckAuth;
+use App\Http\Middleware\Fesa;
 use App\Http\Middleware\HandleLang;
 use App\Http\Middleware\UserCheckAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -24,6 +25,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+
     ];
 
 
@@ -76,7 +79,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admincheckauth' =>AdminCheckAuth::class,
         'usercheckauth' =>UserCheckAuth::class,
-
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
 
     ];
 }
