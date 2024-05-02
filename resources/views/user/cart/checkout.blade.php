@@ -42,21 +42,6 @@
             </div>
         </form>
 
-<<<<<<< HEAD
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title"> {{ __('translation.Payment type') }}</h6>
-                        <hr>
-                        <div class="form-check">
-                            <input value="cash" class="form-check-input" required type="radio" name="payment_type" id="cash">
-                            <label style="font-weight:bold;"  class="form-check-label text-primary" for="cash">
-                                {{ __('translation.Cash on delivery') }}
-                            </label>
-                            <div class="pt-5">
-                            {{-- {{route('carts.thankyou')}} --}}
-                                <a href="{{route('carts.thankyou')}}"   type="submit" class="btn-primary btn btn-block w-100">{{ __('translation.Checkout') }}</a>
-=======
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -138,7 +123,6 @@
                                         <!-- End inform -->
                                     </div>
                                 </div>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                             </div>
                         </div>
                     </div>

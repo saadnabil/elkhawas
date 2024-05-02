@@ -61,40 +61,43 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="mail"></i>
                     <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
-                         {{ $unreadMessagesCount }}
+                        {{ $unreadMessagesCount }}
                     </span>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
                     <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                        <p>( {{$unreadMessagesCount}} ) New Messages</p>
+                        <p>( {{ $unreadMessagesCount }} ) New Messages</p>
                         {{-- <a href="javascript:;" class="text-muted">Clear all</a> --}}
                     </div>
 
                     @foreach ($messages as $message)
-
-                    <div class="p-1">
-                        <a href="{{route('user.indexMessageUser', ['admin_id' => $message->admin_id, 'message_id' => $message->id])}}" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="me-3">
-                                <img class="wd-30 ht-30 rounded-circle"
-                                    src="{{ $message->user && $message->user->image
-                                            ? asset('images/' . $message->user->image)
-                                            : asset('elkhawas/elkhawas_images/tree logo.png') }}" alt="userr">
-                            </div>
-                            <div class="d-flex justify-content-between flex-grow-1">
-                                <div class="me-4">
-                                    <p>{{ $message->admin ? $message->admin->name : 'Unknown admin' }} </p>
-
-                                    <p class="tx-12 text-muted">
-                                       {{ $message->admin ? $message->subject : 'Subject not available' }} </p>
+                        <div class="p-1">
+                            <a href="{{ route('user.indexMessageUser', ['admin_id' => $message->admin_id, 'message_id' => $message->id]) }}"
+                                class="dropdown-item d-flex align-items-center py-2">
+                                <div class="me-3">
+                                    <img class="wd-30 ht-30 rounded-circle"
+                                        src="{{ $message->admin && $message->admin->image
+                                            ? asset('storage/' . $message->admin->image)
+                                            : asset('elkhawas/elkhawas_images/tree logo.png') }}
+"
+                                        alt="userr">
                                 </div>
-                                <p class="tx-12 text-muted"> {{ $message->created_at->diffForHumans() }}</p>
-                            </div>
-                        </a>
+                                <div class="d-flex justify-content-between flex-grow-1">
+                                    <div class="me-4">
 
-                    </div>
+                                        <p>{{ $message->admin ? $message->admin->name : 'Unknown admin' }} </p>
+
+                                        <p class="tx-12 text-muted">
+                                            {{ $message->admin ? $message->subject : 'Subject not available' }} </p>
+                                    </div>
+                                    <p class="tx-12 text-muted"> {{ $message->created_at->diffForHumans() }}</p>
+                                </div>
+                            </a>
+
+                        </div>
                     @endforeach
                     <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                         <form action="{{route('user.deleteAllReadMessages')}}" method="POST">
+                        <form action="{{ route('user.deleteAllReadMessages') }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete All Read Messages</button>

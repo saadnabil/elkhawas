@@ -97,9 +97,7 @@ class ItemsController extends Controller
         return redirect()->route('admin.items.index');
     }
 
-    public function ItemExport(){
-        return Excel::download(new ItemExport, 'Items.xlsx');
-    }
+  
 
     /**
      * Remove the specified resource from storage.

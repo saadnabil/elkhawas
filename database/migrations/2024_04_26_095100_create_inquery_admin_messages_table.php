@@ -18,6 +18,11 @@ return new class extends Migration
                 ->constrained('admins')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+                $table->foreignId('user_id')
+                ->nullable()
+                ->constrained('admins')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('subject')->nullable();
             $table->text('message')->nullanble();
             $table->timestamps();

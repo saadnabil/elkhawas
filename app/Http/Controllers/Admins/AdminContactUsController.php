@@ -42,10 +42,6 @@ class AdminContactUsController extends Controller
         }
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
     public function edit($id)
     {
         $contact = ContactUs::findOrFail(8);
@@ -73,10 +69,6 @@ public function update(ContactUsRequest $contactUsRequest, )
     
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
     public function destroy(Request $request,$id)
     {
         $contact = ContactUs::findOrFail($id);

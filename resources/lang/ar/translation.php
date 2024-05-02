@@ -18,7 +18,7 @@ return [
     'showUser' => 'عرض المستخدمين' ,
     'Pages' => 'اخري' ,
     'Contact Us' => 'اتصل بنا' ,
-    'Log Out' => 'تسجيل الخروج',
+    'Logout' => 'تسجيل الخروج',
     'admin' => 'المشرفين' ,
 
     'Total Users' => ' إجمالي المستخدمين' ,
@@ -39,5 +39,42 @@ return [
 'inactive' => 'غير نشط' ,
 'active' => ' نشط' ,
 'Employee' => 'موظف' ,
+'Profile ' => 'حسابي ',
+'Admin List' => 'المدراء',
+    'Admin Jobs' => 'المدراء',
+    'Admin List' => 'عرض المدراء',
+    'Roles' => 'الصلاحيات',
+    'alItem' => 'كل المنتجات',
+    'add Product ' => 'اضافة منتجات ',
+    'ExportProduct' => 'تصدير المنتجات',
+
+    'Item created successfully' => 'تم انشاء المنتج بنجاح',
+    'Item updated successfully' => 'تم تعديل المنتج بنجاح',
+    'Item deleted successfully' => 'تم حذف المنتج بنجاح',
+    'Image' => 'الصورة',
+    'Item Name' => 'اسم المنتج',
+    'Unit' => 'الوحدة',
+    'Unit Price' => 'سعر الوحدة ',
+    'pieces' => 'عدد القطع',
+    'Total Price' => 'السعر الكلي ',
+    'Actions' => 'الحدث',
+    'Here you can see all your items in the table.' => 'Here you can see all your items in the table.',
+    'Items' => 'المنتج',
+    'Product Title' => 'عنوان المنتج ',
+    'Unit' => 'الوحدة',
+    'The Number Of Pieces' => 'عدد القطع',
+    'Image of Product' => 'صورة المنتج',
+    'Item description' => 'وصف المنتج',
+    'Add Products By Excel' => 'اضافة منتجات باستخدام الاكسل',
+    'Back' => 'رجوع',
+    'Save' => 'حفظ',
+    'Import Product' => 'رفع المنتجات',
+    'ExportProduct' => 'تصدير المنتجات',
+
+    'Imported Successfully' => 'تم الرفع بنجاح',
+
+
+
+    
 
 ];

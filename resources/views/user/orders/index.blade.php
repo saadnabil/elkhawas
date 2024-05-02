@@ -1,16 +1,15 @@
-
 @php
-$backgrounds = [
-    'delivered' => '#d9f2f2',
-    'shipped' => '#cfe8da',
-    'pending' => '#fcdfa8',
-    'canceled' => '#f5b6c6',
-];
+    $backgrounds = [
+        'delivered' => '#d9f2f2',
+        'shipped' => '#cfe8da',
+        'pending' => '#fcdfa8',
+        'canceled' => '#f5b6c6',
+    ];
 @endphp
 @extends('layout.usermaster')
 @push('style')
     <style>
-        .act{
+        .act {
             border: 2px solid #000;
         }
     </style>
@@ -37,11 +36,19 @@ $backgrounds = [
                 <p class="text-muted mb-3">{{ __('translation.Here you can see all your orders in the table.') }}</p>
                 <div class="table-responsive">
                     <div class="mb-3">
-                        <a href="{{ route('user.orders.index') }}" style ="background-color: #ffffff" class="btn btn-light {{ $status == 'all' ? 'act' : '' }}">All</a>
-                        <a href="{{ route('user.orders.index',['status' => 'pending']) }}" style ="background-color:#fcdfa8" class="btn  {{ $status == 'pending' ? 'act' : '' }} ">Pending</a>
-                        <a href="{{ route('user.orders.index',['status' => 'delivered']) }}" style ="background-color: #d9f2f2"  class="btn  {{ $status == 'delivered' ? 'act' : '' }}">Deliverd</a>
-                        <a href="{{ route('user.orders.index',['status' => 'shipped']) }}" style ="background-color: #cfe8da" class="btn  {{ $status == 'shipped' ? 'act' : '' }}">Shipped</a>
-                        <a href="{{ route('user.orders.index',['status' => 'canceled']) }}" style ="background-color: #f5b6c6" class="btn  {{ $status == 'canceled' ? 'act' : '' }}">Canceled</a>
+                        <a href="{{ route('user.orders.index') }}" style ="background-color: #ffffff"
+                            class="btn btn-light {{ $status == 'all' ? 'act' : '' }}">All</a>
+                        <a href="{{ route('user.orders.index', ['status' => 'pending']) }}" style ="background-color:#fcdfa8"
+                            class="btn  {{ $status == 'pending' ? 'act' : '' }} ">Pending</a>
+                        <a href="{{ route('user.orders.index', ['status' => 'delivered']) }}"
+                            style ="background-color: #d9f2f2"
+                            class="btn  {{ $status == 'delivered' ? 'act' : '' }}">Deliverd</a>
+                        <a href="{{ route('user.orders.index', ['status' => 'shipped']) }}"
+                            style ="background-color: #cfe8da"
+                            class="btn  {{ $status == 'shipped' ? 'act' : '' }}">Shipped</a>
+                        <a href="{{ route('user.orders.index', ['status' => 'canceled']) }}"
+                            style ="background-color: #f5b6c6"
+                            class="btn  {{ $status == 'canceled' ? 'act' : '' }}">Canceled</a>
                     </div>
                     <table id="dataTableExample" class="table">
                         <thead>
@@ -61,10 +68,10 @@ $backgrounds = [
                         <tbody>
                             @foreach ($orders as $key => $order)
                                 <tr style="background-color: {{ $backgrounds[$order->status] }}">
-                                    <td>#{{ $order->id}}</td>
-                                    <td>{{ $order->order_id}}</td>
+                                    <td>#{{ $order->id }}</td>
+                                    <td>{{ $order->order_id }}</td>
                                     <td>
-                                        @if($order->status == 'pending')
+                                        @if ($order->status == 'pending')
                                             <span class="badge bg-warning">Pending</span>
                                         @elseif($order->status == 'shipped')
                                             <span class="badge bg-success">Shipped</span>
@@ -74,12 +81,15 @@ $backgrounds = [
                                             <span class="badge bg-danger">Cancelled</span>
                                         @endif
                                     </td>
-                                    <td>{{ $order->total_price }} $</td>
+                                    <td>
+                                        {{ number_format($order->total_price, 2, ',', '.') }}
+
+                                        $</td>
                                     <td>{{ $order->payment_type }}</td>
                                     <td>{{ $order->shipped_date ?? '-' }}</td>
                                     {{--  <td>{{ Carbon\Carbon::parse($order->created_at)->format('Y m d, H:i a') }}</td>  --}}
                                     <td>
-                                        @if($order->status == 'pending')
+                                        @if ($order->status == 'pending')
                                             <div class="spinner-grow text-warning" role="status">
                                                 <span class="visually-hidden">Loading...</span>
                                             </div>
@@ -90,15 +100,15 @@ $backgrounds = [
                                         @endif
                                     </td>
                                     <td>
-                                        @if($order->payment_status == 'not_paid')
+                                        @if ($order->payment_status == 'not_paid')
                                             <span class="badge bg-warning">Not Paid</span>
                                         @elseif($order->payment_status == 'paid')
                                             <span class="badge bg-success">Paid</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a style="background:#fff;" href="{{ route('user.orders.show',$order) }}" type="button"
-                                            class="btn  btn-icon btn-sm">
+                                        <a style="background:#fff;" href="{{ route('user.orders.show', $order) }}"
+                                            type="button" class="btn  btn-icon btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>

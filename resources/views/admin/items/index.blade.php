@@ -2,8 +2,8 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Items</li>
+            <li class="breadcrumb-item"><a href="#">{{__('translation.Dashboard')}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{__('translation.alItem')}}</li>
         </ol>
     </nav>
 
@@ -15,16 +15,15 @@
                 <div style="float: right">
                     <a href="{{ route('admin.items.create') }}" type="button" class="btn btn-inverse-primary">
                         <i data-feather="plus"></i>
-                        Add Product</a>
+                        {{__('translation.add Product ')}}</a>
                 </div>
                 @endcan
 
                 @can('item-export')
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
-                        <button type="button" class="btn btn-inverse-secondary">
-                            <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                            Export Product</button>
+                        <a href="{{route('item.ExportItems')}}" 
+                        type="button" class="btn btn-inverse-secondary">{{__('translation.ExportProduct')}}</a>
                     </div>
                 </form>
                 @endcan

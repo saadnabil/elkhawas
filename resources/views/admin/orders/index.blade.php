@@ -88,7 +88,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $order->total_price }} $</td>
-                                    <td>{{ $order->created_at ?? '-' }}</td>
+                                    <td>{{ $order->created_at->diffForHumans() ?? '-' }}</td>
                                     {{--  <td>{{ Carbon\Carbon::parse($order->created_at)->format('Y m d, H:i a') }}</td>  --}}
 
                                     <td>

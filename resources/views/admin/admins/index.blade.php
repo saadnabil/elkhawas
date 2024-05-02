@@ -19,7 +19,7 @@
                 <div style="float: right; margin-right: 10px">
                     <button type="button" class="btn btn-inverse-secondary">
                         <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                        Export Product</button>
+                        Export admins</button>
                 </div>
             </form>
             @endcan
