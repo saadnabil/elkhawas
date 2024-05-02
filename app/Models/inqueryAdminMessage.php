@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class inqueryAdminMessage extends Model
 {
     use HasFactory;
-    protected $fillable = ['admin_id', 'subject', 'message'];
+    protected $fillable = ['admin_id','user_id', 'subject', 'message'];
 
    
     public function admin() {

@@ -12,13 +12,7 @@
                     Add Role</a>
             </div>
 
-            <form action="" method="POST" enctype="multipart/form-data">
-                <div style="float: right; margin-right: 10px">
-                    <button type="button" class="btn btn-inverse-secondary">
-                        <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                        Export Product</button>
-                </div>
-            </form>
+           <br>
             <h6 class="card-title">{{ __('translation.Roles') }}</h6>
             <p class="text-muted mb-3">{{ __('translation.Here you can see all your orders in the table.') }}</p>
             <div class="table-responsive">

@@ -107,7 +107,8 @@
         @foreach ($items as $key => $item)
             <div class="col-lg-3">
                 <div class="card text-center mb-3">
-                    <div class="image-container" style=" background-image:url({{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }});">
+                    <div class="image-container"
+                     style=" background-image:url({{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }});">
                     </div>
 
                     <div class="card-body">
@@ -144,7 +145,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     @endforeach
     <div class="mt-3">
         {{ $items->links() }}

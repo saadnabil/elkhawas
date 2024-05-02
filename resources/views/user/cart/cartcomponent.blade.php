@@ -100,17 +100,10 @@
                     <h2 class="">{{ __('translation.Cart Summery') }}</h3>
                 </div>
                 <hr>
-<<<<<<< HEAD
-                
-                <div class="d-flex justify-content-between pb-2">
-                    <div><strong>Subtotal</strong></div>
-                    <div><strong>{{number_format($result,2)  }}</strong>€</div>
-=======
 
                 <div class="d-flex justify-content-between pb-2">
                     <div>{{ __('translation.Subtotal') }}</div>
                     <div>{{ $result }}€</div>
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
                 </div>
 
                 @if($user->appliedcoupon == null)

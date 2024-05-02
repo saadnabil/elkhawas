@@ -44,10 +44,6 @@
             </li>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
             @php
 
                 $messages = App\Models\Inquiry::orderBy('created_at', 'desc')->get();
@@ -137,9 +133,9 @@
                     </div>
                     <ul class="list-unstyled p-1">
                         <li class="dropdown-item py-2">
-                            <a href="/profile" class="text-body ms-0">
+                            <a href="{{route('admins.index')}}" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="user"></i>
-                                <span>Profile</span>
+                                <span>{{__('translation.Profile ')}}</span>
                             </a>
                         </li>
                         {{-- <li class="dropdown-item py-2">
@@ -148,17 +144,17 @@
           <span>Edit Profile</span>
         </a>
       </li> --}}
-                        <li class="dropdown-item py-2">
+                        {{-- <li class="dropdown-item py-2">
                             <a href="/users/home" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="repeat"></i>
                                 <span>Switch User</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li style="cursor:pointer;" onclick="event.preventDefault(); $('#logout-form').submit();"
                             class="dropdown-item py-2">
                             <a class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="log-out"></i>
-                                <span>{{ __('translation.Log Out') }}</span>
+                                <span>{{ __('translation.Logout') }}</span>
                                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                     @csrf
                                 </form>

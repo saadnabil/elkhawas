@@ -49,27 +49,32 @@ class MessageInquiresController extends Controller
 }
 
 
-public function RepleyMessageToUser(Request $request) {
+public function RepleyMessageToUser(Request $request,$userId) {
     $validator = Validator::make($request->all(), [
         'admin_id' => 'required|integer', 
+        'user_id' => 'required|integer', // Assuming you have user_id in the request
         'subject' => 'required|string|max:255', 
         'message' => 'required|string',
     ]);
     
     if ($validator->fails()) {
+        $userMessages = InqueryAdminMessage::where('user_id', $userId)->get();
+
         // Handle validation failure
         return response()->json(['errors' => $validator->errors()], 400);
     }
-
-    else{
-
-        $InquiryStore = new inqueryAdminMessage();
-
-        $InquiryStore->admin_id = $request->admin_id;
-        $InquiryStore->subject = $request->subject;
-        $InquiryStore->message = $request->message;
-
-        $save = $InquiryStore->save();
+    
+    else {
+        $inquiryStore = new InqueryAdminMessage(); // I corrected the class name to follow conventions
+        
+        $inquiryStore->admin_id = $request->admin_id;
+        $inquiryStore->user_id = $request->user_id; // Storing the user_id who sent the message
+        $inquiryStore->subject = $request->subject;
+        $inquiryStore->message = $request->message;
+        
+        $inquiryStore->save();
+    
+    
         return redirect()->back()->with('success','your message sent successfully');
 
     }

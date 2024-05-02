@@ -50,6 +50,8 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::delete('users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
         /// import user
         Route::post('users/import',  [UserController::class, 'ImportUser'])->name('AdminUser.ImportUser');
+////export item 
+Route::get('item/export', [ItemsController::class, 'ExportItems'])->name('item.ExportItems');
 
 
 
@@ -62,15 +64,13 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::get('indexMessage/{user_id}/{message_id}', [MessageInquiresController::class, 'indexMessage'])->name('admin.indexMessage');
         Route::get('messages', [MessageInquiresController::class, 'NavbarMessage'])->name('admin.NavbarMessage');
         Route::delete('messages/delete-all-read-messages', [MessageInquiresController::class, 'deleteAllReadMessages'])->name('admin.deleteAllReadMessages');
-        Route::post('messages/repley', [MessageInquiresController::class, 'RepleyMessageToUser'])->name('admin.RepleyMessageToUser');
+        Route::post('messages/repley/{userId}', [MessageInquiresController::class, 'RepleyMessageToUser'])->name('admin.RepleyMessageToUser');
 
         
 
 
 
-        //forgot pasword design
-        Route::get('forgotpassword', [UserController::class, 'forgotpassword'])->name('admin.forgotpassword');
-
+       
 
 
 
@@ -86,4 +86,7 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('login', [AdminsAuthController::class, 'showloginform'])->name('admin.showloginform');
     Route::post('login', [AdminsAuthController::class, 'login'])->name('admin.login');
     Route::post('logout', [AdminsAuthController::class, 'logout'])->name('admin.logout');
+     //forgot pasword design
+     Route::get('forgotpassword', [UserController::class, 'forgotpassword'])->name('admin.forgotpassword');
+
 });

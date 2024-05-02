@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <!-- End injected CSS -->
     <!-- Layout Styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/demo2/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree_logo.png') }}" />
     <style>
@@ -48,7 +48,7 @@
 
 <body>
     <div class="spinner-overlay" id="spinner">
-        <img src="{{ asset('elkhawas/elkhawas_images/tree_logo.png') }}" alt="Loading Spinner" class="spinner-img">
+        <img src="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" alt="Loading Spinner" class="spinner-img">
     </div>
 
     @php
@@ -107,7 +107,7 @@
                             <div class="row align-items-center">
 
                                 <div class="col-md-4 pe-md-0 text-center">
-                                    <img src="{{ asset('elkhawas/elkhawas_images/elkhawas.png') }}" height="200px"
+                                    <img src="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" height="200px"
                                         width="100%" />
                                 </div>
                                 <div class="col-md-8 ps-md-0">

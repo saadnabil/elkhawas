@@ -28,6 +28,8 @@ return [
     'Back' => 'Back',
     'Save' => 'Save',
     'Import Product' => 'Import Product',
+    'ExportProduct' => 'Export Product',
+
     'Imported Successfully' => 'Imported Successfully',
 
     'Dashboard' => 'Dashboard',
@@ -141,5 +143,10 @@ return [
     'Logout' => 'Logout',
     'Admin List' => 'Admin List',
     'Admin Jobs' => 'Admin Jobs',
-    'Admin List' => 'Admin List'
+    'Admin List' => 'Admin List',
+    'Profile ' => 'Profile ',
+    'alItem ' => 'All Items ',
+    'add Product ' => 'Add Product ',
+    
+    
 ];

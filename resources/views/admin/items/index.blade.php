@@ -2,8 +2,8 @@
 @section('content')
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All Items</li>
+            <li class="breadcrumb-item"><a href="#">{{__('translation.Dashboard')}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{__('translation.alItem')}}</li>
         </ol>
     </nav>
 
@@ -15,12 +15,12 @@
                 <div style="float: right">
                     <a href="{{ route('admin.items.create') }}" type="button" class="btn btn-inverse-primary">
                         <i data-feather="plus"></i>
-                        Add Product</a>
+                        {{__('translation.add Product ')}}</a>
                 </div>
 
                     <div style="float: right; margin-right: 10px">
-                        <a href="{{route('item.ItemExport')}}" 
-                        type="button" class="btn btn-inverse-secondary">Export Items</a>
+                        <a href="{{route('item.ExportItems')}}" 
+                        type="button" class="btn btn-inverse-secondary">{{__('translation.ExportProduct')}}</a>
                     </div>
                 <h6 class="card-title">{{ __('translation.Items') }}</h6>
                 <p class="text-muted mb-3">{{ __('translation.Here you can see all your items in the table.') }}</p>
@@ -56,10 +56,10 @@
                                     <td style="color: goldenrod;">{{ $item->total_price }} $</td>
                                     <td>
                                         <a href="{{ route('admin.items.edit', $item) }}" type="button"
-                                            class="btn btn-white btn-icon">
+                                            class="btn btn-warning btn-icon">
                                             <i data-feather="check-square"></i>
                                         </a>
-                                        <a onclick="" class="btn btn-white btn-icon confirm-delete">
+                                        <a onclick="" class="btn btn-danger btn-icon confirm-delete">
                                             <i data-feather="trash-2"></i>
                                         </a>
                                         <form action="{{ route('admin.items.destroy', $item) }}" method="POST">

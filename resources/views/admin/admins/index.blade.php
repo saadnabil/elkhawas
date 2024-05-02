@@ -12,13 +12,7 @@
                     {{ __('translation.Add') }}</a>
             </div>
 
-            <form action="" method="POST" enctype="multipart/form-data">
-                <div style="float: right; margin-right: 10px">
-                    <button type="button" class="btn btn-inverse-secondary">
-                        <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                        Export Product</button>
-                </div>
-            </form>
+            
 
             <h6 class="card-title">{{ __('translation.Admins') }}</h6>
             <p class="text-muted mb-3">{{ __('translation.Here you can see all your admins in the table.') }}</p>
