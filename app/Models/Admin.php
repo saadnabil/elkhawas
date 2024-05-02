@@ -19,10 +19,7 @@ class Admin extends Authenticatable
         // Add other fillable attributes here if any
     ];
 
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
+   
     public function getUsers(){
         return $this->hasMany(User::class);
     }
