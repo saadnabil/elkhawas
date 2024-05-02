@@ -44,10 +44,6 @@
             </li>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e555620ded347af133c28ec4bd61fdadbc4685c
             @php
 
                 $messages = App\Models\Inquiry::orderBy('created_at', 'desc')->get();
