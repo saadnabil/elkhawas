@@ -16,17 +16,14 @@ class UserCheckAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check()){
+
+         if(!auth()->check()){
             return redirect()->route('user.showloginform');
         }
-
-
         if (Auth::user()->status == 0) {
             Auth::logout(); // Logout the user if inactive
-            return redirect()->route('user.designInactivePage')->with('error', 'Your account is inactive. Please contact the administrator.');
+            return redirect()->route('user.deacivatedAccount')->with('error', 'Your account is inactive. Please contact the administrator.');
         }
-
-
         return $next($request);
     }
 }

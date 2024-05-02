@@ -13,11 +13,12 @@ use App\Http\Controllers\Users\UserContactUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'dashboard'], function(){
-    Route::group(['middleware'=> ['admincheckauth']], function(){
+
+    Route::group(['middleware'=> ['auth:admin']], function(){
 
        Route::get('/', [DashobardController::class, 'index'])->name('admin.dashboard.index');
 
-       Route::resource('admins', AdminsController::class);
+       Route::resource('admins', AdminsController::class)->except('show');
 
        Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
@@ -47,8 +48,6 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::put('users/update/{id}', [UserController::class, 'update'])->name('users.update');
         Route::delete('users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-
-
          ///////Contact Us routes
          Route::get('ContactUs', [AdminContactUsController::class, 'index'])->name('ContactUs.index');
          Route::post('ContactUs/store', [AdminContactUsController::class, 'store'])->name('ContactUs.store');
@@ -56,7 +55,10 @@ Route::group(['prefix' => 'dashboard'], function(){
          Route::put('ContactUs/update/{id}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
          Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
         Route::post('items/upload-excel',  [ExcelImportController::class, 'import'])->name('admins.itemsexcelimport');
+
     });
+
+
     Route::get('login', [AdminsAuthController::class, 'showloginform'])->name('admin.showloginform');
     Route::post('login', [AdminsAuthController::class, 'login'])->name('admin.login');
     Route::post('logout', [AdminsAuthController::class, 'logout'])->name('admin.logout');

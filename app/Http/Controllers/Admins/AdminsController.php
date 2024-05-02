@@ -14,9 +14,19 @@ class AdminsController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    function __construct()
+    {
+         $this->middleware('permission:admin-list', ['only' => ['index']]);
+         $this->middleware('permission:admin-create', ['only' => ['create','store']]);
+         $this->middleware('permission:admin-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:admin-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:admin-export', ['only' => ['export']]);
+    }
+
     public function index()
     {
-        //
         $admins = Admin::latest()->get();
         return view('admin.admins.index',compact('admins'));
 

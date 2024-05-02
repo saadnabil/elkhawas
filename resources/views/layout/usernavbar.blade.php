@@ -3,17 +3,17 @@
         <i data-feather="menu"></i>
     </a>
     <div class="navbar-content">
-        <form class="search-form">
+        {{--  <form class="search-form">
             <div class="input-group">
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                <input type="text" name="search" class="form-control" id="navbarForm" placeholder="{{ __('translation.Search here...') }}">
             </div>
-        </form>
+        </form>  --}}
 
         @if(!in_array(request()->url() , [route('carts.details'), route('carts.checkoutform')]))
-        <section id="usercart" style="padding-top: 10px;">
+        <section class="" id="usercart" style="padding-top: 10px;">
             @include('layout.usercart')
         </section>
         @endif

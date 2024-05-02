@@ -109,12 +109,15 @@
                                 {{ $message }}</div>
                         @enderror
                         <br>
+                        @can('order-update-status')
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">{{ __('translation.Update') }}</button>
                         </div>
+                        @endcan
                     </form>
                 </div>
             </div>
+            @can('order-send-invoice')
             <div class="card mt-3">
                 <div class="card-body">
                     <h2 class="h4 mb-3">{{ __('translation.Send Inovice Email') }}</h2>
@@ -138,6 +141,7 @@
                     </div>
                 </div>
             </div>
+            @endcan
         </div>
     </div>
 @endsection

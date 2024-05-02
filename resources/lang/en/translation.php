@@ -141,5 +141,7 @@ return [
     'Logout' => 'Logout',
     'Admin List' => 'Admin List',
     'Admin Jobs' => 'Admin Jobs',
-    'Admin List' => 'Admin List'
+    'Admin List' => 'Admin List',
+    'Search here...' => 'Search here...',
+    'Oops! No products matched your search.' => 'Oops! No products matched your search.'
 ];
