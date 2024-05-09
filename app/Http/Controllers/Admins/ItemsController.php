@@ -9,6 +9,9 @@ use App\Http\Requests\Admin\ValidateItemForm;
 use App\Imports\ItemsImport;
 use App\Models\Inquiry;
 use App\Models\Item;
+use App\Models\ItemTax;
+use App\Models\ItemType;
+use App\Models\Tax;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -29,7 +32,7 @@ class ItemsController extends Controller
      }
     public function index()
     {
-        $items = Item::latest()->get();
+        $items = Item::with('type')->latest()->get();
         return view('admin.items.index',compact('items'));
     }
 
@@ -43,10 +46,11 @@ class ItemsController extends Controller
     public function create()
     {
         $langs = availableLanguages();
-
         $item = new Item();
+        $types = ItemType::get();
+        $taxes = ItemTax::orderBy('tax','asc')->get();
         $action = route('admin.items.store');
-        return view('admin.items.form',compact('langs','item','action'));
+        return view('admin.items.form',compact('langs','item','action','taxes','types'));
     }
 
     /**
@@ -58,6 +62,8 @@ class ItemsController extends Controller
         if(isset($data['image'])){
             $data['image'] = FileHelper::upload_file('items', $data['image']);
         }
+        $total_price = $data['units_number'] * $data['unit_price'];
+        $data['total_price'] =  $total_price +  ($total_price * $data['tax'] / 100);
         Item::create($data);
         session()->flash('success', __('translation.Item created successfully'));
         return redirect()->route('admin.items.index');
@@ -76,11 +82,12 @@ class ItemsController extends Controller
      */
     public function edit(Item $item)
     {
-
         $langs = availableLanguages();
         $action = route('admin.items.update', $item);
+        $taxes = ItemTax::orderBy('tax','asc')->get();
         $method = true;
-        return view('admin.items.form',compact('langs','item','action','method'));
+        $types = ItemType::get();
+        return view('admin.items.form',compact('langs','item','action','method','taxes','types'));
     }
 
     /**
@@ -92,12 +99,14 @@ class ItemsController extends Controller
         if(isset($data['image'])){
             $data['image'] = FileHelper::update_file('items', $data['image'],$item->image);
         }
+        $total_price = $data['units_number'] * $data['unit_price'];
+        $data['total_price'] =  $total_price +  ($total_price * $data['tax'] / 100);
         $item->update($data);
         session()->flash('success', __('translation.Item updated successfully'));
         return redirect()->route('admin.items.index');
     }
 
-  
+
 
     /**
      * Remove the specified resource from storage.

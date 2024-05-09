@@ -109,7 +109,7 @@
                                 {{ $message }}</div>
                         @enderror
                         <br>
-                        @can('order-update-status')
+                        @can('order-edit-status')
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">{{ __('translation.Update') }}</button>
                         </div>

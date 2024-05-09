@@ -106,6 +106,23 @@
 
                         <div class="col-sm-4">
                             <div class="mb-3">
+                                <label class="form-label">{{ __('translation.Status') }}</label>
+                                <select name="status" class="form-control" id="exampleFormControlSelect2">
+                                    <option value="">{{ __('translation.Select') }}</option>
+                                    <option value="1" {{ old('status', $admin->status) == 1 ? 'selected' : '-' }}>
+                                        Active</option>
+                                    <option value="0" {{ old('status', $admin->status) == 0 ? 'selected' : '-' }}>
+                                        Inactive</option>
+                                </select>
+                                @error('status')
+                                    <div class="mt-1" style="font-size: 12px;color:red;font-weight:bold;">
+                                        {{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-3">
                                 <label class="form-label">{{ __('translation.Image') }}</label>
                                 <input name="image" id="imageInput" type="file" class="form-control">
                                 @error('image')

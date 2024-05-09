@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Jobs\SendEmailJob;
 use App\Mail\SendOrderEmail;
+use App\Models\Message;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -25,6 +26,15 @@ Route::get('TestOrderTrack', function () {
     return view('orderTrac');
     
 });
+
+Route::get('test-message', function(){
+    $messages = Message::with('sender','reciever')->get();
+    return response()->json($messages);
+});
+
+
+
+
 
 
 

@@ -34,13 +34,33 @@ class CreatePermissions extends Seeder
             'order-print-invoice',
             'order-send-invoice',
             'order-edit-status',
-            'product-export',
+            'order-export',
 
             'role-list',
             'role-create',
             'role-edit',
             'role-delete',
             'role-export',
+
+
+            'item-type-list',
+            'item-type-create',
+            'item-type-edit',
+            'item-type-delete',
+            'item-type-export',
+
+
+            'item-tax-list',
+            'item-tax-create',
+            'item-tax-edit',
+            'item-tax-delete',
+            'item-tax-export',
+
+            'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',
+            'user-export',
 
         ];
         foreach ($permissions as $permission) {

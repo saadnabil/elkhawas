@@ -2,6 +2,7 @@
 use App\Http\Controllers\Users\AddressesController;
 use App\Http\Controllers\Users\CartsController;
 use App\Http\Controllers\Users\changeProfileImage;
+use App\Http\Controllers\Users\ChatController;
 use App\Http\Controllers\Users\CouponsController;
 use App\Http\Controllers\Users\ItemsController;
 use App\Http\Controllers\Users\OrdersController;
@@ -12,7 +13,13 @@ use App\Http\Controllers\Users\WishlistController;
 use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware'=> ['usercheckauth']], function(){
+
+
+
+       //items
        Route::get('items' , [ItemsController::class, 'index'])->name('user.items.index');
+
+       //cart operations
        route::post('carts/add', [CartsController::class, 'add'])->name('carts.add');
        route::post('carts/applycoupon', [CartsController::class, 'applycoupon'])->name('carts.applycoupon');
        route::get('carts/disapplycoupon', [CartsController::class, 'disapplycoupon'])->name('carts.disapplycoupon');
@@ -24,22 +31,25 @@ Route::group(['prefix' => 'user'], function(){
        route::post('carts/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
        route::get('carts/thankyou', [CartsController::class, 'thankyou'])->name('carts.thankyou');
 
+
+       Route::get('support', [ChatController::class, 'chatform']);
+
        /// inactive design
        route::get('user/inactive', [CartsController::class, 'inactiveAccount'])->name('user.inactiveAccount');
 
-          ///// Inquery Message
-          Route::get('indexMessage/{admin_id}/{message_id}', [UserMessageController::class, 'indexMessageUser'])->name('user.indexMessageUser');
-          Route::delete('messages/delete-all-read-messages', [UserMessageController::class, 'deleteAllReadMessages'])->name('user.deleteAllReadMessages');
+        ///// Inquery Message
+        Route::get('indexMessage/{admin_id}/{message_id}', [UserMessageController::class, 'indexMessageUser'])->name('user.indexMessageUser');
+        Route::delete('messages/delete-all-read-messages', [UserMessageController::class, 'deleteAllReadMessages'])->name('user.deleteAllReadMessages');
 
       //     Route::post('storMessage', [UserMessageController::class, 'storMessage'])->name('user.storMessage');
       //   Route::get('messages', [UserMessageController::class, 'NavbarMessage'])->name('user.NavbarMessage');
 
 
 
- //////User change image
- route::get('user/showProfileImage', [changeProfileImage::class, 'showProfileImage'])->name('user.showProfileImage');
+        //////User change image
+        route::get('user/showProfileImage', [changeProfileImage::class, 'showProfileImage'])->name('user.showProfileImage');
 
- route::post('profileImage', [changeProfileImage::class, 'UserChangeImage'])->name('user.UserChangeImage');
+        route::post('profileImage', [changeProfileImage::class, 'UserChangeImage'])->name('user.UserChangeImage');
 
 
        route::resource('orders', OrdersController::class)->names([
@@ -71,4 +81,3 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('Password', [UsersAuthController::class , 'UserShowPassword'])->name('user.UserShowPassword');
     Route::post('password/change', [UsersAuthController::class , 'UserChangePassword'])->name('user.UserChangePassword');
 });
-

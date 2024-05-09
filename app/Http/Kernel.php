@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminCheckAuth;
-use App\Http\Middleware\Fesa;
+use App\Http\Middleware\AdminCheckStatus;
 use App\Http\Middleware\HandleLang;
 use App\Http\Middleware\UserCheckAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -77,7 +76,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admincheckauth' =>AdminCheckAuth::class,
+        'admincheckstatus' =>AdminCheckStatus::class,
         'usercheckauth' =>UserCheckAuth::class,
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,

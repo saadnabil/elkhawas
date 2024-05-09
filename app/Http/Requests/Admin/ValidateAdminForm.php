@@ -33,6 +33,7 @@ class ValidateAdminForm extends FormRequest
                 'status' => ['required' ],
                 'image' => ['nullable', 'image' , 'mimes:png,jpg,jpeg,gif,svg'],
                 'role' => ['required' , 'string'],
+                'status' => ['required','numeric','in:0,1']
             ];
         }else{
             return [
@@ -44,6 +45,7 @@ class ValidateAdminForm extends FormRequest
                 'status' => ['required' ],
                 'image' => ['nullable', 'image' , 'mimes:png,jpg,jpeg,gif,svg'],
                 'role' => ['required' , 'string'],
+                'status' => ['required','numeric','in:0,1']
             ];
         }
     }

@@ -20,7 +20,7 @@ class OrdersController extends Controller
         $this->middleware('permission:order-show', ['only' => ['show']]);
         $this->middleware('permission:order-export', ['only' => ['export']]);
         $this->middleware('permission:order-send-invoice', ['only' => ['sendInvoice']]);
-        $this->middleware('permission:order-update-status', ['only' => ['updateStatus']]);
+        $this->middleware('permission:order-edit-status', ['only' => ['updateStatus']]);
 
 
     }

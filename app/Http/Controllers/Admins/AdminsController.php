@@ -15,7 +15,6 @@ class AdminsController extends Controller
      * Display a listing of the resource.
      */
 
-
     function __construct()
     {
          $this->middleware('permission:admin-list', ['only' => ['index']]);
@@ -92,8 +91,10 @@ class AdminsController extends Controller
         unset($data['role']);
         unset($data['repassword']);
         if(isset($data['password'])){
+
             $data['password'] = bcrypt($data['password']);
         }
+        unset($data['password']);
         $admin->update($data);
         $admin->roles()->detach();
         $admin->assignRole($request->input('role'));
