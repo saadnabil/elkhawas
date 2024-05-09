@@ -24,12 +24,14 @@ class ValidateItemForm extends FormRequest
     {
         return [
             'title.*' => ['required', 'string' ,'max:250'],
-            'item_name.*' => ['required','string','max:250'],
+            'item_type_id' => ['required','numeric'],
             'description.*' => ['required', 'string'],
             'unit.*' => ['required', 'string' ,'max:250'],
             'units_number' => ['required', 'numeric' ,'min:1'],
+            'total_price' => ['required', 'numeric'],
+            'tax' => ['required', 'numeric' ,'min:0'],
             'unit_price' => ['required', 'numeric' ,'min:1'],
-            'total_price' => ['required', 'numeric' ,'min:1'],
+            'quantity' => ['required', 'numeric' ,'min:1'],
             'image' => ['nullable', 'image', 'mimes:png,jpg,giv,svg'],
         ];
     }

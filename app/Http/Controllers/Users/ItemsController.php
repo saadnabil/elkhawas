@@ -32,10 +32,6 @@ class ItemsController extends Controller
                 ->orWhereRaw('json_unquote(json_extract(title, "$.en")) COLLATE utf8mb4_unicode_ci like ?', [$search])
                 ->orWhereRaw('json_unquote(json_extract(title, "$.de")) COLLATE utf8mb4_unicode_ci like ?', [$search])
 
-                ->orWhereRaw('json_unquote(json_extract(item_name, "$.ar")) COLLATE utf8mb4_unicode_ci like ?', [$search])
-                ->orWhereRaw('json_unquote(json_extract(item_name, "$.en")) COLLATE utf8mb4_unicode_ci like ?', [$search])
-                ->orWhereRaw('json_unquote(json_extract(item_name, "$.de")) COLLATE utf8mb4_unicode_ci like ?', [$search])
-
                 ->orWhereRaw('json_unquote(json_extract(unit, "$.ar")) COLLATE utf8mb4_unicode_ci like ?', [$search])
                 ->orWhereRaw('json_unquote(json_extract(unit, "$.en")) COLLATE utf8mb4_unicode_ci like ?', [$search])
                 ->orWhereRaw('json_unquote(json_extract(unit, "$.de")) COLLATE utf8mb4_unicode_ci like ?', [$search])

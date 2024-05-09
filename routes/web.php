@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Jobs\SendEmailJob;
 use App\Mail\SendOrderEmail;
+use App\Models\Message;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -19,6 +20,15 @@ Route::get('email-test', function(){
     $details['order'] = $order;
     dispatch(new SendEmailJob($details));
 });
+
+Route::get('test-message', function(){
+    $messages = Message::with('sender','reciever')->get();
+    return response()->json($messages);
+});
+
+
+
+
 
 
 

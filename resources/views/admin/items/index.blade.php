@@ -3,7 +3,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">{{__('translation.Dashboard')}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{__('translation.alItem')}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{__('translation.All Items')}}</li>
         </ol>
     </nav>
 
@@ -15,14 +15,14 @@
                 <div style="float: right">
                     <a href="{{ route('admin.items.create') }}" type="button" class="btn btn-inverse-primary">
                         <i data-feather="plus"></i>
-                        {{__('translation.add Product ')}}</a>
+                        {{__('translation.Add')}}</a>
                 </div>
                 @endcan
 
                 @can('item-export')
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
-                        <a href="{{route('item.ExportItems')}}" 
+                        <a href="{{route('item.ExportItems')}}"
                         type="button" class="btn btn-inverse-secondary">{{__('translation.ExportProduct')}}</a>
                     </div>
                 </form>
@@ -36,7 +36,7 @@
                         <thead>
                             <tr>
                                 <th>{{ __('translation.Items') }}</th>
-                                <th>{{ __('translation.Item Name') }}</th>
+                                <th>{{ __('translation.Type') }}</th>
                                 <th>{{ __('translation.Unit') }}</th>
                                 <th>{{ __('translation.Unit Price') }}</th>
                                 <th>{{ __('translation.pieces') }}</th>
@@ -55,11 +55,11 @@
                                         {{ $item->title[app()->getLocale()] }}
                                     </td>
 
-                                    <td>{{ $item->item_name[app()->getLocale()]}}</td>
+                                    <td>{{ $item->type->title[app()->getLocale()]}}</td>
                                     <td>{{ $item->unit[app()->getLocale()] }}</td>
                                     <td>{{ $item->unit_price }} $</td>
                                     <td>{{ $item->units_number }}</td>
-                                    <td style="color: goldenrod;">{{ $item->total_price }} $</td>
+                                    <td style="color: goldenrod;">   €{{ number_format( $item->total_price, 2, ',', '.') }}</td>
                                     <td>
                                         @can('item-edit')
                                             <a href="{{ route('admin.items.edit', $item) }}" type="button"

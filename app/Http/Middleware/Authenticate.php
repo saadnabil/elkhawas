@@ -13,6 +13,19 @@ class Authenticate extends Middleware
 
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('user.showloginform');
+        // return $request->expectsJson() ? null : route('user.showloginform');
+
+        if (!$request->expectsJson()) {
+            // Get the segments of the URL
+            $segments = $request->segments();
+            // Check if the URL has at least two segments and the second segment is "dashboard"
+            if (count($segments) >= 1 && $segments[0] === 'dashboard') {
+                return route('admin.showloginform'); // Redirect to the admin login page
+            }elseif(count($segments) >= 1 && $segments[0] === 'user'){
+                return route('user.showloginform'); // Redirect to the user login page
+            }
+        }
+
+        return null; // For other cases, return null to prevent redirection
     }
 }

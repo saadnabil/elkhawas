@@ -21,19 +21,26 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-
-            'name' => 'required|string|max:250',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,gif,svg',
-            'usercode' => 'nullable',
-            'status' => 'nullable',
-            'password' => 'required',
-            'confirmpassword' => 'required|same:password',
-            
-
-            //
-        ];
-    }
+        $id = $this->route('user')->id ?? null;
+        if(request()->isMethod('post')){
+            return [
+                'name' => 'required|string|max:250',
+                'email' => 'required|email|unique:users',
+                'phone' => 'required',
+                'image' => 'nullable|image|mimes:png,jpg,gif,svg',
+                'status' => 'nullable',
+                'password' =>  ['required' , 'string'],
+                'confirmpassword' =>  ['required_with:password' , 'string','same:password'],
+            ];
+        }else
+            return [
+                'name' => 'required|string|max:250',
+                'email' => ['required' , 'email' ,'unique:users,email,'.$id],
+                'phone' => 'required',
+                'image' => 'nullable|image|mimes:png,jpg,gif,svg',
+                'status' => 'nullable',
+                'password' =>  ['nullable' , 'string'],
+                'confirmpassword' =>  ['nullable','required_with:password' , 'string','same:password'],
+            ];
+        }
 }

@@ -11,9 +11,9 @@
                             href="shop-single-v1.html">{{ $wishlist->item->title[app()->getLocale()] }}
                         </a></h4>
                     <div class="fs-lg text-accent pt-2">{{ __('translation.Unit Price') }} : <span
-                            class="badge bg-info">{{ $wishlist->item->unit_price }} €</span></div>
+                            class="badge bg-info">€{{ number_format( $wishlist->item->unit_price, 2, ',', '.') }}</span></div>
                     <div class="fs-lg text-accent pt-2">{{ __('translation.Total Price') }} : <span
-                            class="badge bg-primary"> {{ $wishlist->item->total_price }} €</span>
+                            class="badge bg-primary"> €{{ number_format($wishlist->item->total_price , 2, ',', '.') }}</span>
                     </div>
                 </div>
             </div>

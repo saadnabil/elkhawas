@@ -20,7 +20,7 @@
             <div class="col-md-6 text-center">
             <div class="card">
             <div class="card-body">
-           
+
                 <img src="{{asset('elkhawas/elkhawas_images/elkhawas.png')}}" alt="Logo" class="logo mb-4">
                 <div class="card">
                     <div class="card-body">

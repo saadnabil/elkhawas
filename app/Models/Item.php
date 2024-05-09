@@ -22,6 +22,10 @@ class Item extends Model
         return $this->hasOne(Wishlist::class)->where('user_id', auth()->user()->id);
     }
 
+    public function type(){
+        return $this->belongsTo(ItemType::class, 'item_type_id')->withTrashed();;
+    }
+
     // Accessor to retrieve translated titles as an array
     public function getTitleAttribute($value)
     {
@@ -52,16 +56,9 @@ class Item extends Model
 
 
 
-    public function setItemNameAttribute($value)
-    {
-        $this->attributes['item_name'] = json_encode(array_map('trim', $value));
-    }
 
-    // Accessor to retrieve translated titles as an array
-    public function getItemNameAttribute($value)
-    {
-        return json_decode($value, true)?: [];
-    }
+
+
 
 
 }

@@ -30,7 +30,7 @@
                                     <ul class="list-unstyled">
                                         <li style="">
                                             <strong style="">{{ $cartitem->item->title[app()->getLocale()] }} <br/> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
-                                                    €{{ $cartitem->item->total_price }}</span></strong>
+                                                €{{ number_format( $cartitem->item->total_price, 2, ',', '.') }}</span></strong>
                                         </li>
                                     </ul>
                                     <br>

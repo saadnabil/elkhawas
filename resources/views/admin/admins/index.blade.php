@@ -26,6 +26,7 @@
 
             <h6 class="card-title">{{ __('translation.Admins') }}</h6>
             <p class="text-muted mb-3">{{ __('translation.Here you can see all your admins in the table.') }}</p>
+
             <div class="table-responsive">
                 <table id="dataTableExample" class="table">
                     <thead>

@@ -35,17 +35,25 @@
 
             @can('item-list')
               <li class="nav-item">
-                <a href="{{ route('admin.items.index') }}" class="nav-link">{{ __('translation.Product List') }}</a>
+                <a href="{{ route('admin.items.index') }}" class="nav-link">{{ __('translation.Items list') }}</a>
               </li>
             @endcan
+
+            @can('item-type-list')
+              <li class="nav-item">
+                <a href="{{ route('itemtypes.index') }}" class="nav-link">{{ __('translation.Items types list') }}</a>
+              </li>
+            @endcan
+
+            @can('item-tax-list')
+            <li class="nav-item">
+              <a href="{{ route('itemtaxes.index') }}" class="nav-link">{{ __('translation.Items taxes list') }}</a>
+            </li>
+          @endcan
 
             </ul>
           </div>
         </li>
-
-
-
-
 
         @can('order-list')
         <li class="nav-item nav-category">{{ __('translation.Orders') }}</li>
@@ -98,7 +106,7 @@
 
 
 
-
+        @can('user-list')
         <li class="nav-item nav-category">{{ __('translation.user') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#user" role="button" aria-expanded="false" aria-controls="user">
@@ -114,6 +122,7 @@
             </ul>
           </div>
         </li>
+        @endcan
 
 
         <li class="nav-item nav-category">{{ __('translation.Pages') }}</li>
