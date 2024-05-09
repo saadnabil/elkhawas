@@ -30,6 +30,7 @@ class ValidateAdminForm extends FormRequest
                 'password' => ['required' , 'string'],
                 'repassword' => ['required_with:password' , 'string','same:password'],
                 'phone' => ['required' , 'string' ],
+                'status' => ['required' ],
                 'image' => ['nullable', 'image' , 'mimes:png,jpg,jpeg,gif,svg'],
                 'role' => ['required' , 'string'],
             ];
@@ -40,6 +41,7 @@ class ValidateAdminForm extends FormRequest
                 'password' => ['nullable' , 'string'],
                 'repassword' => ['nullable','required_with:password', 'string','same:password'],
                 'phone' => ['required' , 'string' ],
+                'status' => ['required' ],
                 'image' => ['nullable', 'image' , 'mimes:png,jpg,jpeg,gif,svg'],
                 'role' => ['required' , 'string'],
             ];

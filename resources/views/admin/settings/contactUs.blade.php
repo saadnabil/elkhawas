@@ -20,7 +20,7 @@
                     </div>
                 @endif
 
-               <form class="forms-sample" action="{{ route('ContactUs.update') }}" method="POST">
+               <form class="forms-sample" action="{{ $action }}" method="POST">
 
                     @csrf
                     @method('PUT')
@@ -30,7 +30,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control" id="exampleInputUsername1"
-                                    value="{{ $contact->phone }}" autocomplete="off" placeholder="Phone">
+                                    value="{{ old('phone', $contact->phone) }}" autocomplete="off" placeholder="Phone">
                             </div>
                         </div>
 
@@ -172,18 +172,18 @@
                 </div>
                 </td>
 
-                <div style="">
+                {{-- <div style="">
                     <form id="delete-form-{{ $show->id }}" action="{{ route('ContactUs.destroy', $show->id) }}"
                         method="POST">
                         @method('DELETE')
                         @csrf
 
-                        {{-- <button type="button" class="btn btn-danger btn-icon delete-btn"
+                        <button type="button" class="btn btn-danger btn-icon delete-btn"
                             data-user-id="{{ $show->id }}">
                             <i data-feather="trash-2"></i>
-                        </button> --}}
+                        </button>
                     </form>
-                </div>
+                </div> --}}
                 @endforeach
 
 

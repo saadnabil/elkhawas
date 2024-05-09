@@ -36,6 +36,7 @@ class OrdersController extends Controller
     }
 
     public function show(Order $order){
+
         $order = $order->load('order_details.item','address','coupon','user');
         $user = auth()->user();
         return view('admin.orders.show',compact('order','user'));

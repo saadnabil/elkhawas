@@ -20,6 +20,12 @@ Route::get('email-test', function(){
     dispatch(new SendEmailJob($details));
 });
 
+Route::get('TestOrderTrack', function () {
+
+    return view('orderTrac');
+    
+});
+
 
 
 

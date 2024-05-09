@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h6 class="card-title">Create Products</h6>
+                <h6 class="card-title">Create Roles</h6>
                 <form action="{{ $action }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if (isset($method))

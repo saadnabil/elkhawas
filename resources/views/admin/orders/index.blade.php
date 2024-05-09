@@ -15,14 +15,17 @@
     </style>
 @endpush
 @section('content')
+
     <div class="col-md-12 ">
+
         <div class="card">
+        
             <div class="card-body">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
                         <button type="button" class="btn btn-inverse-secondary">
                             <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                            Export Product</button>
+                            Export Orders</button>
                     </div>
                 </form>
                 <h6 class="card-title">{{ __('translation.Orders') }}</h6>

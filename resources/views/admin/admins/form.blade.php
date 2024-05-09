@@ -87,6 +87,23 @@
                             </div>
                         </div>
 
+  <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label class="form-label">status</label>
+                                <select name="status" class="form-control" id="exampleFormControlSelect2">
+                                    <option value="" {{ old('status', $admin->status) == '' ? 'selected' : '-' }}>
+                                        select</option>
+                                    <option value="1" {{ old('status', $admin->status) == '1' ? 'selected' : '-' }}>
+                                        Active</option>
+                                    <option value="0" {{ old('status', $admin->status) == '0' ? 'selected' : '-' }}>
+                                        Inactive</option>
+                                </select>
+                            </div>
+                        </div><!-- Col -->
+
+
+
+
                         <div class="col-sm-4">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('translation.Image') }}</label>

@@ -14,12 +14,9 @@ class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-    protected $fillable = [
-        '[name]',
-        // Add other fillable attributes here if any
-    ];
 
-   
+    protected $guarded = [];
+
     public function getUsers(){
         return $this->hasMany(User::class);
     }

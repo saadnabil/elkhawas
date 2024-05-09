@@ -76,10 +76,10 @@ Route::get('item/export', [ItemsController::class, 'ExportItems'])->name('item.E
 
          ///////Contact Us routes
          Route::get('ContactUs', [AdminContactUsController::class, 'index'])->name('ContactUs.index');
-         Route::post('ContactUs/store', [AdminContactUsController::class, 'store'])->name('ContactUs.store');
-         Route::get('ContactUs/edit/{id}', [AdminContactUsController::class, 'edit'])->name('ContactUs.edit');
-         Route::put('ContactUs/update}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
-         Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
+         Route::put('ContactUs/update', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
+
+
+         
         Route::post('items/upload-excel',  [ExcelImportController::class, 'import'])->name('admins.itemsexcelimport');
 
     });
