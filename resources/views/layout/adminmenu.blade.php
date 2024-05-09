@@ -39,10 +39,6 @@
               </li>
             @endcan
 
-<<<<<<< HEAD
-            
-            
-=======
             @can('item-type-list')
               <li class="nav-item">
                 <a href="{{ route('itemtypes.index') }}" class="nav-link">{{ __('translation.Items types list') }}</a>
@@ -54,7 +50,6 @@
               <a href="{{ route('itemtaxes.index') }}" class="nav-link">{{ __('translation.Items taxes list') }}</a>
             </li>
           @endcan
->>>>>>> 41cf493d05c29fff2c06d5fe828deb317369b467
 
             </ul>
           </div>
