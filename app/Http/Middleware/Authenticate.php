@@ -13,9 +13,6 @@ class Authenticate extends Middleware
 
     protected function redirectTo(Request $request): ?string
     {
-<<<<<<< HEAD
-        return $request->expectsJson() ? null : route('admin.login');
-=======
         // return $request->expectsJson() ? null : route('user.showloginform');
 
         if (!$request->expectsJson()) {
@@ -30,6 +27,5 @@ class Authenticate extends Middleware
         }
 
         return null; // For other cases, return null to prevent redirection
->>>>>>> 41cf493d05c29fff2c06d5fe828deb317369b467
     }
 }

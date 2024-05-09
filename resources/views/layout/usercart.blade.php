@@ -22,13 +22,6 @@
                     <div class="info-block block-info clearfix">
                         <div class="items col-12 clearfix">
                             @foreach ($cartitems as $key => $cartitem)
-<<<<<<< HEAD
-                                <div class="info-block block-info clearfix mb-3">
-                                    <div class="square-box float-start " style="margin-right:5px;">
-                                        <img src="{{ url('storage/' . $cartitem->item->image) }}" width="60"
-                                            height="60" alt="" class="productImage">
-                                    </div>
-=======
                             <div class="info-block block-info clearfix mb-3">
                                 <div class="square-box float-start " style="margin-right:5px;">
                                     <img src="{{ url('storage/'.$cartitem->item->image )  }}" width="60" height="60"
@@ -42,7 +35,6 @@
                                                 €{{ number_format( $cartitem->item->total_price, 2, ',', '.') }}</span></strong>
                                         </li>
                                     </ul>
->>>>>>> 41cf493d05c29fff2c06d5fe828deb317369b467
                                     <br>
                                     <div class="product-item ">
                                         <ul class="list-unstyled">
