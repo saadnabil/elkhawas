@@ -27,6 +27,15 @@ Route::get('TestOrderTrack', function () {
     
 });
 
+
+Route::get('chat', function () {
+
+    return view('chat');
+    
+});
+
+
+
 Route::get('test-message', function(){
     $messages = Message::with('sender','reciever')->get();
     return response()->json($messages);
