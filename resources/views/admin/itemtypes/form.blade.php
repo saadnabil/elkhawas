@@ -16,7 +16,6 @@
                                     <label class="form-label">{{ __('translation.Title') }}
                                         ({{ $lang }})
                                     </label>
-
                                     <input required autocomplete="off" name="title[{{ $lang }}]"
                                         value="{{ old('title.' . $lang, isset($itemtype->title[$lang]) ? $itemtype->title[$lang] : '') }}"
                                         type="text" class="form-control"

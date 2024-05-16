@@ -42,16 +42,16 @@ class OrdersController extends Controller
         $data = $request->validated();
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
 
-        //check cart is empty
+        /** check cart is empty */
         if(count($cartitems)==0){
             session()->flash('error', __('translation.Oops! It seems like your cart is empty. Please add items to your cart before proceeding.'));
             return redirect()->back();
         }
 
-        //load user with applied coupon and coupon users
+        /** load user with applied coupon and coupon users */
         $user = auth()->user()->load('appliedcoupon.couponusers');
 
-        //store order with initial data
+        /**store order with initial data */
         $data['user_id'] = $user->id;
         $data['order_id'] = generate_code_unique();
         if($user->appliedcoupon){
@@ -59,19 +59,29 @@ class OrdersController extends Controller
         }
         $order = Order::create($data);
 
-        //store order details
+        /** store order details */
         $result = 0;
         foreach($cartitems as $cartitem){
             $total_price = $cartitem->quantity * $cartitem->item->total_price;
-            OrderDetail::create([
+            $orderDetail = OrderDetail::create([
                 'item_id' => $cartitem->item_id,
                 'order_id' => $order->id,
                 'quantity' => $cartitem->quantity,
                 'total_price' =>  $total_price,
             ]);
             $result += $total_price ;
-            //reset user cart
+
+            /**reset user cart */
             $cartitem->delete();
+
+            /**load item */
+            $orderDetail = $orderDetail->load('item');
+
+            /**minus quantity */
+            $orderDetail->item->update([
+                'quantity' => $orderDetail->item->quantity - $cartitem->quantity
+            ]);
+
         }
 
         //update order if coupon is applied
@@ -79,6 +89,7 @@ class OrdersController extends Controller
             'total_price' => $result,
             'subtotal' => $result
         ];
+
         if($user->appliedcoupon){
             $updatedData['coupon_id'] =$user->appliedcoupon->id;
             $updatedData['total_price'] =$result - ( $result * $user->appliedcoupon->discount / 100 ) ;

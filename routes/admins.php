@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\AdminContactUsController;
 use App\Http\Controllers\Admins\AdminsAuthController;
 use App\Http\Controllers\Admins\AdminsController;
+use App\Http\Controllers\Admins\CouponsController;
 use App\Http\Controllers\Admins\DashobardController;
 use App\Http\Controllers\Admins\ExcelImportController;
 use App\Http\Controllers\Admins\ItemsController;
@@ -22,12 +23,23 @@ Route::group(['prefix' => 'dashboard'], function(){
 
        Route::get('/', [DashobardController::class, 'index'])->name('admin.dashboard.index');
 
+       Route::get('admins/export', [AdminsController::class, 'export'])->name('admins.export');
        Route::resource('admins', AdminsController::class)->except('show');
 
        Route::resource('itemtypes', ItemTypesController::class)->except('show');
 
+       Route::resource('coupons', CouponsController::class)->except('show')->names([
+            'index' => 'admin.coupons.index',
+            'create' => 'admin.coupons.create',
+            'store' => 'admin.coupons.store',
+            'edit' => 'admin.coupons.edit',
+            'update' => 'admin.coupons.update',
+            'destroy' => 'admin.coupons.destroy',
+       ]);
+
        Route::resource('itemtaxes', ItemTaxesController::class)->except('show');
 
+       Route::get('items/export', [ItemsController::class, 'export'])->name('admin.items.export');
        Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
             'create' => 'admin.items.create',
@@ -48,15 +60,10 @@ Route::group(['prefix' => 'dashboard'], function(){
             'show' => 'admin.orders.show'
         ]);
 
-        ///////User routes
-        route::resource('users', UserController::class)->names([
-            'index' => 'users.index',
-            'create' => 'users.create',
-            'edit' => 'users.edit',
-            'store' => 'users.store',
-            'update' => 'users.update',
-            'destroy' => 'users.destroy',
-        ]);
+        /*User routes*/
+        Route::get('users/export', [UserController::class, 'export'])->name('users.export');
+        route::resource('users', UserController::class);
+
 
         /// import user
         Route::post('users/import',  [UserController::class, 'ImportUser'])->name('AdminUser.ImportUser');
@@ -73,18 +80,18 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::delete('messages/delete-all-read-messages', [MessageInquiresController::class, 'deleteAllReadMessages'])->name('admin.deleteAllReadMessages');
         Route::post('messages/repley/{userId}', [MessageInquiresController::class, 'RepleyMessageToUser'])->name('admin.RepleyMessageToUser');
 
-        
 
 
 
-       
+
+
 
 
          ///////Contact Us routes
          Route::put('ContactUs/update', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
 
 
-         
+
         ///////Contact Us routes
         Route::get('ContactUs', [AdminContactUsController::class, 'index'])->name('ContactUs.index');
         Route::post('ContactUs/store', [AdminContactUsController::class, 'store'])->name('ContactUs.store');

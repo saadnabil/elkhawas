@@ -20,6 +20,9 @@ class WishlistController extends Controller
 
     public function favourite($id){
         $item = Item::find($id);
+
+
+
         $wishlist = Wishlist::where([
             'user_id' => auth()->user()->id,
             'item_id' => $item->id
@@ -31,12 +34,19 @@ class WishlistController extends Controller
                 'user_id' => auth()->user()->id,
                 'item_id' => $item->id
             ]);
-            return 1;
+            $data['status'] = 1;
         } else {
             // Delete the wishlist item if it already exists
             $wishlist->delete();
-            return 0;
+            $data['status'] = 0;
         }
+
+        if(request()->has('wishlist')){
+            $wishlists = Wishlist::with('item')->where('user_id',auth()->user()->id)->with('item')->latest()->get();
+            $data['view'] = view('user.wishlists.wishlist-items',compact('wishlists'))->render();
+        }
+
+        return $data;
 
     }
 

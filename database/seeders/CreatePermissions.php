@@ -62,6 +62,12 @@ class CreatePermissions extends Seeder
             'user-delete',
             'user-export',
 
+            'coupon-list',
+            'coupon-create',
+            'coupon-edit',
+            'coupon-delete',
+            'coupon-export',
+
         ];
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(

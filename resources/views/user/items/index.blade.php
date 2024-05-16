@@ -79,6 +79,7 @@
                                                     <input type="number" name="quantity" id="quantity"
                                                         class="form-control form-control-alternative" min="1"
                                                         name="quantity" placeholder="1" value="1" required autofocus>
+
                                                     <input placeholder="item id" type="hidden" name="item_id"
                                                         value="" />
                                                 </form>
@@ -160,7 +161,7 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        if (response == 1) {
+                        if (response['status'] == 1) {
                             element.addClass('text-danger');
                         } else {
                             element.removeClass('text-danger');

@@ -28,25 +28,28 @@
                             <p class="card-text mb-3">Main Price:
                                 <span class="badge bg-primary">€{{ number_format($item->total_price, 2, ',', '.') }}</span>
                             </p>
-
-                            <button data-id="{{ $item->id }}"
-                                data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
-                                data-unit_price="€{{ number_format($item->unit_price, 2, ',', '.') }}" data-total_price="€{{ number_format($item->total_price, 2, ',', '.') }}"
-                                data-description="{{ $item->description[app()->getLocale()] }}"
-                                data-title="{{ $item->title[app()->getLocale()] }}"" type="button" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" class="openmodal btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
+                            @if($item->quantity > 0)
+                                <button data-id="{{ $item->id }}"
+                                    data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
+                                    data-unit_price="€{{ number_format($item->unit_price, 2, ',', '.') }}" data-total_price="€{{ number_format($item->total_price, 2, ',', '.') }}"
+                                    data-description="{{ $item->description[app()->getLocale()] }}"
+                                    data-title="{{ $item->title[app()->getLocale()] }}"
+                                    data-units_number = "{{ $item->units_number }}" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" class="openmodal btn btn-primary">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            @endif
                             <a data-route="{{ route('wishlist.favourite', $item) }}" onclick="" type="button"
                                 class="btn btn-light {{ $item->wishlisted != null ? 'text-danger' : '' }} addwishlist">
                                 <i class="fas fa-heart"></i>
                             </a>
+                            @if($item->quantity == 0)
+                                <div class="text-center">
+                                    <p style="font-weight:bold;font-size:20px;" class="text-danger mt-3">{{ __('translation.Out of stock') }}</p>
+                                </div>
+                            @endif
+                        </div>
 
-                        </div>
-                        <div class="bg-danger text-white small position-absolute end-0 top-0 px-2 py-2 lh-1 text-center">
-                            <span class="d-block">10%</span>
-                            <span class="d-block">OFF</span>
-                        </div>
                     </div>
                 </div>
             @endforeach

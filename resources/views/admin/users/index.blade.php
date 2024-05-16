@@ -2,21 +2,12 @@
 
 
 @section('content')
-    <nav class="page-breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Users</li>
-        </ol>
-    </nav>
-
-
-
 
     <div class="col-md-12 ">
         <div class="card">
             <div class="card-body">
 
-                @can('admin-create')
+                @can('user-create')
                     <div style="float: right">
                         <a href="{{ route('admins.create') }}" type="button" class="btn btn-inverse-primary">
                             <i data-feather="plus"></i>
@@ -24,30 +15,29 @@
                     </div>
                 @endcan
 
-                @can('admin-export')
+                @can('user-export')
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div style="float: right; margin-right: 10px">
-                            <button type="button" class="btn btn-inverse-secondary">
-                                <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                                Export admins</button>
+                            <a href="{{route('users.export')}}"
+                                type="button" class="btn btn-inverse-secondary">{{__('translation.Export')}}</a>
                         </div>
                     </form>
                 @endcan
 
-                <h6 class="card-title">{{ __('translation.Admins') }}</h6>
-                <p class="text-muted mb-3">{{ __('translation.Here you can see all your admins in the table.') }}</p>
+                <h6 class="card-title">{{ __('translation.Users') }}</h6>
+                <p class="text-muted mb-3">{{ __('translation.Here you can see all your users in the table.') }}</p>
 
                 <div class="table-responsive">
                     <table id="dataTableExample" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>ID </th>
-                                <th style="color: goldenrod;">Customer ID</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th>{{ __('translation.ID') }} </th>
+                                <th style="color: goldenrod;">{{ __('translation.Customer ID') }}</th>
+                                <th>{{ __('translation.Name') }}</th>
+                                <th>{{ __('translation.Phone') }}</th>
+                                <th>{{ __('translation.Email') }}</th>
+                                <th>{{ __('translation.Status') }}</th>
+                                <th>{{ __('translation.Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">

@@ -22,51 +22,36 @@
                     <div class="info-block block-info clearfix">
                         <div class="items col-12 clearfix">
                             @foreach ($cartitems as $key => $cartitem)
-<<<<<<< HEAD
-                                <div class="info-block block-info clearfix mb-3">
-                                    <div class="square-box float-start " style="margin-right:5px;">
-                                        <img src="{{ url('storage/' . $cartitem->item->image) }}" width="60"
-                                            height="60" alt="" class="productImage">
+                                <div class="row mb-4 container" style="border-right: 4px solid #5E72E4;">
+                                    <div class="col-5">
+                                        <div class="image-cart-container"
+                                            style="width: 100%;height:140px;background-image:url({{ url('storage/' . $cartitem->item->image) }});background-repeat:no-repeat;background-position:center;background-size:cover;">
+                                        </div>
                                     </div>
-=======
-                            <div class="info-block block-info clearfix mb-3">
-                                <div class="square-box float-start " style="margin-right:5px;">
-                                    <img src="{{ url('storage/'.$cartitem->item->image )  }}" width="60" height="60"
-                                        alt="" class="productImage">
-                                </div>
-                                <br>
-                                <div class="product-item ">
-                                    <ul class="list-unstyled">
-                                        <li style="">
-                                            <strong style="">{{ $cartitem->item->title[app()->getLocale()] }} <br/> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
-                                                €{{ number_format( $cartitem->item->total_price, 2, ',', '.') }}</span></strong>
-                                        </li>
-                                    </ul>
->>>>>>> 41cf493d05c29fff2c06d5fe828deb317369b467
-                                    <br>
-                                    <div class="product-item ">
+                                    <div class="col-7">
                                         <ul class="list-unstyled">
                                             <li style="">
-                                                <strong style="">{{ $cartitem->item->title[app()->getLocale()] }}
-                                                    <br /> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
-                                                        €{{ $cartitem->item->total_price }}</span></strong>
+                                                <p style="font-size:17px;">
+                                                    {{ $cartitem->item->title[app()->getLocale()] }}
+                                                    <br /> <span class="mt-2" style="color: #77819A;display:inline-block;"> {{ $cartitem->quantity }} x
+                                                        € {{ $cartitem->item->total_price }}</span>
+                                                </p>
                                             </li>
                                         </ul>
-                                        <br>
-                                        <div class="buttondiv" style="">
+                                        <div class="buttondiv mt-3" style="">
                                             <button
                                                 data-route="{{ route('carts.minus', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}"
-                                                class="cartbutton minus-quantity" type="button" style="">
+                                                class="cartbutton minus-quantity" type="button" style="margin-left:0;">
                                                 <span class="btn-cart-icon "><i class="fa fa-minus"></i></span>
                                             </button>
                                             <button
                                                 data-route="{{ route('carts.plus', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}"
-                                                class="cartbutton plus-quantity" type="button" style="">
+                                                class="cartbutton plus-quantity" type="button" style="margin-left:3px;margin-right:3px;">
                                                 <span class="btn-cart-icon"><i class="fa fa-plus"></i></span>
                                             </button>
                                             <button
                                                 data-route="{{ route('carts.remove', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}"
-                                                class="cartbutton delete-item" type="button" style="">
+                                                class="cartbutton delete-item" type="button" style="margin-right:0;margin-left:0;">
                                                 <span class="btn-cart-icon"> <i class="fas fa-trash-alt"></i></span>
                                             </button>
                                         </div>
@@ -80,10 +65,10 @@
                             <!-- Add more items here -->
                             <div id="totalPrices">
                                 <div class="card mb-4 mb-xl-0">
-                                    <div class="card-body"style="background-color:#dadee2">
+                                    <div class="card-body"style="background-color:#fff;color:#525f7f;border:1px solid #cacaca33;border-radius:4px;">
                                         <div class="row">
-                                            <div class="col">
-                                                <span><strong style="color: goldenrod">Subtotal:</strong></span>
+                                            <div class="col" style="font-size: 18px;">
+                                                <span><strong style="">Subtotal:</strong></span>
                                                 <span class="ammount"><strong>€{{ number_format($result, 2, ',', '.') }}
                                                     </strong></span>
                                             </div>

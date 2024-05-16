@@ -39,10 +39,6 @@
               </li>
             @endcan
 
-<<<<<<< HEAD
-            
-            
-=======
             @can('item-type-list')
               <li class="nav-item">
                 <a href="{{ route('itemtypes.index') }}" class="nav-link">{{ __('translation.Items types list') }}</a>
@@ -54,13 +50,12 @@
               <a href="{{ route('itemtaxes.index') }}" class="nav-link">{{ __('translation.Items taxes list') }}</a>
             </li>
           @endcan
->>>>>>> 41cf493d05c29fff2c06d5fe828deb317369b467
 
             </ul>
           </div>
         </li>
 
-        @can('order-list')
+
         <li class="nav-item nav-category">{{ __('translation.Orders') }}</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#order" role="button" aria-expanded="false" aria-controls="order">
@@ -72,14 +67,22 @@
 
             <ul class="nav sub-menu">
 
-              <li class="nav-item">
-                <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
-              </li>
+              @can('order-list')
+                <li class="nav-item">
+                  <a href="{{ route('admin.orders.index') }}" class="nav-link">{{ __('translation.Show Orders') }}</a>
+                </li>
+              @endcan
+
+              @can('coupon-list')
+                <li class="nav-item">
+                  <a href="{{ route('admin.coupons.index') }}" class="nav-link">{{ __('translation.Coupons') }}</a>
+                </li>
+              @endcan
 
             </ul>
           </div>
         </li>
-        @endcan
+
 
         <li class="nav-item nav-category">{{ __('translation.Admins') }}</li>
         <li class="nav-item">
