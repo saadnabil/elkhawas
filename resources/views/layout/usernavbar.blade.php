@@ -113,7 +113,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if ($currentUser && $currentUser->image)
-                        <img class="wd-30 ht-30 rounded-circle" src="{{ asset('images/' . $currentUser->image) }}"
+                        <img class="wd-30 ht-30 rounded-circle" src="{{ asset('storage/' . $currentUser->image) }}"
                             alt="profile">
                     @endif
                 </a>
@@ -122,7 +122,7 @@
                         <div class="mb-3">
                             @if ($currentUser && $currentUser->image)
                                 <img class="wd-80 ht-80 rounded-circle"
-                                    src="{{ asset('images/' . $currentUser->image) }}" alt="not found">
+                                    src="{{ asset('storage/' . $currentUser->image) }}" alt="not found">
                             @endif
                         </div>
                         <div class="text-center">

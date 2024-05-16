@@ -26,7 +26,7 @@
 
                     </div>
                     <div class="mt-3">
-                        <a href="{{ route('itemtaxes.index') }}" type="button" class="btn btn-light submit">
+                        <a href="{{ route('admin.itemtaxes.index') }}" type="button" class="btn btn-light submit">
                             {{ __('translation.Back') }}</a>
                         <button type="submit" class="btn btn-primary">{{ __('translation.Save') }}</button>
                     </div>

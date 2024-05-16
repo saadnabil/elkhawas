@@ -36,15 +36,7 @@
                                         </li>
                                     </ul>
                                     <br>
-                                    <div class="product-item ">
-                                        <ul class="list-unstyled">
-                                            <li style="">
-                                                <strong style="">{{ $cartitem->item->title[app()->getLocale()] }}
-                                                    <br /> <span style="color: goldenrod"> {{ $cartitem->quantity }} x
-                                                        €{{ $cartitem->item->total_price }}</span></strong>
-                                            </li>
-                                        </ul>
-                                        <br>
+                                   
                                         <div class="buttondiv" style="">
                                             <button
                                                 data-route="{{ route('carts.minus', ['id' => $cartitem->id, 'route' => 'cartsidebar']) }}"

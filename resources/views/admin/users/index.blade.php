@@ -18,7 +18,7 @@
 
                 @can('admin-create')
                     <div style="float: right">
-                        <a href="{{ route('admins.create') }}" type="button" class="btn btn-inverse-primary">
+                        <a href="{{ route('users.create') }}" type="button" class="btn btn-inverse-primary">
                             <i data-feather="plus"></i>
                             {{ __('translation.Add') }}</a>
                     </div>
@@ -29,12 +29,12 @@
                         <div style="float: right; margin-right: 10px">
                             <button type="button" class="btn btn-inverse-secondary">
                                 <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                                Export admins</button>
+                                Export Users</button>
                         </div>
                     </form>
                 @endcan
 
-                <h6 class="card-title">{{ __('translation.Admins') }}</h6>
+                <h6 class="card-title">{{ __('translation.user') }}</h6>
                 <p class="text-muted mb-3">{{ __('translation.Here you can see all your admins in the table.') }}</p>
 
                 <div class="table-responsive">

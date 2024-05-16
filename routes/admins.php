@@ -20,6 +20,8 @@ Route::group(['prefix' => 'dashboard'], function(){
 
     Route::group(['middleware'=> ['auth:admin', 'admincheckstatus']], function(){
 
+        
+
        Route::get('/', [DashobardController::class, 'index'])->name('admin.dashboard.index');
 
        Route::resource('admins', AdminsController::class)->except('show');
