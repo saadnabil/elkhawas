@@ -8,6 +8,7 @@ use App\Http\Requests\Users\ApplyCouponValidation;
 use App\Http\Requests\Users\CheckOutValidation;
 use App\Models\Address;
 use App\Models\Cart;
+use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
@@ -25,12 +26,19 @@ class CartsController extends Controller
 
     public function add(AddCartsValidation $request){
         $data = $request->validated();
+
+        $item = Item::find($data['item_id']);
+
+        /**check item quantity */
+        if($data['quantity'] > $item->quantity){
+            return response()->json(['error' => __('translation.Quantity requested exceeds available stock.')], 422);
+        }
+
         $ItemInCart = Cart::where([
             'user_id' => auth()->user()->id,
             'item_id' => $data['item_id'],
         ])->first();
 
-        
         if(!$ItemInCart){
             Cart::create([
                 'user_id' => auth()->user()->id,
@@ -79,10 +87,20 @@ class CartsController extends Controller
 
     public function plus($id){
         $route = request('route');
+        /**get item */
+
         $cart = Cart::where([
             'user_id' => auth()->user()->id,
             'id' => $id,
         ])->firstorfail();
+
+        $item = Item::find($cart->item_id);
+
+        /**check item quantity */
+        if($cart->quantity + 1 > $item->quantity){
+            return response()->json(['error' => __('translation.Quantity requested exceeds available stock.')], 422);
+        }
+
         $cart->update([
             'quantity' => $cart->quantity + 1,
         ]);

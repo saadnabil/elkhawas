@@ -22,8 +22,8 @@
                 @can('item-export')
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div style="float: right; margin-right: 10px">
-                        <a href="{{route('item.ExportItems')}}"
-                        type="button" class="btn btn-inverse-secondary">{{__('translation.ExportProduct')}}</a>
+                        <a href="{{route('admin.items.export')}}"
+                        type="button" class="btn btn-inverse-secondary">{{__('translation.Export')}}</a>
                     </div>
                 </form>
                 @endcan
@@ -39,7 +39,7 @@
                                 <th>{{ __('translation.Type') }}</th>
                                 <th>{{ __('translation.Unit') }}</th>
                                 <th>{{ __('translation.Unit Price') }}</th>
-                                <th>{{ __('translation.pieces') }}</th>
+                                <th>{{ __('translation.Pieces') }}</th>
                                 <th>{{ __('translation.Total Price') }}</th>
                                 <th>{{ __('translation.Actions') }}</th>
                             </tr>

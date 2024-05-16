@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Exports\ExportUsers;
 use App\Exports\UserExport;
 use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
@@ -144,6 +145,11 @@ class UserController extends Controller
         $user->delete();
         session()->flash('success', __('translation.Item deleted successfully'));
         return redirect()->route('users.index');
+    }
+
+    public function export(){
+        return Excel::download(new ExportUsers, 'users.xlsx');
+
     }
 
 }

@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Exports\ExportItems;
 use App\Exports\ItemExport;
 use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ValidateItemForm;
-use App\Imports\ItemsImport;
-use App\Models\Inquiry;
 use App\Models\Item;
 use App\Models\ItemTax;
 use App\Models\ItemType;
-use App\Models\Tax;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemsController extends Controller
 {
@@ -22,22 +19,19 @@ class ItemsController extends Controller
      * Display a listing of the resource.
      */
 
-     public function __construct()
-     {
-         $this->middleware('permission:item-list', ['only' => ['index']]);
-         $this->middleware('permission:item-create', ['only' => ['create','store']]);
-         $this->middleware('permission:item-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:item-delete', ['only' => ['destroy']]);
-         $this->middleware('permission:item-export', ['only' => ['export']]);
-     }
+    public function __construct()
+    {
+        $this->middleware('permission:item-list', ['only' => ['index']]);
+        $this->middleware('permission:item-create', ['only' => ['create','store']]);
+        $this->middleware('permission:item-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:item-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:item-export', ['only' => ['export']]);
+    }
+
     public function index()
     {
         $items = Item::with('type')->latest()->get();
         return view('admin.items.index',compact('items'));
-    }
-
-    public function ExportItems(Request $request){
-        return Excel::download(new ItemExport, 'items.xlsx');
     }
 
     /**
@@ -106,8 +100,6 @@ class ItemsController extends Controller
         return redirect()->route('admin.items.index');
     }
 
-
-
     /**
      * Remove the specified resource from storage.
      */
@@ -116,6 +108,10 @@ class ItemsController extends Controller
         $item->delete();
         session()->flash('success', __('translation.Item deleted successfully'));
         return redirect()->route('admin.items.index');
+    }
+
+    public function export(){
+        return Excel::download(new ExportItems, 'items.xlsx');
     }
 
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Exports\ExportAdmins;
 use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ValidateAdminForm;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 
 class AdminsController extends Controller
@@ -107,9 +109,13 @@ class AdminsController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
         $admin->delete();
         session()->flash('success', __('translation.Item deleted successfully'));
         return redirect()->route('admins.index');
     }
+
+    public function export(){
+        return Excel::download(new ExportAdmins, 'admins.xlsx');
+    }
+
 }

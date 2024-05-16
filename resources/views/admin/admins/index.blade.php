@@ -17,9 +17,9 @@
             @can('admin-export')
             <form action="" method="POST" enctype="multipart/form-data">
                 <div style="float: right; margin-right: 10px">
-                    <button type="button" class="btn btn-inverse-secondary">
+                    <a href="{{ route('admins.export') }}" class="btn btn-inverse-secondary">
                         <img width="20" height="20" src="{{ asset('assets/excel.png') }}" />
-                        Export admins</button>
+                        {{ __('translation.Export') }}</a>
                 </div>
             </form>
             @endcan

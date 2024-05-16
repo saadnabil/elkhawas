@@ -17,8 +17,12 @@
                             $('#cartcomponentsection').html(response['view']);
                         }
                     },
-                    error: function(response) {
-                        alert('error')
+                    error: function(xhr) {
+                        if (xhr.status === 422 && xhr.responseJSON.error) {
+                            alert(xhr.responseJSON.error); // Display the error message
+                        } else {
+                            alert('An unexpected error occurred.'); // Fallback error message
+                        }
                     }
                 });
             });
@@ -79,14 +83,19 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
+
                         $('.modal').modal('hide');
 
                         $('#usercart').html(response);
 
                         $('.opencartsidebar').trigger('click');
                     },
-                    error: function(response) {
-                        alert('error')
+                    error: function(xhr) {
+                        if (xhr.status === 422 && xhr.responseJSON.error) {
+                            alert(xhr.responseJSON.error); // Display the error message
+                        } else {
+                            alert('An unexpected error occurred.'); // Fallback error message
+                        }
                     }
                 });
             });

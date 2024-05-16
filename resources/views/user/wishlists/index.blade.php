@@ -129,7 +129,7 @@
             });
 
 
-            $(document).on('keyup', 'input[name="search"]', function(e) {
+            /*$(document).on('keyup', 'input[name="search"]', function(e) {
                 e.preventDefault();
                 var search = $(this).val();
                 var url = `{{ route('user.items.index')}}?search=${search}`;
@@ -148,9 +148,7 @@
                         alert('error')
                     }
                 });
-            });
-
-
+            });*/
 
             $(document).on('click', 'a.addwishlist', function(e) {
                 e.preventDefault();
@@ -162,11 +160,12 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        if (response == 1) {
+                        if (response['status'] == 1) {
                             element.addClass('text-danger');
                         } else {
                             element.removeClass('text-danger');
                         }
+                        $('#myProducts').html(response['view']);
                     },
                     error: function(response) {
                         alert('error')
