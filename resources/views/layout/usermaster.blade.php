@@ -32,8 +32,11 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
-    <!-- End layout styles -->
+  @if ( app()->getLocale() == "ar"  )
+	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style-rtl.css') }}">
+  @else
+	<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
+  @endif    <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('elkhawas/elkhawas_images/tree logo.png') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ url('assets/css/sharedstyle.css') }}">

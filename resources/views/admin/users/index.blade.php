@@ -9,7 +9,7 @@
 
                 @can('user-create')
                     <div style="float: right">
-                        <a href="{{ route('admins.create') }}" type="button" class="btn btn-inverse-primary">
+                        <a href="{{ route('users.create') }}" type="button" class="btn btn-inverse-primary">
                             <i data-feather="plus"></i>
                             {{ __('translation.Add') }}</a>
                     </div>

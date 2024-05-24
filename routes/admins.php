@@ -23,6 +23,8 @@ Route::group(['prefix' => 'dashboard'], function(){
 
     Route::group(['middleware'=> ['auth:admin', 'admincheckstatus']], function(){
 
+        
+
        Route::get('/', [DashobardController::class, 'index'])->name('admin.dashboard.index');
 
        Route::get('admins/export', [AdminsController::class, 'export'])->name('admins.export');
