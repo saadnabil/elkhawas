@@ -54,7 +54,7 @@ class User extends Authenticatable
         return $this->belongsTo(Coupon::class, 'coupon_id');
     }
 
-    public function sentMessages()
+    public function messages()
     {
         return $this->morphMany(Message::class, 'sender');
     }
@@ -62,6 +62,10 @@ class User extends Authenticatable
     public function receivedMessages()
     {
         return $this->morphMany(Message::class, 'reciever');
+    }
+
+    public function tickets(){
+        return $this->hasMany(Ticket::class, 'user_id');
     }
 
 }

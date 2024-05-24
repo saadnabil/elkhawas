@@ -14,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware'=> ['usercheckauth']], function(){
 
-
-
        //items
        Route::get('items' , [ItemsController::class, 'index'])->name('user.items.index');
+
 
        //cart operations
        route::post('carts/add', [CartsController::class, 'add'])->name('carts.add');
@@ -31,8 +30,9 @@ Route::group(['prefix' => 'user'], function(){
        route::post('carts/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
        route::get('carts/thankyou', [CartsController::class, 'thankyou'])->name('carts.thankyou');
 
-
-       Route::get('support', [ChatController::class, 'chatform']);
+       Route::get('support', [ChatController::class, 'chatform'])->name('user.support');
+       Route::post('support/openticket', [ChatController::class,'openticket'])->name('user.support.openticket');
+       Route::post('support/sendMessage/{ticket}', [ChatController::class, 'sendMessage'])->name('user.support.sendMessage');
 
        /// inactive design
        route::get('user/inactive', [CartsController::class, 'inactiveAccount'])->name('user.inactiveAccount');
@@ -40,11 +40,6 @@ Route::group(['prefix' => 'user'], function(){
         ///// Inquery Message
         Route::get('indexMessage/{admin_id}/{message_id}', [UserMessageController::class, 'indexMessageUser'])->name('user.indexMessageUser');
         Route::delete('messages/delete-all-read-messages', [UserMessageController::class, 'deleteAllReadMessages'])->name('user.deleteAllReadMessages');
-
-      //     Route::post('storMessage', [UserMessageController::class, 'storMessage'])->name('user.storMessage');
-      //   Route::get('messages', [UserMessageController::class, 'NavbarMessage'])->name('user.NavbarMessage');
-
-
 
         //////User change image
         route::get('user/showProfileImage', [changeProfileImage::class, 'showProfileImage'])->name('user.showProfileImage');

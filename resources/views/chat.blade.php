@@ -588,7 +588,7 @@ button:focus {
 
 
 
-  
+
                 <div class="col-12">
                     <div class="chat-area">
                         <!-- chatlist -->
@@ -640,8 +640,8 @@ button:focus {
                                                             </div>
                                                         </a>
 
-                                                      
-                                                     
+
+
 
 
                                                     </div>
@@ -670,7 +670,7 @@ button:focus {
                                                                 <p>front end developer</p>
                                                             </div>
                                                         </a>
-                                                       
+
                                                         <a href="#" class="d-flex align-items-center">
                                                             <div class="flex-shrink-0">
                                                                 <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
@@ -714,7 +714,7 @@ button:focus {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
 
@@ -733,7 +733,7 @@ button:focus {
                                                 <li class="repaly">
                                                     <p>yes!</p>
                                                     <span class="time">10:20 am</span>
-                                               
+
                                                 <li>
                                                     <div class="divider">
                                                         <h6>Today</h6>
@@ -762,7 +762,7 @@ button:focus {
                                         </form>
 
                                         <div class="send-btns">
-                                            
+
                                         </div>
 
                                     </div>
@@ -774,7 +774,7 @@ button:focus {
 
 
                 </div>
-       
+
     <!-- char-area -->
     <script>
         jQuery(document).ready(function() {
@@ -793,5 +793,5 @@ $(".chat-icon").click(function() {
         </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
 @endsection

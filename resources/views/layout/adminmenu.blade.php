@@ -133,15 +133,24 @@
         @endcan
 
 
-        <li class="nav-item nav-category">{{ __('translation.Pages') }}</li>
+        <li class="nav-item nav-category">{{ __('translation.Support') }}</li>
+        @can('ticket-list')
         <li class="nav-item">
-          <a href="{{ route('ContactUs.index') }}"  class="nav-link">
-            {{-- <i class="link-icon" data-feather="unlock"></i> --}}
-           <i class="link-icon" data-feather="message-circle"></i>
-
-            <span class="link-title">{{ __('translation.Contact Us') }}</span>
+          <a href="{{ route('tickets.index') }}"  class="nav-link">
+            <i class="fas fa-headset"></i>
+            <span class="link-title">{{ __('translation.Manage support tickets') }}</span>
           </a>
         </li>
+        @endcan
+
+        @can('ticket-my')
+        <li class="nav-item">
+            <a href="{{ route('tickets.me') }}"  class="nav-link">
+                <i class="fas fa-ticket-alt"></i>
+              <span class="link-title">{{ __('translation.My support tickets') }}</span>
+            </a>
+          </li>
+          @endcan
 
        <!--  <li class="nav-item">
           <a href="{{ route('ContactUs.index') }}"  class="nav-link">

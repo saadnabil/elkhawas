@@ -108,6 +108,7 @@
     <script src="{{ asset('assets/js/data-table.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script src="{{ url('assets/js/sharedscript.js') }}"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     @livewireScripts
 

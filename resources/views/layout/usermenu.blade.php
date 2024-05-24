@@ -95,9 +95,9 @@
 
 
             <li class="nav-item">
-                <a href="{{ route('userContactus.index') }}" class="nav-link">
+                <a href="{{ route('user.support') }}" class="nav-link">
                     <i class="link-icon" data-feather="message-circle"></i>
-                    <span class="link-title">Contact Us</span>
+                    <span class="link-title">{{ __('translation.Support') }}</span>
                 </a>
             </li>
 
