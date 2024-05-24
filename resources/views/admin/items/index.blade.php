@@ -68,7 +68,7 @@
                                             </a>
                                         @endcan
 
-                                        @can('item-edit')
+                                        @can('item-destroy')
                                             <a onclick="" class="btn btn-white btn-icon confirm-delete">
                                                 <i data-feather="trash-2"></i>
                                             </a>

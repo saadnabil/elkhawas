@@ -123,7 +123,7 @@
 				</a>
 			  </div> --}}
 			</div>
-		  </nav> 
+		  </nav>
 		<!-- partial -->
 
 		<div class="page-wrapper">
@@ -164,6 +164,7 @@
 	<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     @include('layout.alert')
 
     @stack('script')

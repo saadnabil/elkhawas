@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\AdminContactUsController;
 use App\Http\Controllers\Admins\AdminsAuthController;
 use App\Http\Controllers\Admins\AdminsController;
+use App\Http\Controllers\Admins\ChatController;
 use App\Http\Controllers\Admins\CouponsController;
 use App\Http\Controllers\Admins\DashobardController;
 use App\Http\Controllers\Admins\ExcelImportController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admins\MessageInquiresController;
 use App\Http\Controllers\Admins\orderController;
 use App\Http\Controllers\Admins\OrdersController;
 use App\Http\Controllers\Admins\RolesController;
+use App\Http\Controllers\Admins\TicketController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Users\UserContactUsController;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +41,15 @@ Route::group(['prefix' => 'dashboard'], function(){
 
        Route::resource('itemtaxes', ItemTaxesController::class)->except('show');
 
+       Route::get('support/{ticket}', [ChatController::class, 'chatform'])->name('dashboard.support');
+       Route::post('support/sendMessage/{ticket}', [ChatController::class, 'sendMessage'])->name('dashboard.support.sendMessage');
+
+       route::get('tickets/me',[TicketController::class, 'mytickets'])->name('tickets.me');
+       route::get('tickets/{ticket}/close',[TicketController::class, 'close'])->name('tickets.close');
+       route::resource('tickets', TicketController::class)->only('index','edit','update');
+
        Route::get('items/export', [ItemsController::class, 'export'])->name('admin.items.export');
+
        Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
             'create' => 'admin.items.create',
@@ -65,6 +75,7 @@ Route::group(['prefix' => 'dashboard'], function(){
         route::resource('users', UserController::class);
 
 
+
         /// import user
         Route::post('users/import',  [UserController::class, 'ImportUser'])->name('AdminUser.ImportUser');
 
@@ -80,17 +91,8 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::delete('messages/delete-all-read-messages', [MessageInquiresController::class, 'deleteAllReadMessages'])->name('admin.deleteAllReadMessages');
         Route::post('messages/repley/{userId}', [MessageInquiresController::class, 'RepleyMessageToUser'])->name('admin.RepleyMessageToUser');
 
-
-
-
-
-
-
-
          ///////Contact Us routes
          Route::put('ContactUs/update', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
-
-
 
         ///////Contact Us routes
         Route::get('ContactUs', [AdminContactUsController::class, 'index'])->name('ContactUs.index');

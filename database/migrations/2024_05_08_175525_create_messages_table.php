@@ -17,6 +17,11 @@ return new class extends Migration
             $table->morphs('reciever');
             $table->text('content')->nullable();
             $table->tinyInteger('isread')->default(0);
+            $table->foreignId('ticket_id')
+                ->nullable()
+                ->constrained('tickets')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

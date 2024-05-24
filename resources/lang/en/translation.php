@@ -181,4 +181,15 @@ return [
     'Users' => 'Users',
     'Quantity requested exceeds available stock.' => 'Quantity requested exceeds available stock.',
     'Out of stock' => 'Out of stock',
+    'Support' => 'Support',
+    'User' => 'User',
+    'Assign admin' => 'Assign admin',
+    'Edit Ticket' => 'Edit Ticket',
+    'Ticket closed successfully' => 'Ticket closed successfully',
+    'Thank you for your inquiry. We have received your message and will respond within the next 24 hours.' => 'Thank you for your inquiry. We have received your message and will respond within the next 24 hours.',
+    'To begin chatting with our support team, please open a ticket with the admin first. Once your ticket is submitted, please allow up to 24 hours for a response.' => 'To begin chatting with our support team, please open a ticket with the admin first. Once your ticket is submitted, please allow up to 24 hours for a response.',
+    'Message' => 'Message',
+    'Manage support tickets' => 'Manage support tickets',
+    'My support tickets' => 'My support tickets',
+    'Close this ticket' => 'Close this ticket'
 ];

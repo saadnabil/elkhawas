@@ -22,18 +22,13 @@ Route::get('email-test', function(){
 });
 
 Route::get('TestOrderTrack', function () {
-
     return view('orderTrac');
-    
 });
 
 
 Route::get('chat', function () {
-
     return view('chat');
-    
 });
-
 
 
 Route::get('test-message', function(){

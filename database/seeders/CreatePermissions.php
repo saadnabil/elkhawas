@@ -68,6 +68,12 @@ class CreatePermissions extends Seeder
             'coupon-delete',
             'coupon-export',
 
+            'ticket-list',
+            'ticket-edit',
+            'ticket-close',
+            'ticket-my',
+            'ticket-chat-replay'
+
         ];
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(
