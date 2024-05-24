@@ -17,9 +17,11 @@
                     <h6 class="text-end mb-5 pb-4">#{{ $order->order_id }}</h6>
                     <p class="text-end mb-1">{{ __('translation.Balance Due') }}</p>
                     <h4 class="text-end fw-normal">${{ $order->total_price }}</h4>
-                    <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">{{ __('translation.Date Purchased') }} :</span> {{Carbon\Carbon::parse($order->created_at)->format('Y M d, H:i a')  }}</h6>
+                    <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">{{ __('translation.Date Purchased') }} 
+                    :</span> {{Carbon\Carbon::parse($order->created_at)->format('Y M d, H:i a')  }}</h6>
                     @if($order->shipped_date)
-                        <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted"> {{ __('translation.Shipped Date') }} :</span> {{Carbon\Carbon::parse($order->shipped_date)->format('Y M d, H:i a')  }}</h6>
+                        <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted"> {{ __('translation.Shipped Date') }}
+                         :</span> {{Carbon\Carbon::parse($order->shipped_date)->format('Y M d, H:i a')  }}</h6>
                     @endif
                 </div>
             </div>

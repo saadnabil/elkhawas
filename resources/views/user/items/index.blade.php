@@ -74,6 +74,7 @@
                                             <div class="form-group">
                                                 <label style="color: goldenrod" class="form-control-label"
                                                     for="quantity">Quantity</label>
+                                                    
                                                 <form method="POST" id="additem" action="{{ route('carts.add') }}">
                                                     @csrf
                                                     <input type="number" name="quantity" id="quantity"
