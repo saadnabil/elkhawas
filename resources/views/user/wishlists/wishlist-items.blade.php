@@ -26,7 +26,7 @@
                         data-image="{{ $item->image != null ? url('storage/' . $item->image) : url('item.png') }}"
                         data-unit_price="{{ $item->unit_price }}" data-total_price="{{ $item->total_price }}"
                         data-description="{{ $item->description[app()->getLocale()] }}"
-                        data-title="{{ $item->title[app()->getLocale()] }}"" type="button" data-bs-toggle="modal"
+                        data-title="{{ $item->title[app()->getLocale()] }}" type="button" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" class="openmodal btn btn-primary">
                         <i class="fas fa-shopping-cart"></i>
                     </button>

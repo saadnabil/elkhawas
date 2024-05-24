@@ -165,10 +165,7 @@ class CartsController extends Controller
         }
     }
 
-    public function inactiveAccount(){
-        return view('user.inactive-account');
-    }
-
+  
     public function cartsdetails(){
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
         return view('user.cart.cartdetails',compact('cartitems'));
@@ -180,10 +177,7 @@ class CartsController extends Controller
         return view('user.cart.checkout',compact('addresses','cartitems'));
     }
 
-    public function thankyou(){
-        $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
-        return view('user.items.thankyou',compact('cartitems'));
-    }
+  
 
     public function checkout(CheckOutValidation $request){
         $data = $request->validated();
