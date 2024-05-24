@@ -41,7 +41,6 @@
                             <div class="msg-body">
                                 <ul id="chat-area" style="height:50vh; auto;overflow-y:scroll;overflow-x:hidden;padding:20px;">
                                     @foreach ($ticket->messages as $message)
-
                                         @if ($message->sender_id == auth()->id() && $message->sender_type == 'App\Models\Admin')
                                             <li class="repaly">
                                                 <p>{{ $message->content }}</p>
