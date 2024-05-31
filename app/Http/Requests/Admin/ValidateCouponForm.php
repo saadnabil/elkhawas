@@ -22,14 +22,22 @@ class ValidateCouponForm extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'code' => ['required' , 'string', 'max:10'],
+        $id = $this->route('coupon')->id ?? null;
+        $data =  [
             'description' => ['nullable' , 'string' ,'max:30'],
             'discount' => ['required' , 'numeric' ,'min:0', 'max:100'],
             'quantity' => ['required' , 'numeric' ,'min:1'],
             'valid_from' => ['required' , 'date','after_or_equal:' . now()->format('Y-m-d h:i:s')],
             'valid_to' => ['required' , 'date','after_or_equal:valid_from'],
+            'user_ids' => ['required', 'array'],
+            'user_ids.*' => ['required', 'numeric'],
         ];
+        if(request()->isMethod('post')){
+            $data['code'] = ['required' , 'string', 'max:10','unique:coupons,code'];
+        }else{
+            $data['code'] = ['required' , 'string', 'max:10','unique:coupons,code,'.$id];
+        }
+        return $data;
 
     }
 }

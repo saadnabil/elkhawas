@@ -191,5 +191,9 @@ return [
     'Message' => 'Message',
     'Manage support tickets' => 'Manage support tickets',
     'My support tickets' => 'My support tickets',
-    'Close this ticket' => 'Close this ticket'
+    'Close this ticket' => 'Close this ticket',
+    'Assign to users' => 'Assign to users',
+    'Assign to All Users' => 'Assign to All Users',
+    'Yes, assign this coupon to all users' => 'Yes, assign this coupon to all users',
+    'Select All' => 'Select All'
 ];

@@ -63,6 +63,7 @@ class CartsController extends Controller
                         ->where([
                             'code' => $data['code'],
                         ])
+                        ->where('quantity', '>' , 0)
                         ->where(function ($q) use ($currentDateTime) {
                             $q->where('valid_from', '<=', $currentDateTime)
                                   ->where('valid_to', '>=', $currentDateTime);
@@ -165,7 +166,7 @@ class CartsController extends Controller
         }
     }
 
-  
+
     public function cartsdetails(){
         $cartitems = Cart::with('item')->where('user_id', auth()->user()->id)->get();
         return view('user.cart.cartdetails',compact('cartitems'));
@@ -177,7 +178,7 @@ class CartsController extends Controller
         return view('user.cart.checkout',compact('addresses','cartitems'));
     }
 
-  
+
 
     public function checkout(CheckOutValidation $request){
         $data = $request->validated();

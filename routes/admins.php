@@ -23,7 +23,7 @@ Route::group(['prefix' => 'dashboard'], function(){
 
     Route::group(['middleware'=> ['auth:admin', 'admincheckstatus']], function(){
 
-        
+
 
        Route::get('/', [DashobardController::class, 'index'])->name('admin.dashboard.index');
 
@@ -51,7 +51,6 @@ Route::group(['prefix' => 'dashboard'], function(){
        route::resource('tickets', TicketController::class)->only('index','edit','update');
 
        Route::get('items/export', [ItemsController::class, 'export'])->name('admin.items.export');
-
        Route::resource('items' , ItemsController::class)->names([
             'index' => 'admin.items.index',
             'create' => 'admin.items.create',

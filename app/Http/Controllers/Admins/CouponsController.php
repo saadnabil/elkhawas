@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\ValidateItemTypeForm;
 use App\Models\Admin;
 use App\Models\Coupon;
 use App\Models\ItemType;
+use App\Models\User;
 
 class CouponsController extends Controller
 {
@@ -39,7 +40,8 @@ class CouponsController extends Controller
     {
         $coupon = new Coupon();
         $action = route('admin.coupons.store');
-        return view('admin.coupons.form',compact('coupon','action'));
+        $users = User::orderBy('email','asc')->get();
+        return view('admin.coupons.form',compact('coupon','action','users'));
     }
 
     /**
@@ -48,7 +50,10 @@ class CouponsController extends Controller
     public function store(ValidateCouponForm $request)
     {
         $data = $request->validated();
-        Coupon::create($data);
+        $user_ids = $data['user_ids'];
+        unset($data['user_ids']);
+        $coupon = Coupon::create($data);
+        $coupon->users()->attach($user_ids);
         session()->flash('success', __('translation.Item created successfully'));
         return redirect()->route('admin.coupons.index');
     }
@@ -67,7 +72,9 @@ class CouponsController extends Controller
     {
         $action = route('admin.coupons.update', $coupon);
         $method = true;
-        return view('admin.coupons.form',compact('coupon','action','method'));
+        $coupon = $coupon->load('users');
+        $users = User::orderBy('email','asc')->get();
+        return view('admin.coupons.form',compact('coupon','action','method','users'));
     }
 
     /**
@@ -76,7 +83,10 @@ class CouponsController extends Controller
     public function update(ValidateCouponForm $request, Coupon $coupon)
     {
         $data = $request->validated();
+        $user_ids = $data['user_ids'];
+        unset($data['user_ids']);
         $coupon->update($data);
+        $coupon->users()->sync($user_ids);
         session()->flash('success', __('translation.Item updated successfully'));
         return redirect()->route('admin.coupons.index');
     }

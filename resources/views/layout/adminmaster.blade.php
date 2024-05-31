@@ -24,6 +24,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/vendors/flatpickr/flatpickr.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 
@@ -165,6 +167,36 @@
 	<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
 	<script src="{{ asset('assets/js/data-table.js') }}"></script>
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <!-- Include Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#mySelect2').select2({
+                placeholder:"{{ __('translation.Select') }}",
+                allowClear: true,
+            });
+             // Handle "Select All" functionality
+        $('#mySelect2').on('select2:select', function (e) {
+            if (e.params.data.id === 'select_all') {
+                // Select all options
+                var allOptions = [];
+                $('#mySelect2 option').each(function() {
+                    if (this.value !== 'select_all') {
+                        allOptions.push(this.value);
+                    }
+                });
+                $('#mySelect2').val(allOptions).trigger('change');
+            }
+        });
+
+        // Ensure "Select All" gets deselected when deselecting any option
+        $('#mySelect2').on('select2:unselect', function (e) {
+            if (e.params.data.id === 'select_all') {
+                $('#mySelect2').val(null).trigger('change');
+            }
+        });
+        });
+    </script>
     @include('layout.alert')
 
     @stack('script')

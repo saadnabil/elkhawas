@@ -21,8 +21,6 @@ class OrdersController extends Controller
         $this->middleware('permission:order-export', ['only' => ['export']]);
         $this->middleware('permission:order-send-invoice', ['only' => ['sendInvoice']]);
         $this->middleware('permission:order-edit-status', ['only' => ['updateStatus']]);
-
-
     }
 
     public function index(){
@@ -36,11 +34,9 @@ class OrdersController extends Controller
     }
 
     public function show(Order $order){
-
         $order = $order->load('order_details.item','address','coupon','user');
         $user = auth()->user();
         return view('admin.orders.show',compact('order','user'));
-
     }
 
     public function sendInvoice(Request $request){

@@ -68,4 +68,5 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class, 'user_id');
     }
 
+
 }
