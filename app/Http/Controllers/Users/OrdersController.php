@@ -55,7 +55,7 @@ class OrdersController extends Controller
         $data['user_id'] = $user->id;
         $data['order_id'] = generate_code_unique();
         if($user->appliedcoupon){
-            $data['coupon_id'] =$user->appliedcoupon->id;
+            $data['coupon_id'] = $user->appliedcoupon->id;
         }
         $order = Order::create($data);
 
@@ -81,7 +81,6 @@ class OrdersController extends Controller
             $orderDetail->item->update([
                 'quantity' => $orderDetail->item->quantity - $cartitem->quantity
             ]);
-
         }
 
         //update order if coupon is applied
@@ -104,7 +103,15 @@ class OrdersController extends Controller
         //mark this coupon as used
         if($user->appliedcoupon){
             $user->appliedcoupon->couponusers()->where(['user_id' => auth()->user()->id])->update(['is_used' =>  1]);
+
+            //update coupon quantities
+            $user->appliedcoupon->update([
+                'quantity' => $user->appliedcoupon->quantity - 1,
+                'used_quantity' => $user->appliedcoupon->used_quantity + 1,
+            ]);
+
         }
+
 
         //Send Mail With Job
         $details['email'] = $user->email;

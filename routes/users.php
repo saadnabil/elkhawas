@@ -13,10 +13,8 @@ use App\Http\Controllers\Users\WishlistController;
 use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware'=> ['usercheckauth']], function(){
-
        //items
        Route::get('items' , [ItemsController::class, 'index'])->name('user.items.index');
-
 
        //cart operations
        route::post('carts/add', [CartsController::class, 'add'])->name('carts.add');
@@ -43,18 +41,14 @@ Route::group(['prefix' => 'user'], function(){
 
         //////User change image
         route::get('user/showProfileImage', [changeProfileImage::class, 'showProfileImage'])->name('user.showProfileImage');
-
         route::post('profileImage', [changeProfileImage::class, 'UserChangeImage'])->name('user.UserChangeImage');
-
 
        route::resource('orders', OrdersController::class)->names([
             'index' => 'users.orders.index',
        ]);
 
-
        Route::get('contactus',[UserContactUsController::class,'user'])->name('userContactus.index');
        Route::post('Inquiry/store',[UserContactUsController::class,'store'])->name('userInquiry.store');
-
 
        Route::post('orders/{order}/cancel',[OrdersController::class, 'cancel'])->name('user.orders.cancel');
        route::post('orders/checkout', [OrdersController::class, 'checkout'])->name('user.orders.checkout');
@@ -64,8 +58,8 @@ Route::group(['prefix' => 'user'], function(){
        Route::resource('wishlist', WishlistController::class)->only('index','destroy');
        Route::resource('coupons', CouponsController::class)->only('index');
        Route::resource('adddress', AddressesController::class)->only('store','destroy')->names([
-        'store' => 'user.addresses.store',
-        'destroy' => 'user.addresses.destroy'
+            'store' => 'user.addresses.store',
+            'destroy' => 'user.addresses.destroy'
        ]);
        Route::get('contactus',[UserContactUsController::class,'user'])->name('userContactus.index');
     });
