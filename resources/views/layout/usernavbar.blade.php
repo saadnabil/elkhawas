@@ -18,7 +18,6 @@
         </section>
         @endif
 
-
         @php
             $flagArr = [
                 'en' => 'flag-icon flag-icon-us',

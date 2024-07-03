@@ -25,7 +25,7 @@
                                 <div class="row mb-4 container" style="border-right: 4px solid #5E72E4;">
                                     <div class="col-5">
                                         <div class="image-cart-container"
-                                            style="width: 100%;height:140px;background-image:url({{ url('storage/' . $cartitem->item->image) }});background-repeat:no-repeat;background-position:center;background-size:cover;">
+                                            style="width: 100%;height:140px;background-image:url({{ $cartitem->item->image != null ?  url('storage/' . $cartitem->item->image) : url('item.png') }});background-repeat:no-repeat;background-position:center;background-size:cover;">
                                         </div>
                                     </div>
                                     <div class="col-7">

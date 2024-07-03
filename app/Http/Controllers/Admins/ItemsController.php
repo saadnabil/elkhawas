@@ -58,6 +58,7 @@ class ItemsController extends Controller
         }
         $total_price = $data['units_number'] * $data['unit_price'];
         $data['total_price'] =  $total_price +  ($total_price * $data['tax'] / 100);
+        $data['barcodeimage'] = generate_barcode($data['barcode']);
         Item::create($data);
         session()->flash('success', __('translation.Item created successfully'));
         return redirect()->route('admin.items.index');
@@ -95,6 +96,7 @@ class ItemsController extends Controller
         }
         $total_price = $data['units_number'] * $data['unit_price'];
         $data['total_price'] =  $total_price +  ($total_price * $data['tax'] / 100);
+        $data['barcodeimage'] = generate_barcode($data['barcode']);
         $item->update($data);
         session()->flash('success', __('translation.Item updated successfully'));
         return redirect()->route('admin.items.index');

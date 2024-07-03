@@ -39,6 +39,13 @@ class CartsController extends Controller
             'item_id' => $data['item_id'],
         ])->first();
 
+        /**check max quantity */
+        $checked = checkMaxQuantity($data['quantity'], $item->max_order_quantity, $ItemInCart);
+
+        if($checked == false){
+            return response()->json(['error' => __('translation.Max quantity you can buy is').' '. $item->max_order_quantity], 422);
+        }
+
         if(!$ItemInCart){
             Cart::create([
                 'user_id' => auth()->user()->id,
@@ -101,6 +108,13 @@ class CartsController extends Controller
         if($cart->quantity + 1 > $item->quantity){
             return response()->json(['error' => __('translation.Quantity requested exceeds available stock.')], 422);
         }
+
+         /**check max quantity */
+         $checked = checkMaxQuantity(1 , $item->max_order_quantity, $cart);
+
+         if($checked == false){
+             return response()->json(['error' => __('translation.Max quantity you can buy is').' '. $item->max_order_quantity], 422);
+         }
 
         $cart->update([
             'quantity' => $cart->quantity + 1,

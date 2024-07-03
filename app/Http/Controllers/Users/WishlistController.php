@@ -20,9 +20,6 @@ class WishlistController extends Controller
 
     public function favourite($id){
         $item = Item::find($id);
-
-
-
         $wishlist = Wishlist::where([
             'user_id' => auth()->user()->id,
             'item_id' => $item->id
@@ -45,9 +42,7 @@ class WishlistController extends Controller
             $wishlists = Wishlist::with('item')->where('user_id',auth()->user()->id)->with('item')->latest()->get();
             $data['view'] = view('user.wishlists.wishlist-items',compact('wishlists'))->render();
         }
-
         return $data;
-
     }
 
     /**

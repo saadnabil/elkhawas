@@ -12,6 +12,12 @@ function availableLanguages(){
     return ['en', 'ar','de'];
 }
 
+function generate_barcode(string $text){
+    $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+    $barcode = $generator->getBarcode($text, $generator::TYPE_CODE_128);
+    return $barcode;
+}
+
 function generate_code_unique() {
     // Generate a random prefix of length 2 using letters
     $prefix = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 3);
@@ -26,5 +32,12 @@ function generate_code_unique() {
     $code = $prefix . $currentDate . $randomNumber;
 
     return $code;
+}
+
+function checkMaxQuantity($quantity , $maxQuantity , $itemInCart = null){
+    if($itemInCart){
+        return $maxQuantity >= $quantity + $itemInCart->quantity;
+    }
+    return $maxQuantity >= $quantity;
 }
 

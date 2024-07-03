@@ -31,6 +31,8 @@ class ValidateItemForm extends FormRequest
             'tax' => ['required', 'numeric' ,'min:0'],
             'unit_price' => ['required', 'numeric' ,'min:1'],
             'quantity' => ['required', 'numeric' ,'min:1'],
+            'max_order_quantity' => ['nullable','numeric','min:1'],
+            'barcode' => ['required','string','max:250'],
             'image' => ['nullable', 'image', 'mimes:png,jpg,giv,svg'],
         ];
     }

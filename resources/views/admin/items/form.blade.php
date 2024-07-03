@@ -57,6 +57,32 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <label for="maxitem" class="form-label">{{ __('translation.Max order qty') }}</label>
+                                <input min="1" name="max_order_quantity" type="number" class="form-control" value="{{ old('max_order_quantity', $item->max_order_quantity) }}" id="maxitem">
+                                <label style="font-size:10px;font-weight:bold">{{ __('translation.Leave it empty if u don\'t set the value') }}</label>
+                                @error('max_order_quantity')
+                                <div class="mt-1" style="font-size: 12px;color:red;font-weight:bold;">
+                                    {{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-md-3">
+                                <label  for="itembarcode" class="form-label text-warning">{{ __('translation.Barcode') }}</label>
+                                <input required name="barcode" type="text" class="form-control" value="{{ old('barcode', $item->barcode) }}" id="itembarcode">
+                                @error('barcode')
+                                <div class="mt-1" style="font-size: 12px;color:red;font-weight:bold;">
+                                    {{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-md-3">
+                                <label  for="itembarcode" class="form-label text-primary">{{ __('translation.Barcode image') }}</label>
+                                <div class="barcode">
+                                    {!!  $item->barcodeimage !!}
+                                 </div>
+                            </div>
+
                         </div>
 
 
