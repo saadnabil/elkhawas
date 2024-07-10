@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\CheckOutValidation;
 use App\Jobs\SendEmailJob;
+use App\Jobs\SendNotificationAdminJob;
+use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Notifications\TestPusherNotification;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -109,15 +112,17 @@ class OrdersController extends Controller
                 'quantity' => $user->appliedcoupon->quantity - 1,
                 'used_quantity' => $user->appliedcoupon->used_quantity + 1,
             ]);
-
         }
-
 
         //Send Mail With Job
         $details['email'] = $user->email;
         $order = $order->load('order_details.item','coupon');
         $details['order'] = $order;
         dispatch(new SendEmailJob($details));
+
+        /***push notification */
+            dispatch(new SendNotificationAdminJob(__('translation.New order by'). ' '. $user->name. ' ' . __('translation.with value'). ' '.  number_format($order->total_price, 2, ',', '.'). ' €' ));
+        /***push notification */
 
         session()->flash('success', __('translation.Your order has been completed successfully. Thank you for your purchase'));
         return redirect()->route('user.orders.index');

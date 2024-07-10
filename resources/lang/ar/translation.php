@@ -194,5 +194,9 @@ return [
     'Max order qty' => 'الكمية القصوى للطلب',
     'Barcode' => 'الباركود',
     'Barcode image' => 'صورة الباركود',
-    'Max quantity you can buy is' => 'الكمية القصوى التي يمكنك شراؤها هي'
+    'Max quantity you can buy is' => 'الكمية القصوى التي يمكنك شراؤها هي',
+    'New order by' => 'طلب جديد بواسطة',
+    'with value' => 'بقيمة',
+
+
 ];

@@ -200,5 +200,8 @@ return [
     'Max order qty' => 'Max order qty',
     'Barcode' => 'Barcode',
     'Barcode image' => 'Barcode image',
-    'Max quantity you can buy is' => 'Max quantity you can buy is'
+    'Max quantity you can buy is' => 'Max quantity you can buy is',
+    'New order by' => 'New order by',
+    'with value' => 'with value',
+
 ];

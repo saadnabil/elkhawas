@@ -195,5 +195,9 @@ return [
     'Max order qty' => 'Maximale Bestellmenge',
     'Barcode' => 'Barcode',
     'Barcode image' => 'Barcode-Bild',
-    'Max quantity you can buy is' => 'Die maximale Menge, die Sie kaufen können, beträgt'
+    'Max quantity you can buy is' => 'Die maximale Menge, die Sie kaufen können, beträgt',
+    'New order by' => 'Neue Bestellung von',
+    'with value' => 'mit Wert',
+
+
 ];

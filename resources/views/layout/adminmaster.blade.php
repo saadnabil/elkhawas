@@ -197,6 +197,44 @@
         });
         });
     </script>
+
+    /***notification**/
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        <script>
+
+        @php
+        $userId = auth()->check() ? auth()->user()->id:0;
+        @endphp
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('760480af1169b2a7b3bd', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind("Illuminate\\Notifications\\Events\\BroadcastNotificationCreated", function(data) {
+                if(data.user_id == {{$userId}}){
+                    let not = `<div class="p-1">
+                        <a href="" class="dropdown-item d-flex align-items-center py-2">
+                            <div class="d-flex justify-content-between flex-grow-1">
+                                <div class="me-4">
+
+                                    <p>${data.comment}</p>
+                                </div>
+                                <p class="tx-12 text-muted">1 second ago</p>
+                            </div>
+                        </a>
+                    </div>`;
+                    $('.notificationcontainer').prepend(not);
+                    $('.notificationcount').html(parseInt($('.notificationcount').html())+1);
+                    alert(`${data.comment}`) //here you can add you own logic
+                }
+        });
+        </script>
+    /*****notification****/
+
     @include('layout.alert')
 
     @stack('script')

@@ -17,6 +17,9 @@ use App\Http\Controllers\Admins\RolesController;
 use App\Http\Controllers\Admins\TicketController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Users\UserContactUsController;
+use App\Models\Admin;
+use App\Models\User;
+use App\Notifications\TestPusherNotification;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'dashboard'], function(){
@@ -102,7 +105,13 @@ Route::group(['prefix' => 'dashboard'], function(){
         Route::put('ContactUs/update}', [AdminContactUsController::class, 'update'])->name('ContactUs.update');
         Route::delete('ContactUs/delete/{id}', [AdminContactUsController::class, 'destroy'])->name('ContactUs.destroy');
         Route::post('items/upload-excel',  [ExcelImportController::class, 'import'])->name('admins.itemsexcelimport');
-
+        Route::get('/testnotification', function () {
+            $admins = Admin::all(); // Fetch all admin users
+            foreach ($admins as $admin) {
+                $admin->notify(new TestPusherNotification($admin->id, __('translation.New order by'. ' '. auth()->user()->name), 1));
+            }
+            dd('notification sent to all admins');
+        });
     });
 
 
@@ -111,5 +120,8 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('logout', [AdminsAuthController::class, 'logout'])->name('admin.logout');
      //forgot pasword design
      Route::get('forgotpassword', [UserController::class, 'forgotpassword'])->name('admin.forgotpassword');
+
+
+
 
 });

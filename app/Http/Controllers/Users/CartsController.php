@@ -7,10 +7,12 @@ use App\Http\Requests\Users\AddCartsValidation;
 use App\Http\Requests\Users\ApplyCouponValidation;
 use App\Http\Requests\Users\CheckOutValidation;
 use App\Models\Address;
+use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Notifications\TestPusherNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 class CartsController extends Controller
@@ -248,7 +250,6 @@ class CartsController extends Controller
 
         //mark this coupon as used
         $user->appliedcoupon->couponusers->where(['user_id' => auth()->user()->id])->update(['is_used' =>  1]);
-
 
 
         session()->flash('success', __('translation.Your order has been completed successfully. Thank you for your purchase'));

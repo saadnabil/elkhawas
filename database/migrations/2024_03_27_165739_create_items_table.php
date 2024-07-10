@@ -20,6 +20,10 @@ return new class extends Migration
             $table->integer('units_number')->nullable();
             $table->double('unit_price')->nullable();
             $table->double('total_price')->nullable();
+            $table->integer('quantity')->default(0)->nullable();
+            $table->integer('max_order_quantity')->default(0)->nullable();
+            $table->text('barcode')->nullable();
+            $table->text('barcodeimage')->nullable();
             $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();

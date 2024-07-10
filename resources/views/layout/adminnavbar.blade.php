@@ -44,12 +44,54 @@
             </li>
 
 
+            <!--Notifications-->
             @php
+                $notifications = App\Models\Notification::orderBy('created_at', 'desc')->get();
+                $unreadNotificationsCount = $notifications->where('is_read', 0)->count();
+            @endphp
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i style="font-size:20px;" class="fas fa-bell"></i>
 
+
+                    <!-- Badge to indicate unread messages -->
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notificationcount">
+                        {{ $unreadNotificationsCount }}
+                    </span>
+                </a>
+
+                <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
+                    <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
+                        <p> <span class="notificationcount">( {{ $unreadNotificationsCount }})</span> New Messages</p>
+                        {{-- <a href="javascript:;" class="text-muted">  {{ $inqyey->links('pagination::bootstrap-5') }}</a> --}}
+                    </div>
+                    <div class="notificationcontainer">
+                        @foreach ($notifications as $notification)
+                            <div class="p-1">
+                                <a href="" class="dropdown-item d-flex align-items-center py-2">
+                                    <div class="d-flex justify-content-between flex-grow-1">
+                                        <div class="me-4">
+                                            @php
+                                                $message = json_decode($notification->data,true)['message'];
+                                            @endphp
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                        <p class="tx-12 text-muted">{{ $notification->created_at->diffForHumans() }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </li>
+
+
+            @php
                 $messages = App\Models\Inquiry::orderBy('created_at', 'desc')->get();
                 $unreadMessagesCount = $messages->where('is_read', 0)->count();
-
             @endphp
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,13 +109,11 @@
 
                 <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
                     <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                        <p> ( {{ $unreadMessagesCount }}) New Messages</p>
+                        <p> ( {{ $unreadMessagesCount }}) New Notifications</p>
                         {{-- <a href="javascript:;" class="text-muted">  {{ $inqyey->links('pagination::bootstrap-5') }}</a> --}}
                     </div>
-
                     @foreach ($messages as $message)
                         <div class="p-1">
-
                             <a href="{{ route('admin.indexMessage', ['user_id' => $message->user_id, 'message_id' => $message->id]) }}"
                                 class="dropdown-item d-flex align-items-center py-2">
                                 <div class="me-3">
@@ -82,8 +122,6 @@
                                             ? asset('images/' . $message->user->image)
                                             : asset('images/default/no-image.png') }}"
                                         alt="No image available">
-
-
                                 </div>
                                 <div class="d-flex justify-content-between flex-grow-1">
                                     <div class="me-4">
@@ -95,22 +133,14 @@
                                     <p class="tx-12 text-muted">{{ $message->created_at->diffForHumans() }}</p>
                                 </div>
                             </a>
-
-
                         </div>
                     @endforeach
 
-                    <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                        <form action="{{ route('admin.deleteAllReadMessages') }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete All Read Messages</button>
-                        </form>
-                    </div>
+
 
                 </div>
             </li>
-
+            <!--Notifications-->
             @php
                 $currentUser = auth()->guard('admin')->user(); // Get the currently authenticated user
             @endphp
